@@ -20,7 +20,7 @@ FILMIUM is a highly optimized, smart media management platform built as a detach
 ## 📸 Interface Preview
 
 ### 1. Core Dashboard Overview
-![Dashboard](screenshots/Filmium_1_dashboard.png)
+![Dashboard](screenshots/filmium_1_dashboard.png)
 
 ### 2. Movie Profile Page
 ![Movie Page](screenshots/Filmium_2_Film_Strana.png)
