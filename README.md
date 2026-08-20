@@ -20,28 +20,28 @@ FILMIUM is a highly optimized, smart media management platform built as a detach
 ## 📸 Interface Preview
 
 ### 1. Core Dashboard Overview
-![Dashboard](screenshots/filmium-1-dashboard.png)
+![Dashboard](screenshots/Filmium_1_dashboard.png)
 
 ### 2. Movie Profile Page
-![Movie Page](screenshots/filmium-2-film-strana.png)
+![Movie Page](screenshots/Filmium_2_Film_Strana.png)
 
 ### 3. TV Series Explorer
-![TV Series](screenshots/filmium-3-serije-strana.png)
+![TV Series](screenshots/Filmium_3_Serije_Strana.png)
 
 ### 4. Content Management System (Edit Section)
-![Edit Content](screenshots/filmium-4-uredi-sadrzaj.png)
+![Edit Content](screenshots/Filmium_4_Uredi_Sadrzaj.png)
 
 ### 5. Smart Upload & Driver Scanner
-![Upload Engine](screenshots/filmium-5-upload.png)
+![Upload Engine](screenshots/Filmium_5_Uploud.png)
 
 ### 6. The Subtitle Terminator (Data Parser & Encoding Repair)
-![Subtitle Terminator](screenshots/filmium-6-terminator-prevoda.png)
+![Subtitle Terminator](screenshots/Filmium_6_Terminator_Prevoda.png)
 
 ### 7. Core File Share & Sync Manager
-![Share Manager](screenshots/filmium-7-podeli.png)
+![Share Manager](screenshots/Filmium_7_Podeli.png)
 
 ### 8. Media Wishlist & TMDB Pre-Staging
-![Wishlist Tracker](screenshots/filmium-8-dodaj-film.png)
+![Wishlist Tracker](screenshots/Filmium_8_Dodaj_Film.png)
 
 
 
