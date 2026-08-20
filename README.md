@@ -16,6 +16,19 @@ FILMIUM is a highly optimized, smart media management platform built as a detach
 *   **System Backend**: Tauri (Rust-powered environment for low-level local file-system operations and process execution)
 *   **User Interface**: React, TypeScript, Tailwind CSS
 *   **Media Processing**: FFmpeg binary integration
+---
+## 📸 Interface Preview
+
+### Dashboard Okruženje
+![Dashboard](screenshots/Filmium\1\dashboard.png)
+
+### Terminator Prevoda (Data Parser)
+![Subtitle Terminator](screenshots/Filmium\6\Terminator\Prevoda.png)
+
+### Skeniranje i Upload Sistem
+![Upload System](screenshots/Filmium\5\Uploud.png)
+
+
 
 ---
 Developed by [H4K3R0S](https://github.com) as part of the CORE OS Ecosystem.
