@@ -1,0 +1,397 @@
+/* ==========          CODIUM PODESAVANJA          ========== */
+
+.cset {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  padding: 22px 26px;
+  overflow: hidden;
+}
+
+.cset-eyebrow {
+  margin: 0;
+  font-size: 10.5px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-title {
+  margin: 2px 0 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-primary, #e9edf2);
+}
+
+.cset-body {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 20px;
+  min-height: 0;
+  flex: 1;
+}
+
+/* ---------- kategorije ---------- */
+
+.cset-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cset-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: var(--text-secondary, #9aa4b2);
+  font-size: 12.5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cset-nav-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary, #e9edf2);
+}
+
+.cset-nav-item.is-active {
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  border-color: rgba(var(--domain-accent-rgb), 0.4);
+  color: var(--text-primary, #e9edf2);
+}
+
+/* ---------- panel ---------- */
+
+.cset-content {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.cset-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cset-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cset-panel-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary, #e9edf2);
+}
+
+.cset-panel-sub {
+  margin: 5px 0 0;
+  max-width: 62ch;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-group + .cset-group {
+  margin-top: 16px;
+}
+
+.cset-group-title {
+  margin: 0 0 7px;
+  font-size: 10.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+/* ---------- lista ---------- */
+
+.cset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cset-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 13px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 5px;
+}
+
+.cset-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cset-item-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--text-primary, #e9edf2);
+}
+
+.cset-badge {
+  margin-left: 8px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9.5px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.cset-badge.free {
+  background: rgba(120, 200, 140, 0.16);
+  color: #8fdba0;
+}
+
+.cset-badge.paid {
+  background: rgba(230, 180, 90, 0.16);
+  color: #e6c07b;
+}
+
+.cset-item-meta {
+  font-size: 11px;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.cset-item-note {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  letter-spacing: 0.3px;
+  color: var(--text-secondary, #9aa4b2);
+  opacity: 0.7;
+}
+
+.cset-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 16px 0;
+  font-size: 12px;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-ok {
+  font-size: 11px;
+  color: #8fdba0;
+}
+
+.cset-error {
+  margin: 0;
+  font-size: 11px;
+  color: #ff8f8f;
+}
+
+/* ---------- dugmad ---------- */
+
+.cset-primary,
+.cset-ghost,
+.cset-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  cursor: pointer;
+}
+
+.cset-primary {
+  background: rgba(var(--domain-accent-rgb), 0.18);
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.5);
+  color: var(--text-primary, #e9edf2);
+}
+
+.cset-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-ghost:hover {
+  color: var(--text-primary, #e9edf2);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.cset-danger {
+  background: rgba(220, 80, 80, 0.18);
+  border: 1px solid rgba(220, 80, 80, 0.5);
+  color: #ffd7d7;
+}
+
+/* ---------- izbor vrste ---------- */
+
+.cset-select {
+  padding: 6px 9px;
+  background: #0f1319;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: var(--text-primary, #e9edf2);
+  font-size: 11.5px;
+}
+
+/* ---------- polje forme (label + input u koloni) ---------- */
+
+.cset-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+.cset-field input[type="text"],
+.cset-field input[type="password"],
+.cset-field input[type="number"] {
+  width: 100%;
+  padding: 6px 9px;
+  background: #0f1319;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: var(--text-primary, #e9edf2);
+  font-size: 11.5px;
+}
+
+.cset-field input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+/* ---------- prekidac ---------- */
+
+.cset-switch {
+  position: relative;
+  width: 38px;
+  height: 21px;
+  flex-shrink: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+.cset-switch.on {
+  background: rgba(var(--domain-accent-rgb), 0.4);
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+}
+
+.cset-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  background: #e9edf2;
+  border-radius: 50%;
+  transition: transform 0.14s ease;
+}
+
+.cset-switch.on .cset-switch-knob {
+  transform: translateX(17px);
+}
+
+.cset-note {
+  margin: 6px 0 0;
+  max-width: 76ch;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-secondary, #9aa4b2);
+}
+
+/* ---------- uredjivac persone (.md) ---------- */
+
+.cset-editor {
+  width: 100%;
+  min-height: 320px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #0f1319;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: var(--text-primary, #e9edf2);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.cset-editor:focus {
+  outline: none;
+  border-color: rgba(var(--domain-accent-rgb), 0.5);
+}
+
+/* ---------- OpenRouter katalog (300+ modela, pa pretraga) ---------- */
+
+.set-orc-search {
+  width: 100%;
+  margin: 8px 0 12px;
+  padding: 8px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  color: #e2e8f0;
+  background: rgba(8, 13, 27, 0.62);
+  font: inherit;
+}
+
+.set-orc-search:focus {
+  border-color: rgba(var(--domain-accent-rgb, 125, 211, 252), 0.45);
+  outline: none;
+}
+
+/* Id modela je dugačak (`anthropic/claude-…`) i ne sme da razvuče red. */
+.set-orc-row .cset-item-title {
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.set-orc-meta {
+  font-variant-numeric: tabular-nums;
+}
+
+.set-orc-more {
+  margin: 10px 0 0;
+  color: #8b95a8;
+  font-size: 0.78rem;
+}
+
+
+/* ---------- besplatan model ---------- */
+/*
+ * Zelena je znacenje, ne ukras: ista boja koju vec nosi znacka „besplatno"
+ * (`.cset-badge.free`), da ista stvar na dva mesta ne bude dve boje. Traka uz
+ * levu ivicu, ne pun okvir — besplatnih modela ume da bude dvadesetak zaredom,
+ * a spisak od dvadeset uokvirenih redova se ne cita.
+ */
+
+.cset-item.is-free {
+  border-left: 2px solid rgba(120, 200, 140, 0.55);
+  padding-left: 10px;
+}

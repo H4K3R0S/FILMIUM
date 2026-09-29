@@ -1,0 +1,656 @@
+/* ==========          FILMIUM GLUMCI (LISTA + DETALJI)          ========== */
+
+
+/* ==========          ALATNA TRAKA (PRETRAGA)          ========== */
+
+.filmium-actors-toolbar {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.filmium-actors-toolbar .filmium-search {
+  width: min(420px, 100%);
+}
+
+.filmium-actors-search-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 11px;
+  color: #64748b;
+  background: rgba(15, 23, 42, 0.8);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.filmium-actors-search-field:focus-within {
+  border-color: rgba(125, 211, 252, 0.58);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.filmium-actors-search-field input {
+  flex: 1;
+  min-height: 40px;
+  border: none;
+  outline: none;
+  color: #f8fafc;
+  background: transparent;
+  font: inherit;
+}
+
+.filmium-actors-search-field input::placeholder {
+  color: #475569;
+}
+
+
+/* ==========          LISTA — MREŽA KARTICA          ========== */
+
+.filmium-actors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 18px;
+}
+
+.filmium-actor-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: rgba(7, 13, 27, 0.68);
+  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.2);
+  cursor: pointer;
+  appearance: none;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.filmium-actor-card:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.46);
+  box-shadow:
+    0 18px 42px rgba(2, 6, 23, 0.34),
+    0 0 28px rgba(var(--domain-accent-rgb), 0.08);
+  transform: translateY(-3px);
+}
+
+.filmium-actor-card-visual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--domain-accent-rgb), 0.22),
+      rgba(7, 13, 27, 0.96)
+    );
+}
+
+.filmium-actor-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 260ms ease, transform 320ms ease;
+}
+
+.filmium-actor-card:hover .filmium-actor-card-visual img {
+  filter: brightness(1.06);
+  transform: scale(1.035);
+}
+
+.filmium-actor-card-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.filmium-actor-card-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.filmium-actor-card-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 62%, rgba(7, 13, 27, 0.88) 100%);
+}
+
+.filmium-actor-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 9px;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.3);
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(7, 13, 27, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.filmium-actor-badge.standalone {
+  position: static;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+
+.filmium-actor-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 13px 14px;
+}
+
+.filmium-actor-card-content strong {
+  overflow: hidden;
+  color: #f1f5f9;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-actor-card-content span {
+  color: #94a3b8;
+  font-size: 0.76rem;
+}
+
+.filmium-actors-load-more {
+  display: flex;
+  justify-content: center;
+  min-height: 60px;
+  padding-top: 22px;
+}
+
+.filmium-actors-loading-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+
+/* ==========          DETALJI — OKVIR          ========== */
+
+.filmium-actor-detail {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(26px, 4vw, 48px);
+  border: 1px solid rgba(148, 163, 184, 0.17);
+  border-radius: 24px;
+  background: rgba(5, 10, 22, 0.64);
+  box-shadow: 0 30px 90px rgba(2, 6, 23, 0.44);
+  backdrop-filter: blur(22px);
+}
+
+.filmium-actor-detail .filmium-media-details-nav {
+  padding: 0 0 22px;
+}
+
+.filmium-actor-detail-body {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(26px, 4vw, 52px);
+}
+
+
+/* ==========          PORTRET (ULAZNA ANIMACIJA)          ========== */
+
+.filmium-actor-portrait-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes filmium-actor-portrait-intro {
+  from {
+    transform: translate(-22px, 56px) scale(0.88);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.filmium-actor-portrait {
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.82);
+  box-shadow: 0 24px 54px rgba(2, 6, 23, 0.52);
+  animation: filmium-actor-portrait-intro 640ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.filmium-actor-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-actor-portrait-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(var(--domain-accent-rgb), 0.32),
+      transparent 42%
+    ),
+    linear-gradient(145deg, rgba(30, 41, 59, 0.74), rgba(5, 10, 22, 0.98));
+}
+
+.filmium-actor-portrait-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-actor-portrait {
+    animation: none;
+  }
+}
+
+
+/* ==========          BIO + PODACI          ========== */
+
+.filmium-actor-detail-content {
+  min-width: 0;
+}
+
+.filmium-actor-detail-content h1 {
+  margin: 0 0 16px;
+  color: #f8fafc;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.filmium-actor-bio {
+  max-width: 780px;
+  margin: 0 0 22px;
+  color: #cbd5e1;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.filmium-actor-bio.muted {
+  color: #64748b;
+  font-style: italic;
+}
+
+.filmium-actor-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+
+.filmium-actor-fact {
+  display: flex;
+  min-width: 190px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  border-radius: 12px;
+  background: rgba(7, 13, 27, 0.5);
+}
+
+.filmium-actor-fact dt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #93a4bd;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filmium-actor-fact dd {
+  margin: 0;
+  color: #f1f5f9;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+
+/* ==========          ODELJAK NASLOVI (ZAJEDNIČKI)          ========== */
+
+.filmium-actor-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 40px 0 18px;
+}
+
+.filmium-actor-section-heading h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.4rem;
+}
+
+.filmium-actor-section-heading span {
+  color: #94a3b8;
+  font-size: 0.8rem;
+}
+
+
+/* ==========          FILMOVI I SERIJE          ========== */
+
+.filmium-actor-films-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.filmium-actor-film-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: rgba(7, 13, 27, 0.6);
+  cursor: pointer;
+  appearance: none;
+  transition: border-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.filmium-actor-film-card:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.44);
+  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.3);
+  transform: translateY(-3px);
+}
+
+.filmium-actor-film-visual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--domain-accent-rgb), 0.18),
+      rgba(7, 13, 27, 0.96)
+    );
+}
+
+.filmium-actor-film-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-actor-film-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.filmium-actor-film-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+/* Kartica za naslov koji NIJE u biblioteci — prazan okvir sa "+" u sredini. */
+.filmium-actor-film-card.is-add {
+  background: rgba(7, 13, 27, 0.32);
+}
+
+.filmium-actor-film-card.is-add .filmium-actor-film-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed rgba(var(--domain-accent-soft-rgb), 0.34);
+  background: rgba(7, 13, 27, 0.4);
+  color: rgba(var(--domain-accent-soft-rgb), 0.7);
+}
+
+.filmium-actor-film-card.is-add:hover .filmium-actor-film-visual {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.68);
+  color: rgb(var(--domain-accent-soft-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.08);
+}
+
+.filmium-actor-film-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 11px 12px;
+}
+
+.filmium-actor-film-copy strong {
+  overflow: hidden;
+  color: #f1f5f9;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-actor-film-copy span {
+  color: #94a3b8;
+  font-size: 0.74rem;
+}
+
+
+/* ==========          GALERIJA (CAROUSEL + LIGHTBOX)          ========== */
+
+.filmium-actor-gallery-track {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.filmium-actor-gallery-thumb {
+  flex: 0 0 auto;
+  overflow: hidden;
+  width: 150px;
+  height: 100px;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.filmium-actor-gallery-thumb:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.5);
+  transform: translateY(-2px);
+}
+
+.filmium-actor-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-actor-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px;
+  background: rgba(2, 6, 15, 0.86);
+  backdrop-filter: blur(10px);
+}
+
+.filmium-actor-lightbox-stage {
+  position: relative;
+  display: flex;
+  max-width: min(900px, 92vw);
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.filmium-actor-lightbox-image {
+  max-width: 100%;
+  max-height: 78vh;
+  border: 1px solid rgba(226, 232, 240, 0.16);
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 30px 90px rgba(2, 6, 23, 0.6);
+}
+
+.filmium-actor-lightbox-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 999px;
+  color: #f1f5f9;
+  background: rgba(15, 23, 42, 0.66);
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.filmium-actor-lightbox-nav:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.5);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.filmium-actor-lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 999px;
+  color: #f1f5f9;
+  background: rgba(15, 23, 42, 0.66);
+  cursor: pointer;
+}
+
+.filmium-actor-lightbox-close:hover {
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #fca5a5;
+}
+
+.filmium-actor-lightbox-counter {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+
+/* ==========          RESPONZIVNOST          ========== */
+
+@media (max-width: 760px) {
+  .filmium-actor-detail-body {
+    grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+  }
+
+  .filmium-actor-facts {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .filmium-actor-detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-actor-portrait-wrap {
+    align-items: center;
+  }
+
+  .filmium-actor-portrait {
+    width: min(220px, 60vw);
+  }
+}
+/* ==========  Bio — skraćen prikaz sa „Pokaži više/manje"  ========== */
+.filmium-actor-bio-wrap {
+  max-width: 780px;
+  margin: 0 0 22px;
+}
+.filmium-actor-bio-wrap .filmium-actor-bio {
+  margin: 0 0 8px;
+}
+.filmium-actor-bio.clamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.filmium-actor-bio-toggle {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+.filmium-actor-bio-toggle:hover {
+  color: rgb(var(--domain-accent-rgb));
+  text-decoration: underline;
+}
+
+/* ==========  Profesije ispod slike (cast_entity)  ========== */
+.filmium-actor-professions {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  max-width: 320px;
+}
+.filmium-actor-profession {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(var(--domain-accent-soft-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.10);
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.28);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}

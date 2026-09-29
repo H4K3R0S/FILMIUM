@@ -1,0 +1,27 @@
+.filmium-library-heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.filmium-library-path-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.filmium-library-path-picker .secondary-button {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .filmium-library-heading-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .filmium-library-path-picker {
+    grid-template-columns: 1fr;
+  }
+}

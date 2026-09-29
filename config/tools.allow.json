@@ -1,0 +1,53 @@
+{
+  "_comment": "Allowlist za core/cell/executor.py. Nepoznat alat (nije ovde) = greska, NE izvrsava se (fail-closed). Svi FILMIUM alati su MEDIUM (matrica 05-approval-gates.md: 'FILMIUM import'/'mpv play' = MEDIUM autonomno+audit). Ne cilja zivu mrezni metu u KALIMA smislu -> 'targets_network' je false svuda (rsync moze sinhronizovati ka udaljenom hostu, ali to NIJE ista provera kao authorized target_asset za pentest — van scope-a ove faze). [FLAG] core/cell/ ovde je Linux kopija (~/ai/domains/filmium); F:\\ Windows sync kopija NIJE dirana iz ove sesije — treba rucno sinhronizovati executor.py/approvals.py/config/tools.allow.json na F:\\ posle ove faze.",
+  "domain": "filmium",
+  "version": 1,
+  "updated": "2026-09-18",
+  "tools": {
+    "ffprobe": {
+      "binary": "ffprobe",
+      "risk": "MEDIUM",
+      "targets_network": false,
+      "timeout_s": 60,
+      "action": "filmium.ffprobe",
+      "status": "planned",
+      "note": "Nije pronadjen na ovoj (Kali) masini u ovoj sesiji — verifikovati na FILMIUM domacinu."
+    },
+    "ffmpeg": {
+      "binary": "ffmpeg",
+      "risk": "MEDIUM",
+      "targets_network": false,
+      "timeout_s": 600,
+      "action": "filmium.ffmpeg",
+      "status": "planned",
+      "note": "Nije pronadjen na ovoj (Kali) masini u ovoj sesiji — verifikovati na FILMIUM domacinu."
+    },
+    "mediainfo": {
+      "binary": "mediainfo",
+      "risk": "MEDIUM",
+      "targets_network": false,
+      "timeout_s": 60,
+      "action": "filmium.mediainfo",
+      "status": "planned",
+      "note": "Nije pronadjen na ovoj (Kali) masini u ovoj sesiji — verifikovati na FILMIUM domacinu."
+    },
+    "mpv": {
+      "binary": "mpv",
+      "risk": "MEDIUM",
+      "targets_network": false,
+      "timeout_s": 30,
+      "action": "filmium.mpv",
+      "status": "planned",
+      "note": "IPC kontrola plejera. Nije pronadjen na ovoj (Kali) masini u ovoj sesiji — verifikovati na FILMIUM domacinu."
+    },
+    "rsync": {
+      "binary": "rsync",
+      "risk": "MEDIUM",
+      "targets_network": false,
+      "timeout_s": 300,
+      "action": "filmium.rsync",
+      "status": "verified",
+      "note": "F:\\ path sync (v. memorija). MEDIUM autonomno+audit."
+    }
+  }
+}

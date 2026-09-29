@@ -1,0 +1,6754 @@
+﻿/* ==========          FILMIUM PRIVREMENI EKRANI          ========== */
+
+.filmium-placeholder-page {
+  min-height: 320px;
+}
+
+.filmium-placeholder-description {
+  max-width: 680px;
+  color: #aeb9ca;
+  line-height: 1.7;
+}
+
+.filmium-placeholder-status {
+  display: inline-flex;
+  margin-top: 24px;
+  padding: 9px 13px;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.2);
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.76rem;
+  background: rgba(var(--domain-accent-rgb), 0.1);
+}
+
+
+/* ==========          FILMIUM UPLOADS EKRAN          ========== */
+
+.filmium-page-description {
+  max-width: 720px;
+  color: #aeb9ca;
+  line-height: 1.65;
+}
+
+.filmium-upload-assets-notice {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px dashed rgba(var(--domain-accent-soft-rgb), 0.28);
+  border-radius: 16px;
+  color: #aeb9ca;
+  font-size: 0.84rem;
+  background: rgba(var(--domain-accent-rgb), 0.06);
+}
+
+
+
+/* ==========          FILMIUM MEDIA DETAILS          ========== */
+
+.filmium-media-details {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.17);
+  border-radius: 24px;
+  background: rgba(5, 10, 22, 0.64);
+  box-shadow: 0 30px 90px rgba(2, 6, 23, 0.44);
+  backdrop-filter: blur(22px);
+}
+
+.filmium-media-details-backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(520px, 68vh);
+  background-position: center;
+  background-size: cover;
+}
+
+.filmium-media-details-backdrop-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 8, 18, 0.82),
+      rgba(3, 8, 18, 0.18) 66%,
+      rgba(3, 8, 18, 0.36)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(5, 10, 22, 1) 0%,
+      rgba(5, 10, 22, 0.58) 42%,
+      rgba(5, 10, 22, 0.06) 76%
+    );
+}
+
+.filmium-media-details-body {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns:
+    minmax(190px, 260px)
+    minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(26px, 4vw, 52px);
+  min-height: 560px;
+  padding: clamp(34px, 6vw, 72px);
+  padding-top: clamp(150px, 22vw, 250px);
+}
+
+
+/* ==========          DETAILS V2 RASPORED          ========== */
+
+.filmium-details-identity {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  padding: clamp(22px, 4vw, 46px) clamp(34px, 6vw, 72px) 0;
+}
+
+.filmium-details-identity h1 {
+  width: fit-content;
+  margin: 0 0 18px;
+  padding: 0;
+  color: #f8fafc;
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.filmium-media-details .filmium-media-details-body {
+  grid-template-columns:
+    minmax(190px, 260px)
+    minmax(320px, 1fr)
+    minmax(220px, 320px);
+  padding-top: 24px;
+  row-gap: 14px;
+}
+
+.filmium-media-details .poster-play {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  min-height: 44px;
+  margin-top: -28px;
+}
+
+.filmium-media-details .filmium-details-facts.side {
+  grid-row: 3;
+  margin-top: -8px;
+}
+
+.filmium-media-details .filmium-media-details-content {
+  grid-column: 2 / 4;
+  grid-row: 1 / span 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  column-gap: clamp(28px, 5vw, 70px);
+  align-self: start;
+}
+
+.filmium-media-details-content > .eyebrow,
+.filmium-media-details-content > h1,
+.filmium-media-details-content > .filmium-featured-meta,
+.filmium-media-details-content > .filmium-genre-list,
+.filmium-media-details-content > .filmium-details-watch {
+  display: none;
+}
+
+.filmium-media-details .filmium-media-details-description {
+  margin: 0 0 18px;
+  padding: 20px;
+  background: rgba(7, 13, 27, 0.54);
+}
+
+.filmium-details-info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.filmium-details-info-strip span {
+  padding: 8px 11px;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  border-radius: 9px;
+  color: #cbd5e1;
+  background: rgba(7, 13, 27, 0.5);
+  font-size: 0.78rem;
+}
+
+.filmium-details-trailer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  grid-column: 1;
+  width: min(100%, 680px);
+  min-height: 230px;
+  margin-top: 58px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 14px;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.62);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.filmium-media-details .filmium-media-details-actions {
+  grid-column: 2;
+  grid-row: 7 / span 2;
+  grid-template-columns: 1fr;
+  justify-self: end;
+  align-self: end;
+  width: min(100%, 230px);
+  max-width: 230px;
+  margin-top: 0;
+}
+
+.filmium-media-details-actions .secondary-button:first-of-type {
+  order: 1;
+}
+
+.filmium-media-details-actions .favorite-button {
+  order: 2;
+}
+
+.filmium-media-details-actions .secondary-button:last-of-type {
+  order: 3;
+}
+
+.filmium-details-watch-panel {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  align-self: end;
+  margin-top: 92px;
+  padding: 16px;
+  background: rgba(7, 13, 27, 0.44);
+}
+
+.filmium-details-watch-panel select {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 11px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #f1f5f9;
+  font: inherit;
+}
+
+.filmium-media-details-actions > .filmium-play-button:not(.poster-play) {
+  display: none;
+}
+
+.filmium-details-recommendations {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 28px;
+  padding: 24px clamp(26px, 5vw, 64px) 18px;
+}
+
+.filmium-media-details-nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 26px clamp(34px, 6vw, 72px) 0;
+}
+
+.filmium-details-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  border-radius: 11px;
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.58);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.filmium-details-back-button:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.48);
+  color: rgb(var(--domain-accent-contrast-rgb));
+}
+
+.filmium-details-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #93a4bd;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.filmium-details-breadcrumb span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-details-breadcrumb em {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-style: normal;
+}
+
+.filmium-media-details-poster {
+  grid-column: 1;
+  grid-row: 1;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 17px;
+  background: rgba(15, 23, 42, 0.82);
+  box-shadow: 0 24px 54px rgba(2, 6, 23, 0.52);
+}
+
+.filmium-media-details-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-media-details-poster-fallback {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 22px;
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(var(--domain-accent-rgb), 0.32),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 0.74),
+      rgba(5, 10, 22, 0.98)
+    );
+}
+
+.filmium-media-details-poster-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.filmium-media-details-poster-fallback strong {
+  color: #f8fafc;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.filmium-media-details-content {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  align-self: end;
+  padding-bottom: 8px;
+}
+
+.filmium-media-details-content h1 {
+  max-width: 760px;
+  margin: 0 0 11px;
+  color: #f8fafc;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  text-shadow: 0 10px 34px rgba(2, 6, 23, 0.62);
+}
+
+.filmium-details-original-title {
+  margin-bottom: 18px;
+  color: #aeb9ca;
+  font-size: 0.92rem;
+}
+
+.filmium-media-details-description {
+  max-width: 680px;
+  margin: 22px 0;
+  color: #d0d8e6;
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.filmium-media-details-description.muted {
+  color: #7d899c;
+  font-style: italic;
+}
+
+.filmium-media-details-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(190px, 1fr));
+  gap: 11px;
+  max-width: 520px;
+  margin-top: 28px;
+}
+
+.filmium-media-details-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filmium-media-details-actions .filmium-play-button {
+  grid-column: 1 / -1;
+  min-height: 54px;
+  font-size: 0.92rem;
+}
+
+
+/* ==========          STATUS GLEDANJA          ========== */
+
+.filmium-details-watch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 4px;
+}
+
+.filmium-details-watch-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #aeb9ca;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filmium-details-watch-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.filmium-details-watch-control select {
+  padding: 8px 13px;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 11px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #f1f5f9;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.filmium-details-watch-control select:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+
+/* ==========          TEHNIČKE ČINJENICE          ========== */
+
+.filmium-details-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin: 22px 0;
+}
+
+.filmium-media-details-content > .filmium-details-facts {
+  display: none;
+}
+
+.filmium-details-facts.side {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.13);
+  border-radius: 15px;
+  background: rgba(7, 13, 27, 0.58);
+}
+
+.filmium-details-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filmium-details-fact dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7d899c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.filmium-details-fact dd {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+
+/* ==========          KOLEKCIJE          ========== */
+
+.filmium-details-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 10px;
+  color: #aeb9ca;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filmium-details-collections {
+  margin: 20px 0;
+}
+
+.filmium-details-collection-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.filmium-details-collection-chip {
+  padding: 6px 13px;
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.42);
+  border-radius: 999px;
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  color: #d8ccff;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.filmium-details-collection-chip:hover {
+  border-color: rgba(var(--domain-accent-rgb), 0.72);
+  background: rgba(var(--domain-accent-rgb), 0.28);
+}
+
+
+/* ==========          IZVORI I FAJLOVI          ========== */
+
+.filmium-details-sources {
+  margin: 0 auto;
+  padding: 28px clamp(26px, 5vw, 64px) 48px;
+  max-width: 1180px;
+}
+
+.filmium-details-sources-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #f1f5f9;
+}
+
+.filmium-details-sources-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.filmium-details-sources-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #aeb9ca;
+  font-size: 0.88rem;
+}
+
+.filmium-details-sources-status.muted {
+  color: #7d899c;
+}
+
+.filmium-details-sources-status.error {
+  color: #fca5a5;
+}
+
+.filmium-details-source-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-details-source {
+  border: 1px solid rgba(226, 232, 240, 0.16);
+  border-radius: 15px;
+  background: rgba(15, 23, 42, 0.66);
+  overflow: hidden;
+}
+
+.filmium-details-source-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.12);
+}
+
+.filmium-details-source-top code {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.filmium-details-source-status,
+.filmium-details-file-status {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.filmium-details-source-status.status-available,
+.filmium-details-file-status.status-available {
+  background: rgba(34, 197, 94, 0.18);
+  color: #86efac;
+}
+
+.filmium-details-source-status.status-offline,
+.filmium-details-file-status.status-offline {
+  background: rgba(234, 179, 8, 0.18);
+  color: #fde047;
+}
+
+.filmium-details-source-status.status-missing,
+.filmium-details-file-status.status-missing {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+}
+
+.filmium-details-file-list {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+}
+
+.filmium-details-file {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px;
+}
+
+.filmium-details-file + .filmium-details-file {
+  border-top: 1px solid rgba(226, 232, 240, 0.07);
+}
+
+.filmium-details-file-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #e2e8f0;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.filmium-details-file-path {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.filmium-details-file-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+
+/* ==========          DETAILS RESPONSIVE          ========== */
+
+@media (max-width: 760px) {
+  .filmium-media-details-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 18px 26px 0;
+  }
+
+  .filmium-media-details-body {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: 26px;
+    padding-top: 180px;
+  }
+
+  .filmium-media-details-poster {
+    grid-column: 1;
+    grid-row: auto;
+    width: min(220px, 62vw);
+  }
+
+  .filmium-details-facts.side,
+  .filmium-media-details-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .filmium-media-details-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+
+  .filmium-media-details-actions button {
+    width: 100%;
+  }
+
+  .filmium-details-file {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .filmium-details-file-meta {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ==========          DETAILS V2 FINAL OVERRIDES          ========== */
+
+.filmium-media-details .filmium-media-details-body {
+  grid-template-columns:
+    minmax(190px, 260px)
+    minmax(320px, 1fr)
+    minmax(220px, 320px);
+  padding-top: 24px;
+}
+
+.filmium-media-details .filmium-media-details-content {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: start;
+}
+
+.filmium-media-details .poster-play {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 12px;
+}
+
+.filmium-media-details .filmium-details-facts.side {
+  grid-row: 3;
+}
+
+.filmium-media-details .filmium-media-details-actions {
+  grid-column: 3;
+  grid-row: 3;
+  grid-template-columns: 1fr;
+  align-self: end;
+  max-width: none;
+  margin-top: 0;
+}
+
+.filmium-media-details-actions > .filmium-play-button:not(.poster-play) {
+  display: none;
+}
+
+/* ==========   DETALJNA STRANICA — NOVI RASPORED (2026-07)   ========== */
+
+.filmium-details-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.filmium-chip {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: #d7e2f5;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  white-space: nowrap;
+}
+
+.filmium-chip.muted {
+  color: #91a0b8;
+}
+
+.filmium-media-details-body {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 230px;
+  gap: 28px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+.filmium-details-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-details-left .filmium-media-details-poster,
+.filmium-details-left .filmium-media-details-poster img {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+.filmium-media-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.filmium-media-details-description {
+  color: #c7d3e8;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 72ch;
+}
+
+.filmium-media-details-description.muted {
+  color: #8494ab;
+  font-style: italic;
+}
+
+.filmium-details-info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filmium-details-info-strip span {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #cdd8ec;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Veliki „Pogledaj trailer" prozor */
+.filmium-details-trailer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 300px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: linear-gradient(160deg, rgba(20, 32, 52, 0.9), rgba(8, 14, 26, 0.95));
+  color: #e6eefc;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.filmium-details-trailer:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Desna traka (status + akcije uz ivicu) */
+.filmium-details-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.filmium-details-rail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filmium-details-rail-actions button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Preporuke kao posteri */
+.filmium-details-poster-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.filmium-details-poster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-details-poster-card-visual {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(8, 18, 35, 0.7);
+  transition: transform 160ms ease;
+}
+
+/* Ne-owned povezan naslov (samo na TMDB) — crvena ivica + oznaka. */
+.filmium-details-poster-card.is-wishlist .filmium-details-poster-card-visual {
+  border: 2px solid var(--filmium-danger, #e5484d);
+  box-shadow: 0 0 0 1px rgba(229, 72, 77, 0.35);
+}
+
+.filmium-details-poster-card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--filmium-danger, #e5484d);
+}
+
+.filmium-details-poster-card:hover .filmium-details-poster-card-visual {
+  transform: translateY(-3px);
+}
+
+.filmium-details-poster-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-details-poster-card-fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: 8px;
+  gap: 6px;
+  color: #9eabc0;
+  text-align: center;
+}
+
+.filmium-details-poster-card-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.filmium-details-poster-card-copy strong {
+  font-size: 0.85rem;
+  color: #eef4ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-details-poster-card-copy span {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+
+/* ==========          GLUMCI (POSTAVA NASLOVA)          ========== */
+
+.filmium-details-cast {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+  padding: 6px clamp(26px, 5vw, 64px) 4px;
+}
+
+.filmium-details-cast-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.filmium-details-cast-heading h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.filmium-details-cast-heading > span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.76rem;
+}
+
+/* Visina se animira između "jedan red" i "svi redovi" — JS meri piksele
+   (stvarna DOM širina), CSS samo prelazi glatko između njih. */
+.filmium-details-cast-wrap {
+  overflow: hidden;
+  transition: max-height 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filmium-details-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-details-cast-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* Redovi posle prvog — sakriveni dok se sekcija ne otvori, otkrivaju se sa
+   fade/slide-in i stagger kašnjenjem po kartici (CSS var iz JS-a). */
+.filmium-details-cast-card.is-extra {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 340ms ease, transform 340ms ease;
+  transition-delay: 0ms;
+}
+
+.filmium-details-cast-grid.is-expanded .filmium-details-cast-card.is-extra {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--filmium-cast-stagger, 0) * 45ms);
+}
+
+.filmium-details-cast-card-visual {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--domain-accent-rgb), 0.2),
+      rgba(7, 13, 27, 0.96)
+    );
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.filmium-details-cast-card:hover .filmium-details-cast-card-visual {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.4);
+  transform: translateY(-3px);
+}
+
+.filmium-details-cast-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-details-cast-card-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.filmium-details-cast-card-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.filmium-details-cast-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.32);
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(7, 13, 27, 0.66);
+  backdrop-filter: blur(6px);
+}
+
+.filmium-details-cast-card-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.filmium-details-cast-card-copy strong {
+  overflow: hidden;
+  color: #eef4ff;
+  font-size: 0.83rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-details-cast-card-copy span {
+  overflow: hidden;
+  color: #8797ae;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-details-cast-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-self: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(7, 13, 27, 0.5);
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.filmium-details-cast-toggle:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.46);
+  color: rgb(var(--domain-accent-soft-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-details-cast-wrap,
+  .filmium-details-cast-card.is-extra {
+    transition: none;
+  }
+}
+
+/* Slide-in „Izmeni sadržaj" panel */
+.filmium-edit-panel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(3, 8, 18, 0.55);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filmium-edit-panel {
+  width: min(460px, 92vw);
+  height: 100%;
+  background: #0b1526;
+  border-left: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  animation: filmium-edit-slide-in 240ms ease-out both;
+}
+
+@keyframes filmium-edit-slide-in {
+  from { transform: translateX(100%); opacity: 0.4; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.filmium-edit-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filmium-edit-panel-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #dbe6f7;
+}
+
+.filmium-edit-panel-crumb {
+  color: #9fb0c8;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-edit-panel-body {
+  padding: 18px;
+  overflow-y: auto;
+}
+
+.filmium-edit-panel-note {
+  color: #8494ab;
+  font-style: italic;
+}
+
+@media (max-width: 1100px) {
+  .filmium-media-details-body {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .filmium-details-rail {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .filmium-details-rail-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .filmium-details-rail-actions button {
+    width: auto;
+  }
+}
+
+/* ==========   FILM DETALJI — DOTERIVANJE (v2)   ========== */
+
+/* Godina • Žanr • Ocena — jedan red, tačka kao separator */
+.filmium-details-meta-line {
+  margin: 10px 0 0;
+  color: #b9c6dc;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: pre-wrap;
+}
+
+/* Šira srednja kolona (širi trailer) + uža leva/desna */
+.filmium-media-details-body {
+  grid-template-columns: 240px minmax(0, 1fr) 200px;
+  gap: 24px;
+}
+
+/* Trailer prozor ~60% širi (zauzima celu šidu sredinu) i ~10% viši */
+.filmium-details-trailer {
+  min-height: 340px;
+}
+
+/* Dugmad (Izmeni/Favorite/Rescan) spuštena na visinu centra trailera;
+   Status gledanja ostaje ispod (gde je ranije bio Rescan). */
+.filmium-details-rail {
+  justify-content: flex-start;
+}
+
+.filmium-details-rail-actions {
+  margin-top: 210px;
+}
+
+@media (max-width: 1100px) {
+  .filmium-details-rail-actions {
+    margin-top: 0;
+  }
+}
+
+/* ==========   FILM DETALJI — OVERRIDE STAROG GRID-a (v3)   ========== */
+/* Nadjačava .filmium-media-details .* pravila (veća specifičnost). */
+
+.filmium-media-details .filmium-media-details-body {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 210px;
+  grid-template-rows: none;
+  gap: 24px;
+  align-items: start;
+  padding-top: 22px;
+}
+
+.filmium-media-details .filmium-details-left {
+  grid-column: 1;
+  grid-row: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-media-details .poster-play,
+.filmium-media-details .filmium-details-facts.side {
+  grid-column: auto;
+  grid-row: auto;
+  margin-top: 0;
+}
+
+.filmium-media-details .filmium-media-details-content {
+  grid-column: 2;
+  grid-row: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  column-gap: 0;
+}
+
+/* Info red iznad trailera — jedan red */
+.filmium-media-details .filmium-details-info-strip {
+  flex-wrap: nowrap;
+  margin-bottom: 0;
+}
+
+/* Veliki trailer prozor: puna širina srednje kolone, viši */
+.filmium-media-details .filmium-details-trailer {
+  grid-column: auto;
+  display: flex;
+  width: 100%;
+  min-height: 400px;
+  margin-top: 0;
+}
+
+/* Desna traka: Status gledanja GORE, dugmad DOLE (dno trailera) */
+.filmium-media-details .filmium-details-rail {
+  grid-column: 3;
+  grid-row: auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  width: auto;
+  max-width: none;
+}
+
+.filmium-media-details .filmium-details-rail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0;
+}
+
+/* ==========   FILM DETALJI — DOTERIVANJE (v4)   ========== */
+
+/* Opis bez pozadine/okvira */
+.filmium-media-details .filmium-media-details-description {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Info red + trailer spušteni tako da vrh trailera bude ~ u visini
+   "Pusti film" dugmeta → više prostora za opis iznad. Info red ostaje
+   tačno iznad trailera. */
+.filmium-media-details .filmium-details-info-strip {
+  margin-top: 240px;
+  margin-bottom: 0;
+}
+
+.filmium-media-details .filmium-details-trailer {
+  margin-top: 0;
+}
+
+/* Status gledanja spušten (ali i dalje iznad dugmadi) */
+.filmium-media-details .filmium-details-rail .filmium-details-watch {
+  margin-top: 150px;
+}
+
+/* ==========   FILM DETALJI — v5   ========== */
+
+/* Status gledanja: labela + padajući izbornik u JEDNOM redu */
+.filmium-media-details .filmium-details-rail .filmium-details-watch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.filmium-media-details .filmium-details-rail .filmium-details-watch-label {
+  white-space: nowrap;
+}
+
+.filmium-media-details .filmium-details-rail .filmium-details-watch select {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ==========   FILM DETALJI — v6 (fiksna pozicija info+trailer)   ========== */
+
+/* Opis ima fiksnu (rezervisanu) visinu — dug tekst se skroluje umesto da
+   gura info red i trailer nadole. Time su info/trailer uvek na istoj visini
+   (kao kad opisa nema). */
+.filmium-media-details .filmium-media-details-description {
+  height: 230px;
+  max-height: 230px;
+  overflow-y: auto;
+  margin: 0;
+  padding-right: 6px;
+}
+
+.filmium-media-details .filmium-details-info-strip {
+  margin-top: 0;
+}
+
+/* ==========   FILM DETALJI — v7 (dugmad podignuta na vrh, uz ivicu)   ========== */
+
+/* Ceo odeljak dugmadi (Izmeni/Kolekcija/Favorite/Rescan/Podeli/+Profil) diže
+   se na vrh desne trake — u visinu vrha plejera / gornje ivice okvira — a
+   traka se pomera malo bliže desnoj ivici prozora. Status gledanja ide ispod. */
+.filmium-media-details .filmium-details-rail {
+  justify-content: flex-start;
+  gap: 12px;
+  margin-right: -8px;
+}
+
+.filmium-media-details .filmium-details-rail-actions {
+  order: -1;
+  margin-top: 0;
+}
+
+.filmium-media-details .filmium-details-rail .filmium-details-watch {
+  order: 0;
+  margin-top: 6px;
+}
+
+/* ==========   FILM DETALJI — v8 (plejer + dugmici u zajedničkom okviru)   ========== */
+
+/* Telo: leva kolona (poster/…) + jedna široka srednja kolona. Desna traka
+   više NIJE zasebna kolona — dugmici su sada unutar istog okvira kao plejer. */
+.filmium-media-details .filmium-media-details-body {
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+.filmium-media-details .filmium-media-details-content {
+  grid-column: 2;
+}
+
+/* Zajedničko grupisanje: levo video info + plejer, desno dugmici.
+   Bez vidljivog okvira (border/pozadina) — samo raspored. */
+.filmium-media-details .filmium-details-stage {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.filmium-media-details .filmium-details-stage-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  /* Smanji plejer za 50 (suzi srednji deo). */
+  margin-right: 50px;
+}
+
+/* Desna traka: dugmici na vrhu (order -1), status ispod. Bez ivice. */
+.filmium-media-details .filmium-details-stage .filmium-details-rail {
+  width: 208px;
+  flex-shrink: 0;
+  align-self: stretch;
+  justify-content: flex-start;
+  gap: 12px;
+  /* Pomera SAMO dugmiće vodoravno (transform ne dira raspored plejera). */
+  margin-left: 0;
+  margin-right: 0;
+  transform: translateX(0);
+  padding: 0;
+  border-left: 0;
+}
+
+/* Spusti SAMO dugmiće naniže (status gledanja ostaje). */
+.filmium-media-details
+  .filmium-details-stage
+  .filmium-details-rail
+  .filmium-details-rail-actions {
+  transform: translateY(40px);
+}
+
+.filmium-media-details
+  .filmium-details-stage
+  .filmium-details-rail
+  .filmium-details-watch {
+  margin-top: 0;
+}
+
+/* ==========   SERIJA — SEZONE I EPIZODE (detalji)   ========== */
+
+.filmium-details-episodes {
+  margin-top: 28px;
+}
+
+.filmium-details-season-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.filmium-details-season-label {
+  color: #9aa8c0;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-right: 4px;
+}
+
+.filmium-details-season-tab {
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(112, 139, 177, 0.22);
+  background: rgba(8, 18, 35, 0.6);
+  color: #9eabc0;
+  cursor: pointer;
+}
+
+.filmium-details-season-tab.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.55);
+  color: #f4eaff;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--domain-accent-strong-rgb), 0.72),
+    rgba(76, 29, 149, 0.58)
+  );
+}
+
+.filmium-details-episode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-details-episode {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(112, 139, 177, 0.14);
+  background: rgba(8, 18, 35, 0.5);
+}
+
+.filmium-details-episode-num {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 800;
+  color: #7fb0ff;
+}
+
+.filmium-details-episode-title {
+  flex: 1;
+  color: #e6eefc;
+}
+
+.filmium-details-episode-time {
+  color: #8797ae;
+  font-size: 0.8rem;
+}
+
+/* ==========   SERIJA — THUMBNAIL EPIZODE (grid) + izabrana   ========== */
+
+.filmium-details-episode-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #e6eefc;
+}
+
+.filmium-details-episode-info span {
+  color: #8797ae;
+  font-size: 0.82rem;
+}
+
+.filmium-details-episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.filmium-details-episode-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-details-episode-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 18, 35, 0.7);
+  color: #7fb0ff;
+  transition: transform 150ms ease;
+}
+
+.filmium-details-episode-card:hover .filmium-details-episode-thumb {
+  transform: translateY(-3px);
+}
+
+.filmium-details-episode-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-details-episode-card.active .filmium-details-episode-thumb {
+  outline: 2px solid rgba(127, 176, 255, 0.85);
+  outline-offset: -2px;
+}
+
+.filmium-details-episode-badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  min-width: 22px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(3, 8, 18, 0.78);
+  color: #dbe6f7;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.filmium-details-episode-name {
+  font-size: 0.82rem;
+  color: #cdd8ec;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Izabrana epizoda u „trailer" prostoru */
+.filmium-details-episode-player {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.filmium-details-episode-player-badge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(3, 8, 18, 0.72);
+  color: #eef4ff;
+  font-weight: 800;
+}
+
+/* ==========          FILMIUM EDITOR PANEL (drawer)          ========== */
+
+.filmium-editor-overlay {
+  position: fixed;
+  inset: 0;
+  left: 228px;
+  z-index: 80;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(3, 7, 16, 0.55);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: filmium-editor-fade 200ms ease both;
+}
+
+@keyframes filmium-editor-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.filmium-editor-panel {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0a1220;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.55);
+  animation: filmium-editor-slide 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes filmium-editor-slide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ----------  HEADER  ---------- */
+
+.filmium-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-editor-header-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.filmium-editor-header-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-editor-header-title h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #eef4ff;
+}
+
+.filmium-editor-header-title p {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: #8797ae;
+}
+
+.filmium-editor-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.filmium-editor-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #dbe6f7;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.filmium-editor-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filmium-editor-button.primary {
+  border-color: transparent;
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  color: #fff;
+}
+
+.filmium-editor-button.primary:hover {
+  transform: translateY(-1px);
+}
+
+.filmium-editor-button.small {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+}
+
+.filmium-editor-button.full {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ----------  TABOVI  ---------- */
+
+.filmium-editor-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  overflow-x: auto;
+}
+
+.filmium-editor-tab {
+  padding: 12px 16px;
+  border: 0;
+  background: transparent;
+  color: #8797ae;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.filmium-editor-tab:hover {
+  color: #dbe6f7;
+}
+
+.filmium-editor-tab.active {
+  color: rgb(var(--domain-accent-soft-rgb));
+  border-bottom-color: rgb(var(--domain-accent-rgb));
+}
+
+/* ----------  TELO  ---------- */
+
+.filmium-editor-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.filmium-editor-columns {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .filmium-editor-columns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .filmium-editor-column.media {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+.filmium-editor-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.filmium-editor-block-label {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #7f8ca3;
+}
+
+/* ----------  MEDIJI  ---------- */
+
+.filmium-editor-media-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filmium-editor-poster,
+.filmium-editor-backdrop {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(8, 16, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: grid;
+  place-items: center;
+  color: #63728c;
+}
+
+.filmium-editor-poster {
+  aspect-ratio: 2 / 3;
+}
+
+.filmium-editor-backdrop {
+  aspect-ratio: 16 / 9;
+}
+
+.filmium-editor-poster img,
+.filmium-editor-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-editor-image-edit {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(6, 12, 24, 0.75);
+  color: #dbe6f7;
+}
+
+.filmium-editor-block-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd8ec;
+}
+
+.filmium-editor-block-button:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.filmium-editor-fanart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.filmium-editor-fanart-slot {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(8, 16, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-editor-fanart-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-editor-fanart-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  color: #8797ae;
+  font-size: 0.72rem;
+}
+
+/* ----------  POLJA  ---------- */
+
+.filmium-editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.filmium-editor-field-label {
+  font-size: 0.78rem;
+  color: #9fb0c8;
+  font-weight: 600;
+}
+
+.filmium-editor-field-label em {
+  color: #f87171;
+  font-style: normal;
+}
+
+.filmium-editor-field-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 12px;
+}
+
+.filmium-editor-input {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 12, 24, 0.7);
+  color: #eef4ff;
+  font-size: 0.85rem;
+}
+
+.filmium-editor-input:focus {
+  outline: none;
+  border-color: rgba(var(--domain-accent-rgb), 0.7);
+}
+
+.filmium-editor-textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.filmium-editor-counter {
+  position: absolute;
+  right: 4px;
+  bottom: -16px;
+  font-size: 0.68rem;
+  color: #63728c;
+}
+
+.filmium-editor-input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filmium-editor-input-icon svg {
+  position: absolute;
+  right: 10px;
+  color: #63728c;
+  pointer-events: none;
+}
+
+/* ----------  TAGOVI  ---------- */
+
+.filmium-editor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 8px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 12, 24, 0.55);
+}
+
+.filmium-editor-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  background: rgba(var(--domain-accent-rgb), 0.14);
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.4);
+  color: #d6ccff;
+}
+
+.filmium-editor-tag button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.filmium-editor-tag button:hover {
+  opacity: 1;
+}
+
+.filmium-editor-tag-input {
+  flex: 1;
+  min-width: 70px;
+  border: 0;
+  background: transparent;
+  color: #eef4ff;
+  font-size: 0.8rem;
+}
+
+.filmium-editor-tag-input:focus {
+  outline: none;
+}
+
+/* ----------  KARTICE (tehnika / ocene / kategorije)  ---------- */
+
+.filmium-editor-card {
+  padding: 14px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filmium-editor-info-row,
+.filmium-editor-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filmium-editor-info-label,
+.filmium-editor-rating-row > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #9fb0c8;
+}
+
+.filmium-editor-info-input {
+  width: 45%;
+  max-width: 150px;
+  text-align: right;
+  padding: 6px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(6, 12, 24, 0.6);
+  color: #eef4ff;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.filmium-editor-info-input:focus {
+  outline: none;
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+}
+
+.filmium-editor-rating-row > span svg {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+/* ----------  PREVODI  ---------- */
+
+.filmium-editor-translations {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-editor-toggle-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.filmium-editor-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #cdd8ec;
+  cursor: pointer;
+}
+
+.filmium-editor-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: rgb(var(--domain-accent-rgb));
+}
+
+/* ----------  SERIJA  ---------- */
+
+.filmium-editor-series {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-editor-series-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.filmium-editor-series-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.filmium-editor-series-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-editor-mini-label {
+  margin: 0 0 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #7f8ca3;
+}
+
+.filmium-editor-season-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-editor-season {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(6, 12, 24, 0.5);
+  color: #cdd8ec;
+  font-size: 0.83rem;
+  text-align: left;
+}
+
+.filmium-editor-season.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.55);
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  color: #eae4ff;
+}
+
+.filmium-editor-season-count {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-editor-episode-table {
+  overflow-x: auto;
+}
+
+.filmium-editor-episode-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.filmium-editor-episode-table th {
+  text-align: left;
+  padding: 8px 10px;
+  color: #7f8ca3;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filmium-editor-episode-table td {
+  padding: 9px 10px;
+  color: #dbe6f7;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-editor-episode-table td.drag {
+  color: #55627a;
+  cursor: grab;
+}
+
+.filmium-editor-episode-table td.empty {
+  text-align: center;
+  color: #63728c;
+  padding: 18px;
+}
+
+.filmium-editor-status-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8;
+}
+
+.filmium-editor-row-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd8ec;
+  font-size: 0.76rem;
+}
+
+.filmium-editor-row-edit:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* ----------  EPISODE MODAL  ---------- */
+
+.filmium-episode-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: rgba(3, 7, 16, 0.62);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: filmium-editor-fade 160ms ease both;
+}
+
+.filmium-episode-modal {
+  width: min(680px, 92vw);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: #0c1526;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: filmium-editor-pop 200ms ease both;
+}
+
+@keyframes filmium-editor-pop {
+  from { transform: translateY(12px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.filmium-episode-modal-head,
+.filmium-episode-modal-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.filmium-episode-modal-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filmium-episode-modal-head h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #eef4ff;
+}
+
+.filmium-episode-modal-head button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cdd8ec;
+}
+
+.filmium-episode-modal-body {
+  padding: 18px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.filmium-episode-modal-foot {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.filmium-editor-image-uploads {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .filmium-editor-overlay {
+    left: 0;
+  }
+  .filmium-editor-panel {
+    width: 100%;
+  }
+  .filmium-editor-series-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          TMDB OZNAKE I DOPUNA          ========== */
+
+.filmium-editor-tmdb-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 7px;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  background: rgba(1, 180, 228, 0.16);
+  border: 1px solid rgba(1, 180, 228, 0.5);
+  color: #5cc9e8;
+}
+
+/* Dugme za dopunu preko TMDB-a */
+.filmium-editor-button.tmdb {
+  border-color: rgba(1, 180, 228, 0.45);
+  background: rgba(1, 180, 228, 0.14);
+  color: #7ad4ee;
+}
+
+.filmium-editor-button.tmdb:hover {
+  background: rgba(1, 180, 228, 0.22);
+}
+
+/* Svetlo plavi okvir za polja koja je TMDB upravo dopunio */
+.tmdb-filled,
+input.tmdb-filled,
+textarea.tmdb-filled,
+.filmium-editor-tags.tmdb-filled {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.55),
+    0 0 12px rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.07);
+}
+
+.filmium-editor-enrich-message {
+  margin: 0;
+  padding: 9px 22px;
+  font-size: 0.82rem;
+  color: #7ad4ee;
+  background: rgba(1, 180, 228, 0.08);
+  border-bottom: 1px solid rgba(1, 180, 228, 0.18);
+}
+
+/* ==========          EDITOR — MEDIJI TAB          ========== */
+
+.filmium-editor-button.danger {
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(248, 113, 113, 0.12);
+  color: #fca5a5;
+}
+
+.filmium-editor-button.danger:hover {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+.filmium-media-tab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  grid-template-areas:
+    "main detail"
+    "extra extra";
+  gap: 18px;
+}
+
+.filmium-media-main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.filmium-media-detail-card {
+  grid-area: detail;
+}
+
+.filmium-media-extra {
+  grid-area: extra;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ----------  GLAVNE SLIKE  ---------- */
+
+.filmium-media-assets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.filmium-media-asset-card,
+.filmium-media-detail-card,
+.filmium-media-gallery,
+.filmium-media-extra-card {
+  padding: 15px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.6);
+}
+
+.filmium-media-asset-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.filmium-media-ok {
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8;
+}
+
+.filmium-media-asset-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.filmium-media-asset-thumb {
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(8, 16, 30, 0.8);
+  display: grid;
+  place-items: center;
+  color: #63728c;
+}
+
+.filmium-media-asset-thumb.poster {
+  width: 118px;
+  aspect-ratio: 2 / 3;
+  flex: none;
+}
+
+.filmium-media-asset-thumb.backdrop {
+  flex: 1 1 180px;
+  min-width: 160px;
+  aspect-ratio: 16 / 9;
+}
+
+.filmium-media-asset-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-media-asset-side {
+  flex: 1 1 150px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filmium-media-asset-ratio {
+  font-size: 0.75rem;
+  color: #8797ae;
+  margin-bottom: 2px;
+}
+
+/* ----------  GALERIJA  ---------- */
+
+.filmium-media-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.filmium-media-gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-media-gallery-thumb {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 9px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 16, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #63728c;
+}
+
+.filmium-media-gallery-card.active .filmium-media-gallery-thumb {
+  outline: 2px solid rgba(var(--domain-accent-rgb), 0.8);
+  outline-offset: -2px;
+}
+
+.filmium-media-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-media-gallery-meta strong {
+  display: block;
+  font-size: 0.78rem;
+  color: #dbe6f7;
+}
+
+.filmium-media-gallery-meta span {
+  font-size: 0.7rem;
+  color: #8797ae;
+}
+
+.filmium-media-primary-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  background: rgba(var(--domain-accent-rgb), 0.9);
+  color: #fff;
+}
+
+.filmium-media-gallery-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 96px;
+  aspect-ratio: 16 / 10;
+  border-radius: 9px;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+  color: #8797ae;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* ----------  DETALJI SLIKE  ---------- */
+
+.filmium-media-detail-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: start;
+}
+
+.filmium-media-detail-preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 16, 30, 0.8);
+  color: #63728c;
+}
+
+.filmium-media-detail-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-media-detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.filmium-media-detail-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filmium-media-detail-list dt {
+  color: #8797ae;
+  font-size: 0.78rem;
+}
+
+.filmium-media-detail-list dd {
+  margin: 0;
+  color: #dbe6f7;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+.filmium-media-cats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-media-empty {
+  margin: 0;
+  color: #63728c;
+  font-size: 0.8rem;
+}
+
+/* ----------  UPLOAD / TREJLER / LOGO  ---------- */
+
+.filmium-media-extra-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filmium-media-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 22px;
+  border: 1px dashed rgba(var(--domain-accent-rgb), 0.3);
+  border-radius: 12px;
+  background: rgba(var(--domain-accent-rgb), 0.05);
+  color: #9fb0c8;
+  text-align: center;
+}
+
+.filmium-media-dropzone p {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.filmium-media-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-media-pills span {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cdd8ec;
+}
+
+.filmium-media-trailer {
+  display: flex;
+  gap: 14px;
+}
+
+.filmium-media-trailer-thumb {
+  position: relative;
+  width: 130px;
+  flex: none;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 16, 30, 0.8);
+}
+
+.filmium-media-trailer-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-media-play {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(6, 12, 24, 0.72);
+  color: #fff;
+}
+
+.filmium-media-trailer-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.filmium-media-trailer-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filmium-media-logos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.filmium-media-logo-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-media-logo-slot > span {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-media-logo-box {
+  aspect-ratio: 16 / 9;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: rgba(8, 16, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #63728c;
+}
+
+.filmium-media-logo-box img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .filmium-media-tab {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "main"
+      "detail"
+      "extra";
+  }
+  .filmium-media-extra,
+  .filmium-media-assets {
+    grid-template-columns: 1fr;
+  }
+  .filmium-media-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.filmium-editor-columns[hidden] {
+  display: none;
+}
+
+.filmium-media-input-ok {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
+    0 0 10px rgba(34, 197, 94, 0.2);
+}
+
+.filmium-media-trailer-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6ee7a8;
+}
+
+/* ==========          EDITOR — FAJLOVI TAB          ========== */
+
+.filmium-files-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-files-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.filmium-files-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.6);
+}
+
+.filmium-files-stat-label {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-files-stat-value {
+  font-size: 0.95rem;
+  color: #eef4ff;
+}
+
+.filmium-files-stat-value.ok {
+  color: #6ee7a8;
+}
+
+.filmium-files-stat-value.warn {
+  color: #fbbf24;
+}
+
+.filmium-files-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-files-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.filmium-files-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: start;
+}
+
+.filmium-files-path-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filmium-files-path-row input {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.78rem;
+}
+
+.filmium-files-copy {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  flex: none;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cdd8ec;
+  cursor: pointer;
+}
+
+.filmium-files-copy:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filmium-files-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.filmium-files-tech {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.filmium-files-tech-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 11px;
+  border-radius: 9px;
+  background: rgba(6, 12, 24, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-files-tech-cell span {
+  font-size: 0.7rem;
+  color: #8797ae;
+}
+
+.filmium-files-tech-cell strong {
+  font-size: 0.82rem;
+  color: #dbe6f7;
+}
+
+.filmium-files-status {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+}
+
+.filmium-files-status.available {
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8;
+}
+
+.filmium-files-status.missing {
+  background: rgba(248, 113, 113, 0.16);
+  color: #fca5a5;
+}
+
+.filmium-editor-episode-table tr.selected td {
+  background: rgba(var(--domain-accent-rgb), 0.1);
+}
+
+.filmium-files-row-actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.filmium-editor-row-edit.danger {
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
+.filmium-files-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.filmium-files-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #cdd8ec;
+}
+
+.filmium-files-check.ok svg {
+  color: #4ade80;
+}
+
+.filmium-files-check.warn svg {
+  color: #fbbf24;
+}
+
+.filmium-files-detail-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.filmium-files-detail-row span {
+  color: #8797ae;
+  font-size: 0.78rem;
+  flex: none;
+}
+
+.filmium-files-detail-row strong {
+  color: #dbe6f7;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+}
+
+.filmium-files-detail-row strong.mono {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.74rem;
+}
+
+.filmium-files-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-files-folder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  color: #8797ae;
+}
+
+.filmium-files-folder-label {
+  width: 62px;
+  flex: none;
+  color: #cdd8ec;
+  font-size: 0.82rem;
+}
+
+.filmium-files-folder code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  color: #9fb0c8;
+}
+
+.filmium-files-toggles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filmium-files-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.84rem;
+  color: #cdd8ec;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-files-toggle input {
+  width: 34px;
+  height: 18px;
+  accent-color: #3b82f6;
+}
+
+@media (max-width: 1100px) {
+  .filmium-files-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .filmium-files-body,
+  .filmium-files-bottom {
+    grid-template-columns: 1fr;
+  }
+  .filmium-files-tech {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filmium-files-checks {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          EDITOR — OCENE TAB          ========== */
+
+.filmium-ratings-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-ratings-stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.filmium-ratings-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.6);
+}
+
+.filmium-ratings-stat.accent {
+  border-color: rgba(var(--domain-accent-rgb), 0.4);
+  background: rgba(var(--domain-accent-rgb), 0.12);
+}
+
+.filmium-ratings-stat-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #8797ae;
+}
+
+.filmium-ratings-stat.accent .filmium-ratings-stat-top {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-ratings-stat strong {
+  font-size: 1.35rem;
+  color: #eef4ff;
+}
+
+.filmium-ratings-stat strong em {
+  margin-left: 5px;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #8797ae;
+}
+
+.filmium-ratings-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-ratings-main,
+.filmium-ratings-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.filmium-ratings-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filmium-ratings-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  color: #8797ae;
+}
+
+.filmium-ratings-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 10px 0;
+}
+
+.filmium-ratings-stars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.filmium-ratings-star {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #33405a;
+  font-size: 0.66rem;
+}
+
+.filmium-ratings-star.on {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-ratings-star span {
+  color: #63728c;
+}
+
+.filmium-ratings-number {
+  width: 74px;
+  flex: none;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.filmium-ratings-slider,
+.filmium-ratings-aspect-slider {
+  width: 100%;
+  accent-color: rgb(var(--domain-accent-rgb));
+}
+
+.filmium-ratings-slider-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 12px;
+  font-size: 0.74rem;
+  color: #8797ae;
+}
+
+.filmium-ratings-slider-scale strong {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-ratings-rank {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-ratings-rank-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(6, 12, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-ratings-rank-row.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.5);
+  background: rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-ratings-rank-num {
+  width: 20px;
+  color: #8797ae;
+  font-weight: 800;
+  font-size: 0.82rem;
+}
+
+.filmium-ratings-rank-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #dbe6f7;
+  font-size: 0.85rem;
+}
+
+.filmium-ratings-rank-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #eae4ff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.filmium-ratings-rank-score svg {
+  color: #fbbf24;
+}
+
+.filmium-ratings-aspect {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.filmium-ratings-aspect-label {
+  font-size: 0.8rem;
+  color: #cdd8ec;
+}
+
+.filmium-ratings-aspect-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgb(var(--domain-accent-soft-rgb));
+  text-align: right;
+}
+
+.filmium-ratings-stepper-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 0.82rem;
+  color: #cdd8ec;
+}
+
+.filmium-ratings-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filmium-ratings-stepper button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #dbe6f7;
+  cursor: pointer;
+}
+
+.filmium-ratings-stepper strong {
+  min-width: 18px;
+  text-align: center;
+  color: #eef4ff;
+}
+
+.filmium-ratings-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.83rem;
+  color: #cdd8ec;
+}
+
+.filmium-ratings-toggle input {
+  width: 34px;
+  height: 18px;
+  accent-color: rgb(var(--domain-accent-rgb));
+}
+
+.filmium-ratings-quick {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filmium-ratings-quick-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd8ec;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filmium-ratings-quick-tag.on {
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  color: #eae4ff;
+}
+
+@media (max-width: 1100px) {
+  .filmium-ratings-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .filmium-ratings-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          EDITOR — KATEGORIJE TAB          ========== */
+
+.filmium-cats-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-cats-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filmium-cats-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd8ec;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.filmium-cats-chip.on {
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+  background: rgba(var(--domain-accent-rgb), 0.18);
+  color: #eae4ff;
+}
+
+.filmium-cats-add {
+  display: flex;
+  gap: 8px;
+}
+
+.filmium-cats-collections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filmium-cats-collection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(6, 12, 24, 0.5);
+}
+
+.filmium-cats-collection-thumb {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 34px;
+  flex: none;
+  border-radius: 7px;
+  background: rgba(var(--domain-accent-rgb), 0.14);
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-cats-collection-name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dbe6f7;
+  font-size: 0.86rem;
+}
+
+.filmium-cats-main-badge {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  background: rgba(var(--domain-accent-rgb), 0.2);
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-cats-collection-count {
+  font-size: 0.76rem;
+  color: #8797ae;
+}
+
+.filmium-cats-lists {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.filmium-cats-list {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd8ec;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filmium-cats-list.on {
+  border-color: rgba(59, 130, 246, 0.55);
+  background: rgba(59, 130, 246, 0.16);
+  color: #dbeafe;
+}
+
+.filmium-cats-suggestions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.filmium-cats-suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(6, 12, 24, 0.5);
+}
+
+.filmium-cats-suggestion strong {
+  font-size: 0.82rem;
+  color: #dbe6f7;
+}
+
+.filmium-cats-confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #fbbf24;
+}
+
+.filmium-cats-confidence.high {
+  color: #6ee7a8;
+}
+
+.filmium-cats-weight {
+  margin-top: 10px;
+}
+
+.filmium-cats-weight-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #cdd8ec;
+  margin-bottom: 4px;
+}
+
+.filmium-cats-weight-head strong {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-cats-related {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.filmium-cats-related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filmium-cats-related-thumb {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 16, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #63728c;
+}
+
+.filmium-cats-related-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-cats-related-card strong {
+  font-size: 0.8rem;
+  color: #dbe6f7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-cats-related-card span {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-ratings-visibility {
+  padding: 0 2px;
+}
+
+@media (max-width: 1100px) {
+  .filmium-cats-lists,
+  .filmium-cats-suggestions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========          EDITOR — PREVODI TAB          ========== */
+
+.filmium-subs-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-subs-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 150px;
+  margin-bottom: 12px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #8797ae;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(var(--domain-accent-rgb),0.14), transparent 60%),
+    rgba(6, 12, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-subs-preview p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #dbe6f7;
+  word-break: break-all;
+}
+
+.filmium-subs-preview span {
+  font-size: 0.76rem;
+}
+
+.filmium-subs-sync-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.filmium-subs-delay-label {
+  font-size: 0.8rem;
+  color: #9fb0c8;
+}
+
+.filmium-subs-versions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.filmium-subs-version {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(6, 12, 24, 0.5);
+  color: #cdd8ec;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-subs-version.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+  background: rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-subs-version strong {
+  font-size: 0.82rem;
+  color: #eef4ff;
+}
+
+.filmium-subs-version span {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-subs-version-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.64rem !important;
+  font-weight: 800;
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8 !important;
+}
+
+.filmium-subs-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-subs-flags {
+  padding: 10px 0;
+  margin-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-subs-detail-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.filmium-subs-priority {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.filmium-subs-priority-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(6, 12, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-subs-priority-num {
+  width: 18px;
+  color: #8797ae;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.filmium-subs-priority-name {
+  flex: 1;
+  color: #dbe6f7;
+  font-size: 0.84rem;
+}
+
+.filmium-subs-priority-row button {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cdd8ec;
+  cursor: pointer;
+  font-size: 0.66rem;
+}
+
+.filmium-subs-priority-row button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (max-width: 1100px) {
+  .filmium-subs-versions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filmium-subs-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          EDITOR — EPIZODE TAB          ========== */
+
+.filmium-eps-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-eps-body {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 330px;
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-eps-seasons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.6);
+}
+
+.filmium-eps-season {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(6, 12, 24, 0.5);
+  color: #cdd8ec;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-eps-season.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.55);
+  background: rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-eps-season strong {
+  font-size: 0.86rem;
+  color: #eef4ff;
+}
+
+.filmium-eps-season > span {
+  font-size: 0.72rem;
+  color: #8797ae;
+}
+
+.filmium-eps-season-status {
+  align-self: flex-start;
+  margin-top: 3px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.filmium-eps-season-status.kompletna {
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8;
+}
+
+.filmium-eps-season-status.delimično {
+  background: rgba(251, 191, 36, 0.16);
+  color: #fbbf24;
+}
+
+.filmium-eps-season-status.planirano {
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+}
+
+.filmium-eps-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.filmium-eps-thumb {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 28px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: rgba(8, 16, 30, 0.8);
+  color: #7fb0ff;
+}
+
+.filmium-eps-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-eps-status {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+}
+
+.filmium-eps-status.completed {
+  background: rgba(34, 197, 94, 0.16);
+  color: #6ee7a8;
+}
+
+.filmium-eps-status.watching {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+}
+
+.filmium-eps-status.planned {
+  background: rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
+}
+
+.filmium-eps-progress {
+  margin-bottom: 12px;
+}
+
+.filmium-eps-progress-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #cdd8ec;
+  margin-bottom: 5px;
+}
+
+.filmium-eps-progress-head strong {
+  color: #eef4ff;
+}
+
+.filmium-eps-progress-track {
+  height: 7px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+
+.filmium-eps-progress-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.filmium-eps-progress-fill.green {
+  background: #22c55e;
+}
+
+.filmium-eps-progress-fill.purple {
+  background: rgb(var(--domain-accent-rgb));
+}
+
+.filmium-eps-progress-fill.blue {
+  background: #3b82f6;
+}
+
+.filmium-eps-bulk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-eps-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.6);
+  align-self: start;
+}
+
+.filmium-eps-detail-thumb {
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 16, 30, 0.8);
+  color: #7fb0ff;
+}
+
+.filmium-eps-detail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-eps-file-card {
+  gap: 8px;
+}
+
+.filmium-eps-tech {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.filmium-eps-tech-subs {
+  font-size: 0.78rem;
+  color: #9fb0c8;
+  margin-top: 4px;
+}
+
+.filmium-eps-fav {
+  align-self: end;
+}
+
+@media (max-width: 1200px) {
+  .filmium-eps-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          TERMINATOR PREVODA (drawer u editoru)          ===== */
+
+.filmium-subtool-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(3, 7, 16, 0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: filmium-editor-fade 180ms ease both;
+}
+
+.filmium-subtool-panel {
+  width: min(720px, 96vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0a1220;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.55);
+  animation: filmium-editor-slide 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.filmium-subtool-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-subtool-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ==========          EDITOR — NAPREDNO TAB          ========== */
+
+.filmium-adv-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.filmium-adv-body {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-adv-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.filmium-adv-id-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.filmium-adv-integrations {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filmium-adv-integration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filmium-adv-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex: none;
+  background: #64748b;
+}
+
+.filmium-adv-dot.on {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+.filmium-adv-dot.off {
+  background: #f87171;
+}
+
+.filmium-adv-int-name {
+  flex: 1;
+  color: #dbe6f7;
+  font-size: 0.85rem;
+}
+
+.filmium-adv-int-label {
+  font-size: 0.76rem;
+  color: #8797ae;
+}
+
+.filmium-adv-danger {
+  border-color: rgba(248, 113, 113, 0.28) !important;
+  background: rgba(248, 113, 113, 0.05) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.filmium-adv-danger-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 4px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.filmium-adv-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 1200px) {
+  .filmium-adv-body {
+    grid-template-columns: 1fr;
+  }
+  .filmium-adv-id-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          SINHRONIZOVANO TOGGLE          ========== */
+
+.filmium-sync-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.filmium-sync-label {
+  font-size: 0.82rem;
+  color: #9fb0c8;
+  font-weight: 600;
+}
+
+.filmium-sync-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #8797ae;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease,
+    border-color 140ms ease;
+}
+
+.filmium-sync-knob {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #64748b;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.filmium-sync-toggle.on {
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(34, 197, 94, 0.18);
+  color: #6ee7a8;
+}
+
+.filmium-sync-toggle.on .filmium-sync-knob {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  transform: translateX(2px);
+}
+
+.filmium-import-mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==========          BULK: SELEKTUJ SVE / PREBACI SVE          ========== */
+
+.filmium-import-mode-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-import-bulk {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.filmium-import-bulk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: auto;
+  padding: 4px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.filmium-import-bulk-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.filmium-import-bulk-clear {
+  padding: 3px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* ==========          PODELI / PREBACI          ========== */
+
+.filmium-share-wrap {
+  position: relative;
+}
+
+.filmium-share-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 5;
+  min-width: 240px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0c1526;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.filmium-share-menu button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #dbe6f7;
+  font-size: 0.83rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filmium-share-menu button:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.filmium-transfer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 85;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(3, 7, 16, 0.55);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  animation: filmium-editor-fade 180ms ease both;
+}
+
+.filmium-transfer-panel {
+  width: min(880px, 96vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0a1220;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -30px 0 80px rgba(0, 0, 0, 0.55);
+  animation: filmium-editor-slide 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.filmium-transfer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-transfer-body {
+  flex: 1;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) 340px;
+  gap: 16px;
+  padding: 18px 20px;
+}
+
+.filmium-transfer-tree,
+.filmium-transfer-dest {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.filmium-transfer-tree-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filmium-transfer-file-list {
+  flex: 1;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 22, 38, 0.5);
+  padding: 8px;
+}
+
+/* Grupa fajlova (Video / Prevodi / Slike / Ostalo) — sklopiva. */
+.filmium-transfer-group {
+  margin-bottom: 4px;
+}
+
+.filmium-transfer-group-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+}
+
+.filmium-transfer-group-toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 6px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #b9c6dc;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filmium-transfer-group-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filmium-transfer-group-toggle span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.filmium-transfer-group-toggle em {
+  flex-shrink: 0;
+  font-style: normal;
+  color: #8797ae;
+  font-weight: 700;
+}
+
+.filmium-transfer-group-files {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 16px;
+}
+
+.filmium-transfer-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #cdd8ec;
+}
+
+.filmium-transfer-file:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filmium-transfer-file input {
+  accent-color: rgb(var(--domain-accent-rgb));
+}
+
+.filmium-transfer-file-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-transfer-file-size {
+  font-size: 0.72rem;
+  color: #8797ae;
+  flex: none;
+}
+
+.filmium-transfer-dest {
+  overflow-y: auto;
+}
+
+.filmium-transfer-disks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-transfer-disk {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(6, 12, 24, 0.5);
+  color: #dbe6f7;
+  cursor: pointer;
+  font-size: 0.84rem;
+}
+
+.filmium-transfer-disk:hover {
+  border-color: rgba(var(--domain-accent-rgb), 0.5);
+}
+
+.filmium-transfer-disk small {
+  margin-left: auto;
+  color: #8797ae;
+  font-size: 0.72rem;
+}
+
+.filmium-transfer-browser {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(6, 12, 24, 0.4);
+}
+
+.filmium-transfer-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-transfer-browser-bar code {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.72rem;
+  color: #9fb0c8;
+}
+
+.filmium-transfer-folders {
+  max-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.filmium-transfer-folder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #cdd8ec;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.filmium-transfer-folder:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Red foldera: levo izbor (klik = odredište), desno strelica (uđi). */
+.filmium-transfer-folder-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+}
+
+.filmium-transfer-folder-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filmium-transfer-folder-row.active {
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.filmium-transfer-folder-select {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #cdd8ec;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.filmium-transfer-folder-select span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-transfer-folder-row.active .filmium-transfer-folder-select {
+  color: #6ee7a8;
+}
+
+.filmium-transfer-folder-check {
+  flex-shrink: 0;
+  color: #22c55e;
+}
+
+.filmium-transfer-folder-enter {
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #8ea0ba;
+  cursor: pointer;
+}
+
+.filmium-transfer-folder-enter:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #dce7f6;
+}
+
+.filmium-transfer-dest-value.set {
+  color: #6ee7a8;
+}
+
+.filmium-transfer-summary {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-transfer-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.28);
+  background: rgba(var(--domain-accent-rgb), 0.08);
+}
+
+.filmium-transfer-profile .filmium-editor-block-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filmium-transfer-profile-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-transfer-profile-row select {
+  flex: 1;
+  min-width: 140px;
+}
+
+.filmium-transfer-profile-create {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.filmium-transfer-profile-create input {
+  flex: 1;
+  min-width: 140px;
+}
+
+.filmium-transfer-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.filmium-transfer-recent-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(6, 12, 24, 0.5);
+  color: #cdd8ec;
+  cursor: pointer;
+  font-size: 0.78rem;
+  text-align: left;
+}
+
+.filmium-transfer-recent-item span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-transfer-recent-item.active {
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(34, 197, 94, 0.12);
+  color: #6ee7a8;
+}
+
+.filmium-transfer-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filmium-transfer-progress-track {
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.filmium-transfer-progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #3b82f6, #22c55e);
+  transition: width 160ms ease;
+}
+
+.filmium-transfer-progress span {
+  font-size: 0.74rem;
+  color: #9fb0c8;
+}
+
+.filmium-editor-button.success {
+  border-color: transparent;
+  background: linear-gradient(180deg, #22c55e, #16a34a);
+  color: #fff;
+}
+
+/* ==========          TITL / SINH ZNAČKA NA KARTICI          ========== */
+
+.filmium-shelf-audio {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.filmium-shelf-audio.sinh {
+  background: rgba(34, 197, 94, 0.9);
+  color: #06210f;
+}
+
+.filmium-shelf-audio.titl {
+  background: rgba(59, 130, 246, 0.9);
+  color: #06152e;
+}
+
+@media (max-width: 900px) {
+  .filmium-transfer-body {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+}
+
+/* ==========          BROJ SADRŽAJA U ZAGLAVLJU LIBRARY          ========== */
+
+.filmium-library-page .section-heading .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filmium-library-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.4rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: rgba(120, 170, 255, 0.16);
+  border: 1px solid rgba(120, 170, 255, 0.35);
+  color: #cfe0ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ==========          REFRESH BIBLIOTEKE (spin)          ========== */
+
+@keyframes filmium-refresh-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.filmium-top-actions button.is-refreshing svg {
+  animation: filmium-refresh-spin 0.9s linear infinite;
+}
+
+.filmium-top-actions button.is-refreshing {
+  color: #7fb0ff;
+}
+
+/* ==========          PROGRES OSVEŽAVANJA BIBLIOTEKE          ========== */
+
+.filmium-refresh-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem 0.2rem;
+}
+
+.filmium-refresh-progress-track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(120, 170, 255, 0.16);
+  overflow: hidden;
+}
+
+.filmium-refresh-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4f83ff, #7fb0ff);
+  animation: filmium-refresh-indeterminate 1.1s ease-in-out infinite;
+}
+
+@keyframes filmium-refresh-indeterminate {
+  0% { left: -40%; }
+  100% { left: 100%; }
+}
+
+.filmium-refresh-progress-label {
+  font-size: 0.78rem;
+  color: #9fb6dc;
+}
+
+/* ==========          REFRESH DUGME NA DETALJIMA          ========== */
+
+.filmium-details-refresh-button {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 170, 255, 0.35);
+  background: rgba(120, 170, 255, 0.12);
+  color: #cfe0ff;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.filmium-details-refresh-button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.filmium-details-refresh-button.is-refreshing svg {
+  animation: filmium-refresh-spin 0.9s linear infinite;
+}
+
+/* ==========          EPIZODA — PLAY OVERLAY          ========== */
+
+.filmium-details-episode-card {
+  position: relative;
+}
+
+.filmium-details-episode-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(10, 14, 24, 0.6);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+
+.filmium-details-episode-card:hover .filmium-details-episode-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ==========          FILMIUM PLEJER          ========== */
+
+.filmium-player-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 7, 14, 0.86);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+}
+
+.filmium-player-shell {
+  display: flex;
+  flex-direction: column;
+  width: min(1100px, 100%);
+  max-height: 100%;
+  background: #0b0f18;
+  border: 1px solid rgba(120, 170, 255, 0.2);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.filmium-player-shell:fullscreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  justify-content: center;
+}
+
+.filmium-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-player-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.filmium-player-title strong {
+  color: #f2f5fb;
+  font-size: 0.95rem;
+}
+
+.filmium-player-title span {
+  color: #9fb6dc;
+  font-size: 0.78rem;
+}
+
+.filmium-player-close {
+  display: inline-flex;
+  padding: 0.4rem;
+  border-radius: 8px;
+  background: transparent;
+  color: #cfe0ff;
+  cursor: pointer;
+}
+
+.filmium-player-video {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  max-height: 78vh;
+  background: #000;
+}
+
+.filmium-player-shell:fullscreen .filmium-player-video {
+  max-height: none;
+  height: 100%;
+}
+
+.filmium-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-player-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8eefb;
+  cursor: pointer;
+}
+
+.filmium-player-controls .filmium-player-primary {
+  width: 52px;
+  height: 52px;
+  background: #4f83ff;
+  border-color: #4f83ff;
+  color: #fff;
+}
+
+/* ==========          INLINE PLEJER (na mestu trailera)          ========== */
+
+.filmium-player-inline {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filmium-player-inline-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+}
+
+.filmium-player-inline.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  color: #9fb6dc;
+  font-size: 0.85rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(79, 131, 255, 0.1), transparent 60%),
+    #0a0e18;
+}
+
+.filmium-player-inline:fullscreen {
+  border-radius: 0;
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+.filmium-player-inline:fullscreen .filmium-player-inline-video {
+  object-fit: contain;
+}
+
+/* ==========          PLEJER — PREKODIRANJE BADGE          ========== */
+
+.filmium-player-transcode-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(10, 14, 24, 0.75);
+  border: 1px solid rgba(120, 170, 255, 0.35);
+  color: #cfe0ff;
+  font-size: 0.72rem;
+  pointer-events: none;
+}
+
+/* ==========          mpv OVERLAY (native reprodukcija)          ========== */
+
+.filmium-player-mpv-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(79, 131, 255, 0.12), transparent 60%),
+    rgba(6, 9, 16, 0.94);
+  color: #e8eefb;
+}
+
+.filmium-player-mpv-overlay strong { font-size: 0.95rem; }
+.filmium-player-mpv-overlay span { color: #9fb6dc; font-size: 0.8rem; }
+
+.filmium-player-mpv-buttons {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.filmium-player-mpv-buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e8eefb;
+  cursor: pointer;
+}
+
+.filmium-player-mpv-buttons .filmium-player-primary {
+  width: 52px;
+  height: 52px;
+  background: #4f83ff;
+  border-color: #4f83ff;
+  color: #fff;
+}
+
+/* ==========          VLC DUGME (u plejeru)          ========== */
+
+.filmium-player-vlc-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 140, 0, 0.5);
+  background: rgba(20, 14, 6, 0.7);
+  color: #ffb763;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.filmium-player-vlc-button:hover {
+  background: rgba(255, 140, 0, 0.18);
+}
+
+/* ==========          PREKIDAČ PLEJERA (Web/VLC)          ========== */
+
+.filmium-player-engine {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 3;
+  display: inline-flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(6, 9, 16, 0.7);
+}
+
+.filmium-player-engine button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  background: transparent;
+  color: #b9c6de;
+  font-size: 0.74rem;
+  cursor: pointer;
+  border: none;
+}
+
+.filmium-player-engine button.active {
+  background: #4f83ff;
+  color: #fff;
+}
+
+/* ==========          PREVODNI SIDEBAR (u plejeru)          ========== */
+
+.filmium-player-translate {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.66rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(6, 9, 16, 0.7);
+  color: #b9c6de;
+  font: inherit;
+  font-size: 0.74rem;
+  cursor: pointer;
+}
+
+.filmium-player-translate:hover {
+  border-color: rgba(79, 131, 255, 0.6);
+  color: #eaf1ff;
+}
+
+.filmium-player-translate.active {
+  background: #4f83ff;
+  border-color: #4f83ff;
+  color: #fff;
+}
+
+@keyframes filmium-translation-in {
+  from { transform: translateX(100%); opacity: 0.2; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes filmium-translation-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.filmium-translation-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  width: min(360px, 72%);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(112, 139, 177, 0.24);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(79, 131, 255, 0.16), transparent 46%),
+    linear-gradient(200deg, rgba(10, 16, 24, 0.96), rgba(5, 7, 13, 0.97));
+  backdrop-filter: blur(10px);
+  box-shadow: -18px 0 60px rgba(0, 0, 0, 0.5);
+  animation: filmium-translation-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filmium-translation-sidebar.closing {
+  animation: filmium-translation-out 0.24s ease forwards;
+}
+
+.filmium-translation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(112, 139, 177, 0.16);
+}
+
+.filmium-translation-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #eaf1ff;
+}
+
+.filmium-translation-title svg { color: #7fa8ff; }
+.filmium-translation-title strong { font-size: 0.84rem; letter-spacing: 0.06em; }
+
+.filmium-translation-title span {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(79, 131, 255, 0.18);
+  color: #9fc0ff;
+  font-size: 0.7rem;
+}
+
+.filmium-translation-close {
+  display: inline-flex;
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #c7d3e6;
+  cursor: pointer;
+}
+
+.filmium-translation-close:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+
+.filmium-translation-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 12px 6px;
+  padding: 7px 10px;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 10px;
+  background: rgba(8, 13, 22, 0.7);
+  color: #7f92ad;
+}
+
+.filmium-translation-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: #e7eefb;
+  font: inherit;
+  font-size: 0.82rem;
+  outline: none;
+}
+
+.filmium-translation-search input::placeholder { color: #64748b; }
+
+.filmium-translation-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: 1px solid rgba(79, 131, 255, 0.5);
+  border-radius: 999px;
+  background: rgba(79, 131, 255, 0.16);
+  color: #bcd2ff;
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+
+.filmium-translation-results {
+  margin: 0 12px 6px;
+  max-height: 40%;
+  overflow-y: auto;
+  border: 1px solid rgba(112, 139, 177, 0.16);
+  border-radius: 10px;
+  background: rgba(6, 10, 18, 0.8);
+}
+
+.filmium-translation-result {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-bottom: 1px solid rgba(112, 139, 177, 0.1);
+  background: transparent;
+  color: #d3ddee;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filmium-translation-result:hover { background: rgba(79, 131, 255, 0.12); }
+.filmium-translation-result time { color: #7fa8ff; font-size: 0.68rem; font-variant-numeric: tabular-nums; }
+.filmium-translation-result span { font-size: 0.8rem; }
+
+.filmium-translation-empty {
+  margin: 16px;
+  color: #7c8aa3;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.filmium-translation-viewport {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8px 26px 8px 14px;
+}
+
+.filmium-translation-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.filmium-translation-cue {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: #cdd8ea;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.filmium-translation-cue time {
+  color: #6f86a6;
+  font-size: 0.66rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.filmium-translation-cue p { margin: 0; font-size: 0.82rem; line-height: 1.35; }
+
+/* Udaljenost od centra: manji font + zatamnjenje. */
+.filmium-translation-cue[data-dist="0"] { opacity: 1; }
+.filmium-translation-cue[data-dist="1"] { opacity: 0.72; }
+.filmium-translation-cue[data-dist="2"] { opacity: 0.5; }
+.filmium-translation-cue[data-dist="3"] { opacity: 0.36; }
+.filmium-translation-cue[data-dist="4"] { opacity: 0.26; }
+.filmium-translation-cue[data-dist="5"] { opacity: 0.18; }
+.filmium-translation-cue[data-dist="1"] p { font-size: 0.78rem; }
+.filmium-translation-cue[data-dist="2"] p,
+.filmium-translation-cue[data-dist="3"] p,
+.filmium-translation-cue[data-dist="4"] p,
+.filmium-translation-cue[data-dist="5"] p { font-size: 0.74rem; }
+
+.filmium-translation-cue.center {
+  background: rgba(79, 131, 255, 0.1);
+  border-color: rgba(79, 131, 255, 0.28);
+}
+
+.filmium-translation-cue.center p {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #f2f6ff;
+}
+
+.filmium-translation-cue.center time { color: #8fb0ff; }
+
+/* Cue aktivan tačno u datom trenutku videa (npr. na pauzi) — svetliji od
+   ostalih + zeleni marker. */
+.filmium-translation-cue.active {
+  box-shadow: inset 3px 0 0 #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+}
+.filmium-translation-cue.active time { color: #4ade80; }
+.filmium-translation-cue.active p { color: #f4fff8; }
+
+/* Stilizovan indikator pozicije umesto klasičnog scrollbara. */
+.filmium-translation-rail {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  bottom: 12px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(112, 139, 177, 0.14);
+  cursor: pointer;
+}
+
+.filmium-translation-thumb {
+  position: absolute;
+  left: 50%;
+  width: 6px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #4f83ff, #7fa8ff);
+  box-shadow: 0 0 10px rgba(79, 131, 255, 0.6);
+}
+
+.filmium-player-vlc-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 140, 0, 0.1), transparent 60%),
+    #0a0e18;
+  color: #e8eefb;
+}
+
+.filmium-player-vlc-panel strong { font-size: 0.95rem; }
+.filmium-player-vlc-panel span { color: #9fb6dc; font-size: 0.8rem; }
+.filmium-player-vlc-warn { color: #ffb763 !important; }
+
+/* ==========          mpv UGRADJEN REGION          ========== */
+
+.filmium-player-mpv-region {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9fb6dc;
+  font-size: 0.82rem;
+}
+
+.filmium-player-mpv-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  background: #0a0e18;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.filmium-player-mpv-bar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e8eefb;
+  cursor: pointer;
+}
+
+.filmium-player-mpv-bar .filmium-player-primary {
+  width: 50px;
+  height: 50px;
+  background: #4f83ff;
+  border-color: #4f83ff;
+  color: #fff;
+}
+
+/* mpv region: poster + play dugme dok mpv ne krene */
+.filmium-player-mpv-region {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.filmium-player-mpv-start {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(79, 131, 255, 0.9);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ==========          IZBORNIK KOLEKCIJA (MODAL)          ========== */
+
+.filmium-collection-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(3, 6, 15, 0.62);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.filmium-collection-picker {
+  display: flex;
+  width: min(440px, 100%);
+  max-height: 80vh;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(226, 232, 240, 0.14);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(19, 27, 48, 0.98),
+      rgba(11, 16, 32, 0.98)
+    );
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.filmium-collection-picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filmium-collection-picker-head h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 1rem;
+  font-weight: 720;
+}
+
+.filmium-collection-picker-close {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 9px;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.4);
+  cursor: pointer;
+}
+
+.filmium-collection-picker-close:hover {
+  color: #f8fafc;
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.44);
+}
+
+.filmium-collection-picker-subtitle {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.82rem;
+}
+
+.filmium-collection-picker-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.filmium-collection-picker-controls input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.4);
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.filmium-collection-picker-controls input:focus {
+  outline: 0;
+  border-color: rgba(var(--domain-accent-rgb), 0.5);
+}
+
+.filmium-collection-picker-controls button {
+  flex: 0 0 auto;
+}
+
+.filmium-collection-picker-error {
+  margin: 0;
+  color: #fca5a5;
+  font-size: 0.78rem;
+}
+
+.filmium-collection-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.filmium-collection-picker-empty {
+  margin: 8px 0;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.filmium-collection-picker-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 11px;
+  color: #e2e8f0;
+  background: rgba(15, 23, 42, 0.36);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.filmium-collection-picker-card:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.4);
+  background: rgba(var(--domain-accent-strong-rgb), 0.24);
+}
+
+.filmium-collection-picker-card.selected {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.72);
+  background: rgba(var(--domain-accent-rgb), 0.4);
+}
+
+.filmium-collection-picker-card-name {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.filmium-collection-picker-card-count {
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.55);
+  font-size: 0.72rem;
+}
+
+.filmium-collection-picker-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #86efac;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+
+/* ==========          KLJUCNE RECI (DETALJI)          ========== */
+
+/* ==========          SPOLJNE OCENE (DETALJI)          ========== */
+
+.filmium-external-ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.filmium-external-ratings-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filmium-external-ratings-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-external-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 11px;
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.32);
+  border-radius: 12px;
+  background: rgba(var(--domain-accent-strong-rgb), 0.14);
+}
+
+.filmium-external-rating-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.filmium-external-rating-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.15;
+}
+
+.filmium-external-rating-source {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filmium-external-rating-score {
+  color: #eef4ff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.filmium-external-rating-score em {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.filmium-external-rating-meta {
+  color: #94a3b8;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+}
+
+.filmium-keywords-box {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.filmium-keywords-box-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filmium-keywords-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.filmium-keyword-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.76rem;
+}
+
+.filmium-keyword-chip.imdb {
+  color: #93c5fd;
+  border-color: rgba(59, 130, 246, 0.55);
+  background: rgba(37, 99, 235, 0.14);
+}
+
+.filmium-keyword-chip.user {
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(22, 163, 74, 0.16);
+}
+
+.filmium-keyword-chip-remove {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.filmium-keyword-chip-remove:hover {
+  opacity: 1;
+}
+
+.filmium-keyword-chip-remove:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.filmium-keywords-empty {
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.filmium-keywords-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+  color: #cbd5e1;
+  font: inherit;
+  font-size: 0.74rem;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease;
+}
+
+.filmium-keywords-toggle:hover {
+  border-color: rgba(56, 189, 248, 0.6);
+  color: #e2e8f0;
+}
+
+.filmium-keywords-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.45);
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.filmium-keywords-input:focus {
+  outline: 0;
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+
+/* ==========          FILMIUM DUGMAD (deljeno)          ========== */
+
+/*
+ * .filmium-button i .filmium-icon-button ovde su definisani jer ih koriste
+ * FilmiumTorrentFilePicker (Task 8) i FilmiumTorrentSettingsPanel (Task 10),
+ * a do ovog zadatka nisu postojali nigde u FILMIUM stilovima.
+ */
+
+.filmium-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #dbe6f7;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+
+.filmium-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filmium-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filmium-button.primary {
+  border-color: transparent;
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  color: #fff;
+}
+
+.filmium-button.primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #4c8cf7, #2f6de8);
+}
+
+.filmium-button.ghost {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: transparent;
+  color: #cdd8ec;
+}
+
+.filmium-button.ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.filmium-icon-button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  min-height: 34px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cdd8ec;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.filmium-icon-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.filmium-icon-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filmium-icon-button.danger:hover:not(:disabled) {
+  border-color: rgba(248, 113, 113, 0.55);
+  color: #fca5a5;
+  background: rgba(127, 29, 29, 0.24);
+}
+
+
+/* ==========          TORRENTI          ========== */
+
+.filmium-torrents-page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.filmium-torrent-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.filmium-torrent-addbar {
+  display: flex;
+  flex: 1;
+  min-width: 260px;
+  gap: 10px;
+}
+
+.filmium-torrent-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-torrent-toolbar .filmium-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.filmium-torrent-toolbar-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Sistemski izbor fajla otvara dugme „Dodaj torrent", ne samo polje. */
+.filmium-torrent-file-input {
+  display: none;
+}
+
+.filmium-torrent-addbar-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: 14px;
+}
+
+/* ---------- lista kartica (jedna ispod druge) ---------- */
+
+.filmium-torrent-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filmium-torrent-card-row {
+  position: relative;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  isolation: isolate;
+}
+
+/* Napredak kao popuna pozadine kartice. Sloj je ispod sadržaja i ne hvata
+   klikove; širinu nosi promenljiva `--torrent-progress` sa same kartice. */
+.filmium-torrent-card-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--torrent-progress, 0%);
+  max-width: 100%;
+  border-radius: 12px 0 0 12px;
+  background: rgba(34, 197, 94, 0.14);
+  transition: width 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.filmium-torrent-card-row[data-tone="paused"]::before {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.filmium-torrent-card-row[data-tone="done"]::before {
+  background: rgba(14, 165, 233, 0.12);
+  border-radius: 12px;
+}
+
+.filmium-torrent-card-row[data-tone="error"]::before {
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.filmium-torrent-card-row[data-open="on"] {
+  border-color: rgba(96, 165, 250, 0.45);
+  background: rgba(96, 165, 250, 0.07);
+}
+
+.filmium-torrent-card-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Ceo red je dugme za otvaranje — klik bilo gde otvara sadržaj torrenta. */
+.filmium-torrent-card-open {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 6px 4px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filmium-torrent-card-badge {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: rgba(96, 165, 250, 0.14);
+  color: #93c5fd;
+}
+
+.filmium-torrent-card-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.filmium-torrent-card-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.filmium-torrent-card-eta {
+  flex: none;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.filmium-torrent-card-meta,
+.filmium-torrent-card-size {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-torrent-card-size {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status preuzimanja — ton nosi boju, tekst ostaje isti u svim temama. */
+.filmium-torrent-status {
+  flex: none;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.filmium-torrent-status[data-tone="found"] {
+  background: rgba(96, 165, 250, 0.16);
+  border-color: rgba(96, 165, 250, 0.4);
+  color: #bfdbfe;
+}
+
+.filmium-torrent-status[data-tone="waiting"] {
+  background: rgba(250, 204, 21, 0.14);
+  border-color: rgba(250, 204, 21, 0.36);
+  color: #fde68a;
+}
+
+.filmium-torrent-status[data-tone="active"] {
+  background: rgba(34, 197, 94, 0.16);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #bbf7d0;
+}
+
+.filmium-torrent-status[data-tone="paused"] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.filmium-torrent-status[data-tone="done"] {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #bae6fd;
+}
+
+.filmium-torrent-status[data-tone="error"] {
+  background: rgba(248, 113, 113, 0.16);
+  border-color: rgba(248, 113, 113, 0.42);
+  color: #fca5a5;
+}
+
+.filmium-torrent-card-chevron {
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.45);
+  transition: transform 0.2s ease;
+}
+
+.filmium-torrent-card-row[data-open="on"] .filmium-torrent-card-chevron {
+  transform: rotate(180deg);
+}
+
+.filmium-torrent-card-controls {
+  flex: none;
+  display: flex;
+  gap: 6px;
+}
+
+.filmium-torrent-card-body {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-torrent-bar {
+  margin: 10px 0 8px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.filmium-torrent-bar > span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.filmium-torrent-meta {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.filmium-torrent-error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #ff8080;
+}
+
+/* Putanja završenog torrenta — odatle vodi radnja ka ekranu uvoza. */
+.filmium-torrent-path {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  word-break: break-all;
+}
+
+.filmium-torrent-banner {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 176, 0, 0.12);
+  border: 1px solid rgba(255, 176, 0, 0.3);
+  font-size: 13px;
+}
+
+.filmium-torrent-empty {
+  padding: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* ---------- picker fajlova ---------- */
+
+.filmium-torrent-picker {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 16px;
+}
+
+.filmium-torrent-picker-head {
+  margin-bottom: 10px;
+}
+
+.filmium-torrent-picker-summary {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.filmium-torrent-picker-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.filmium-torrent-picker-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 4px;
+}
+
+/* Napredak pojedinačnog fajla — tanja i tiša od trake celog torrenta. */
+.filmium-torrent-file-bar {
+  height: 3px;
+  margin: 0 4px 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.filmium-torrent-file-bar > span {
+  display: block;
+  height: 100%;
+  background: rgba(34, 197, 94, 0.75);
+  transition: width 0.4s ease;
+}
+
+.filmium-torrent-picker-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.filmium-torrent-picker-path {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-torrent-picker-size {
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+}
+
+.filmium-torrent-picker-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ---------- kartica na komandnoj tabli ---------- */
+
+.filmium-torrent-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-torrent-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filmium-torrent-card-head h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.filmium-torrent-card-head span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.filmium-torrent-card-list {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-torrent-card-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.filmium-torrent-card-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-torrent-card-percent {
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.filmium-torrent-card-link {
+  font-size: 13px;
+}
+
+
+/* ==========          PREVLAČENJE .torrent FAJLOVA          ========== */
+
+.filmium-torrent-dropzone {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 12, 24, 0.72);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+}
+
+.filmium-torrent-dropzone-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 40px;
+  border-radius: 16px;
+  border: 2px dashed rgba(96, 165, 250, 0.7);
+  background: rgba(96, 165, 250, 0.1);
+  color: #dbeafe;
+  text-align: center;
+}
+
+.filmium-torrent-dropzone-card span {
+  font-size: 12px;
+  color: rgba(219, 234, 254, 0.7);
+}
+
+.filmium-torrent-drop-notice {
+  position: fixed;
+  right: 20px;
+  bottom: 88px;
+  z-index: 91;
+  max-width: 420px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.94);
+}
+
+.filmium-torrent-drop-notice[data-tone="ok"] {
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #bbf7d0;
+}
+
+.filmium-torrent-drop-notice[data-tone="error"] {
+  border-color: rgba(248, 113, 113, 0.45);
+  color: #fca5a5;
+}
+
+
+/* ==========          NADZIRANI FOLDERI (podešavanja)          ========== */
+
+.filmium-watch-folders {
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filmium-watch-folders li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.filmium-watch-folders li span {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.filmium-watch-folder-add {
+  display: flex;
+  gap: 8px;
+}
+
+.filmium-watch-folder-add input {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font-size: 13px;
+}
+
+.filmium-watch-folder-add .filmium-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* ==========          OBAVEŠTENJE PRI PALJENJU CORE-a          ========== */
+
+.filmium-torrent-startup-notice {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 95;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 380px;
+  padding: 12px 12px 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  background: rgba(15, 23, 42, 0.96);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.filmium-torrent-startup-open {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filmium-torrent-startup-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(96, 165, 250, 0.16);
+  color: #93c5fd;
+}
+
+.filmium-torrent-startup-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 13px;
+}
+
+.filmium-torrent-startup-hint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Ishod grupne radnje (Start/Stop) — tiša od poruke o grešci. */
+.filmium-torrent-notice {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  border: 1px solid rgba(96, 165, 250, 0.32);
+  background: rgba(96, 165, 250, 0.1);
+  color: #bfdbfe;
+}
+
+
+
+
+/* ==========  RESPONSIVE: VELIKI PLEJER + poster gore-levo (uzak/portrait)  ========== */
+/* „Pametan" animiran prelaz na interpolabilnim osobinama. */
+.filmium-media-details .filmium-media-details-content,
+.filmium-media-details .filmium-details-stage,
+.filmium-media-details .filmium-details-stage-main,
+.filmium-media-details .filmium-details-rail,
+.filmium-media-details .filmium-details-rail-actions,
+.filmium-media-details .filmium-details-rail-actions button,
+.filmium-media-details .filmium-media-details-poster,
+.filmium-media-details .filmium-details-headtext,
+.filmium-media-details .filmium-keywords-box,
+.filmium-media-details .filmium-details-facts.side {
+  transition:
+    margin 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    gap 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    column-gap 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    flex-basis 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* headtext = original-title + opis + ključne reči kao JEDAN zbijen blok
+   (rešava praznine — sve troje priljubljeno). */
+.filmium-details-headtext {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.filmium-details-headtext .filmium-keywords-box {
+  margin-top: 2px;
+}
+.filmium-details-headtext .filmium-details-original-title {
+  margin: 0;
+}
+.filmium-details-headtext .filmium-media-details-description {
+  margin: 0;
+}
+
+/* ==========  „VELIKI PLEJER" JE DEFAULT (svaka media stranica: film/serija)  ==========
+   Poster gore-levo, opis pored, a PLEJER preko cele širine ISPOD — uvek u prvom
+   planu. Akcije su horizontalan red ispod plejera. Ranije uslovljeno prozor-
+   breakpoint-om (pa je na širem prozoru plejer bio mali); sada BEZUSLOVNO, po
+   želji da plejer uvek bude velik — v. `--player-max` za gornju granicu. */
+.filmium-media-details .filmium-media-details-body {
+  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+  grid-template-areas:
+    "poster headtext"
+    "info   headtext"
+    "player player"
+    "rating rating"
+    "coll   coll";
+  align-items: start;
+  row-gap: 8px;
+  column-gap: clamp(18px, 3vw, 34px);
+}
+.filmium-media-details .filmium-details-left,
+.filmium-media-details .filmium-media-details-content {
+  display: contents;
+}
+.filmium-media-details .filmium-media-details-poster {
+  grid-area: poster;
+  max-width: 210px;
+  align-self: start;
+}
+.filmium-media-details .filmium-details-headtext {
+  grid-area: headtext;
+  align-self: start;
+}
+.filmium-media-details .filmium-details-facts.side {
+  grid-area: info;
+  align-self: start;
+  margin-top: 8px;   /* odmah ispod postera, bez razmaka */
+}
+.filmium-media-details .filmium-details-stage {
+  grid-area: player;
+  flex-direction: column;
+  gap: 14px;
+}
+/* Plejer uvek velik (puna širina zone), levo poravnat, sa gornjom granicom na
+   vrlo širokim ekranima (16:9 na punoj širini bi inače postao ogroman). */
+.filmium-media-details .filmium-details-stage-main {
+  margin-right: 0;
+  width: 100%;
+  max-width: var(--player-max, 1180px);
+}
+.filmium-media-details .filmium-details-stage .filmium-details-rail {
+  width: 100%;
+  max-width: var(--player-max, 1180px);
+  flex-shrink: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+.filmium-media-details .filmium-details-stage .filmium-details-rail .filmium-details-rail-actions {
+  transform: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 0;
+  gap: 10px;
+}
+.filmium-media-details .filmium-details-stage .filmium-details-rail .filmium-details-rail-actions button {
+  width: auto;
+  flex: 1 1 220px;
+  justify-content: center;
+}
+.filmium-media-details .filmium-external-ratings { grid-area: rating; }
+.filmium-media-details .filmium-details-collections { grid-area: coll; }
+
+/* ==========  Info blok ispod postera (dostupnost + titlovi / datumi)  ========== */
+.filmium-details-infobox { display: flex; flex-direction: column; gap: 7px; }
+.filmium-details-availrow { display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: #cbd5e1; }
+.filmium-avail-dot { width: 11px; height: 11px; border-radius: 50%; background: #ef4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.55); flex-shrink: 0; }
+.filmium-avail-dot.is-on { background: #22c55e; box-shadow: 0 0 8px rgba(34, 197, 94, 0.55); }
+.filmium-avail-subs { color: #94a3b8; }
+.filmium-details-daterow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.78rem; color: #94a3b8; }
+.filmium-date-sep { opacity: 0.45; }

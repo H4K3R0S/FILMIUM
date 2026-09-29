@@ -1,0 +1,35 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "name": "rag_filmium",
+    "user": "ai_os",
+    "password": null
+  },
+  "embedding": {
+    "model": "nomic-embed-text",
+    "dim": 768,
+    "endpoint": "http://localhost:11434"
+  },
+  "context_buckets": [
+    2048,
+    4096,
+    8192,
+    16384
+  ],
+  "retrieval": {
+    "top_k": 20,
+    "rerank": false,
+    "rrf_k": 60
+  },
+  "decay": {
+    "half_life_days": 30,
+    "dormant_threshold": 0.2
+  },
+  "namespaces": {
+    "default_visible": [
+      "global",
+      "protected"
+    ]
+  }
+}

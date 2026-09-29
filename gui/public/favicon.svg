@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="116" fill="#7c3aed"/>
+  <rect width="512" height="250" rx="116" fill="#ffffff" fill-opacity="0.10"/>
+  <!-- film strip -->
+  <rect x="118" y="150" width="276" height="212" rx="26" fill="#ffffff"/>
+  <rect x="118" y="150" width="34" height="212" fill="#7c3aed"/>
+  <rect x="360" y="150" width="34" height="212" fill="#7c3aed"/>
+  <g fill="#ffffff">
+    <rect x="126" y="168" width="18" height="24" rx="4"/>
+    <rect x="126" y="212" width="18" height="24" rx="4"/>
+    <rect x="126" y="256" width="18" height="24" rx="4"/>
+    <rect x="126" y="300" width="18" height="24" rx="4"/>
+    <rect x="368" y="168" width="18" height="24" rx="4"/>
+    <rect x="368" y="212" width="18" height="24" rx="4"/>
+    <rect x="368" y="256" width="18" height="24" rx="4"/>
+    <rect x="368" y="300" width="18" height="24" rx="4"/>
+  </g>
+  <!-- play triangle -->
+  <path d="M235 205 L235 307 L318 256 Z" fill="#7c3aed"/>
+</svg>

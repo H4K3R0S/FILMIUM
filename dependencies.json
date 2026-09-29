@@ -1,0 +1,8 @@
+{
+  "name": "filmium",
+  "type": "domain",
+  "requires_runtime": "ai-runtime",
+  "bootstrap": "bootstrap-ai-runtime.sh",
+  "runtime_repo_default": "https://github.com/H4K3R0S/ai-runtime.git",
+  "system_tools": ["git", "node", "python3", "python3-gi", "gir1.2-gtk-3.0", "xdotool"]
+}

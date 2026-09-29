@@ -1,0 +1,33 @@
+/* ==========          CORE THEME (DEFAULT)          ========== */
+/*
+ * Osnovna tema. Svi ostali domeni nasleđuju ove tokene i menjaju samo
+ * ono što im treba u svom fajlu (styles/themes/<domain>.css).
+ * Ovde se menjaju podrazumevane vrednosti za ceo interfejs.
+ */
+
+:root {
+  /* Visina custom titlebara (bez OS okvira). */
+  --titlebar-h: 34px;
+
+  /* CORE potpisna boja — svetlo plava. */
+  --domain-accent-rgb: 88, 182, 255;
+  --domain-accent-2-rgb: 88, 182, 255;
+
+  /* Semantički akcentni kanali — domeni prepisuju samo *-rgb. */
+  --domain-accent-strong-rgb: 37, 99, 235;   /* zasićeni fill: aktivna dugmad/pozadine */
+  --domain-accent-soft-rgb: 147, 197, 253;    /* svetli tekst/label: eyebrow, badge, sat */
+  --domain-accent-contrast-rgb: 224, 240, 255; /* near-white akcent tekst */
+
+  /* Izvedeni tokeni — domeni ih obično ne diraju, samo *-rgb kanale. */
+  --domain-accent: rgb(var(--domain-accent-rgb));
+  --domain-accent-2: rgb(var(--domain-accent-2-rgb));
+  --domain-accent-strong: rgb(var(--domain-accent-strong-rgb));
+  --domain-accent-soft: rgb(var(--domain-accent-soft-rgb));
+  --domain-accent-contrast: rgb(var(--domain-accent-contrast-rgb));
+  --domain-glow: rgba(var(--domain-accent-rgb), 0.16);
+  --titlebar-title: var(--domain-accent);
+
+  /* Ambient "Connected Dots" pozadina — CORE: plavo, blago ljubičasto. */
+  --ambient-dot-rgb: 130, 170, 255;    /* plava — tačke i linije */
+  --ambient-dot-2-rgb: 170, 140, 255;  /* ljubičasta — druga nijansa */
+}

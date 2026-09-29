@@ -1,0 +1,214 @@
+/* ==========          KURATOR — FILMIUM CHAT (izgled)          ========== */
+/*
+ * Globalni dock dole-centar (shell slot, `FilmiumKuratorDock`), prisutan na
+ * svim FILMIUM stranicama. Konstrukcija chata je CORE-ova (deljeni `ChatDock`
+ * → `.cdock`/`.cdock-handle` + CoreChat), ista kao u ostalim domenima; ovde
+ * stoji samo FILMIUM izgled (plava paleta domena) i položaj docka.
+ *
+ * Boje dolaze iz teme domena (`--domain-accent-rgb` = royal plava), pa dock
+ * prati FILMIUM bez tvrdo upisanih vrednosti.
+ */
+
+
+/* ==========          EFEMERNE PORUKE (nestaju posle ~20s)          ==========
+   Kurator chat je preko filmova — poruke izblede posle 20s (pa ih CoreChat
+   ukloni iz stanja; TTL u JS-u = 20s + 1.2s MORA da prati ovo). */
+@keyframes kurator-msg-fade {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateY(-6px); }
+}
+.core-chat.is-filmium .chat-bubble {
+  animation: kurator-msg-fade 1.2s ease 20s both;
+}
+/* Traka predloga (potvrda upisa) NE bledi — čeka korisnikovu akciju. */
+.core-chat.is-filmium .chat-thinking {
+  animation: none;
+}
+
+
+/* ==========          FILMIUM: IZGLED SAMOG CHATA          ========== */
+
+/* Sadržaj chata (predlozi u praznom stanju / poruke) lepi se uz DNO — odmah
+   iznad polja za unos. `margin-top:auto` u flex-koloni je scroll-safe (za razliku
+   od justify-content:flex-end koji ume da odseče vrh pri prelivanju). */
+.core-chat.is-filmium .chat-scroll {
+  display: flex;
+  flex-direction: column;
+}
+.core-chat.is-filmium .chat-empty,
+.core-chat.is-filmium .chat-thread {
+  margin-top: auto;
+}
+
+/* Prazno stanje = vidljiva ali PROVIDNA kartica sa okvirom, priljubljena uz unos.
+   Ranije `height:100%` + centrirano → lebdelo u sredini bez pozadine, nečitljivo
+   preko postera. Sada zbijena kartica dole. (`pointer-events` ostaje kao pre:
+   sama kartica propušta klik na posterе, samo dugmad-predlozi su klikabilni.) */
+.core-chat.is-filmium .chat-empty {
+  height: auto;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px;
+  background: rgba(8, 13, 30, 0.72);
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.5);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(var(--domain-accent-rgb), 0.08) inset;
+}
+
+/* „CORE Assistant" natpis ne stoji u Kurator panelu — identitet je u zaglavlju. */
+.core-chat.is-filmium .chat-empty .eyebrow {
+  display: none;
+}
+
+.core-chat.is-filmium .chat-empty h2 {
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+}
+
+.core-chat.is-filmium .chat-empty-text {
+  font-size: 0.85rem;
+}
+
+/* Predlog-kartice — plavi akcenat domena. */
+.core-chat.is-filmium .chat-suggestion:hover:not(:disabled) {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.5);
+  background: rgba(var(--domain-accent-rgb), 0.12);
+}
+
+.core-chat.is-filmium .chat-suggestion svg {
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+/* Red za unos — plava ivica na fokus. */
+.core-chat.is-filmium .chat-input {
+  background: rgba(8, 13, 30, 0.82);
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.22);
+}
+
+.core-chat.is-filmium .chat-input:focus-within {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.5);
+}
+
+/* Dugme za slanje — pun plavi akcenat. */
+.core-chat.is-filmium .chat-send-button {
+  color: rgb(var(--domain-accent-contrast-rgb));
+  background: rgb(var(--domain-accent-rgb));
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.5);
+}
+
+.core-chat.is-filmium .chat-send-button:not(:disabled):hover {
+  background: rgb(var(--domain-accent-strong-rgb));
+}
+
+
+/* ==========          TRAKA PREDLOGA (POTVRDA UPISA)          ========== */
+
+/* Prikazuje se ispod unosa kad Kurator vrati `kind: "proposal"` — predlog
+   ostaje vidljiv dok korisnik ne potvrdi ili otkaže upis u bazu. */
+.filmium-kurator-proposal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.32);
+  border-radius: 12px;
+  background: rgba(var(--domain-accent-rgb), 0.1);
+}
+
+.filmium-kurator-proposal-text {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #eef3ff;
+  word-break: break-word;
+}
+
+.filmium-kurator-proposal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.filmium-kurator-proposal-confirm,
+.filmium-kurator-proposal-cancel {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.filmium-kurator-proposal-confirm {
+  color: rgb(var(--domain-accent-contrast-rgb));
+  background: rgb(var(--domain-accent-rgb));
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.5);
+}
+
+.filmium-kurator-proposal-confirm:not(:disabled):hover {
+  background: rgb(var(--domain-accent-strong-rgb));
+}
+
+.filmium-kurator-proposal-cancel {
+  color: #eef3ff;
+  background: transparent;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.35);
+}
+
+.filmium-kurator-proposal-cancel:not(:disabled):hover {
+  background: rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-kurator-proposal-confirm:disabled,
+.filmium-kurator-proposal-cancel:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+
+/* ==========          KURATOR DOCK (ChatDock položaj)          ========== */
+/* Fiksiran globalni dock (dole), providan kao pre; offset za sidebar u
+   samostalnoj ćeliji. Uvedeno pri prelasku sa lightweight .agent-dock na
+   deljeni ChatDock (.cdock). */
+.cdock.is-filmium.pos-bottom {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 0;
+  /* Uvek iznad sadržaja stranica (kao Search paleta, z-index:950). Ranije 40 →
+     stranice sa višim z-index-om su ga prekrivale. */
+  z-index: 900;
+  height: min(520px, 62vh);
+  background: none;
+}
+
+.core-layout.sidebar-visible .cdock.is-filmium.pos-bottom {
+  left: 240px;
+}
+
+.core-layout.sidebar-collapsed .cdock.is-filmium.pos-bottom {
+  left: 12px;
+}
+
+.cdock.is-filmium.pos-right {
+  border-radius: 0;
+}
+
+/* Sklopljena pilula (Kurator je podrazumevano sklopljen). Bazni `.cdock-handle`
+   je `position: absolute`, a `.handle-bottom` (za razliku od `.handle-right`) ne
+   postavlja `fixed` — pa je pilula sedela na dnu skrol-kontejnera i „nestajala".
+   Ovde je fiksiramo uz donju ivicu prozora i dižemo iznad svega (kao Search). */
+.cdock-handle.is-filmium.handle-bottom {
+  position: fixed;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  z-index: 901;
+}
+
+.cdock-handle.is-filmium {
+  z-index: 901;
+}

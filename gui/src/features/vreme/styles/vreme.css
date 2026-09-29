@@ -1,0 +1,1075 @@
+/* ==========          CLOCK POPOVER          ========== */
+
+.clock-popover {
+  position: fixed;
+  z-index: 300;
+  width: 360px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(9, 14, 28, 0.98);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(22px);
+  font-family: system-ui, sans-serif;
+}
+
+.clock-popover-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  overflow: hidden;
+}
+
+.clock-popover-tab {
+  padding: 12px 3px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #7f8a9d;
+  background: transparent;
+  font: inherit;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.clock-popover-tab:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.clock-popover-tab.is-active {
+  border-bottom-color: #a855f7;
+  color: #f8fafc;
+}
+
+.clock-popover-body {
+  padding: 16px;
+}
+
+.clock-popover-placeholder {
+  margin: 0;
+  padding: 28px 8px;
+  color: #64748b;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+
+/* ==========          PROGNOZA          ========== */
+
+.forecast-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 240px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.forecast-tab-title {
+  margin: 6px 0 0;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.forecast-tab-note {
+  margin: 0;
+  max-width: 240px;
+  color: #64748b;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+
+.clock-popover-popout {
+  position: absolute;
+  top: -14px;
+  right: 14px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 8px;
+  color: #cbd5e1;
+  background: rgba(14, 20, 38, 0.98);
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+.clock-popover-popout:hover {
+  color: #e9d5ff;
+  border-color: rgba(168, 85, 247, 0.6);
+  background: rgba(30, 20, 50, 0.98);
+}
+
+
+/* ==========          BROJČANIK          ========== */
+
+.number-wheel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  user-select: none;
+  touch-action: none;
+}
+
+.number-wheel:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.number-wheel-arrow {
+  width: 28px;
+  height: 20px;
+  border: 0;
+  color: #64748b;
+  background: transparent;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: rotate(90deg);
+  transition: color 140ms ease;
+}
+
+.number-wheel-arrow:hover {
+  color: #c084fc;
+}
+
+.number-wheel-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: wheel-roll 200ms ease;
+}
+
+@keyframes wheel-roll {
+  from {
+    opacity: 0.35;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .number-wheel-values {
+    animation: none;
+  }
+}
+
+.number-wheel-value {
+  border: 0;
+  background: transparent;
+  color: #475569;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.number-wheel-value.distance-2 {
+  font-size: 0.9rem;
+  opacity: 0.4;
+}
+
+.number-wheel-value.distance-1 {
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.number-wheel-value.is-selected {
+  color: #f8fafc;
+  font-size: 2rem;
+  text-shadow: 0 0 18px rgba(168, 85, 247, 0.55);
+}
+
+.number-wheel-value:not(.is-selected):hover {
+  color: #94a3b8;
+}
+
+
+/* ==========          ALARM TAB          ========== */
+
+.alarm-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 260px;
+}
+
+.alarm-tab-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 2px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.alarm-tab-header-label {
+  color: #64748b;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.alarm-tab-header strong {
+  color: #e9d5ff;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.alarm-tab-header-time {
+  margin-left: auto;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========          LISTA ALARMA          ========== */
+
+.alarm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.alarm-list-empty {
+  margin: 0;
+  padding: 20px 8px;
+  color: #64748b;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.alarm-card {
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.015);
+  transition: opacity 150ms ease;
+}
+
+.alarm-card.is-off {
+  opacity: 0.5;
+}
+
+.alarm-card-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+
+.alarm-card-main {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.alarm-card-time {
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 1.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.alarm-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alarm-card-label {
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.alarm-card-repeat {
+  color: #64748b;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.alarm-card-delete {
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  color: #f87171;
+  background: transparent;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alarm-card-delete:hover {
+  background: rgba(248, 113, 113, 0.08);
+}
+
+.alarm-list-more {
+  padding: 8px;
+  border: 0;
+  border-radius: 8px;
+  color: #a855f7;
+  background: transparent;
+  font: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alarm-list-more:hover {
+  background: rgba(168, 85, 247, 0.08);
+}
+
+
+/* ==========          TOGGLE          ========== */
+
+.alarm-toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, 0.4);
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.alarm-toggle.is-on {
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+}
+
+.alarm-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f8fafc;
+  transition: transform 180ms ease;
+}
+
+.alarm-toggle.is-on .alarm-toggle-knob {
+  transform: translateX(18px);
+}
+
+
+/* ==========          EDITOR ALARMA          ========== */
+
+.alarm-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.alarm-create {
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 12px;
+  background: rgba(168, 85, 247, 0.04);
+}
+
+.alarm-editor-wheels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.alarm-editor-wheel-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alarm-editor-wheel-label {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  color: #64748b;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.alarm-editor-wheel-colon {
+  margin: 0;
+  color: #a855f7;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 1.8rem;
+}
+
+.alarm-editor-advanced {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alarm-editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alarm-editor-field > span {
+  color: #94a3b8;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.alarm-editor-field select,
+.alarm-editor-field input {
+  padding: 8px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
+  color: #f1f5f9;
+  background: rgba(5, 11, 24, 0.8);
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.alarm-editor-field select:focus,
+.alarm-editor-field input:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+.alarm-editor-repeat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.alarm-day-chip {
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  color: #94a3b8;
+  background: transparent;
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    border-color 140ms ease,
+    background 140ms ease;
+}
+
+.alarm-day-chip:hover {
+  color: #e2e8f0;
+}
+
+.alarm-day-chip.is-active {
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #e9d5ff;
+  background: rgba(168, 85, 247, 0.16);
+}
+
+.alarm-editor-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.alarm-editor-cancel {
+  margin-right: auto;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 8px;
+  color: #94a3b8;
+  background: transparent;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alarm-editor-cancel:hover {
+  color: #e2e8f0;
+}
+
+.alarm-editor-secondary {
+  padding: 8px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 8px;
+  color: #cbd5e1;
+  background: transparent;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.alarm-editor-secondary:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #e9d5ff;
+}
+
+.alarm-editor-primary {
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 8px;
+  color: #f8fafc;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+}
+
+.alarm-editor-primary:hover {
+  filter: brightness(1.08);
+}
+
+
+/* ==========          DUGME + (DODAJ)          ========== */
+
+.alarm-add-button {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(124, 58, 237, 0.45);
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.alarm-add-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+
+/* ==========          ZAJEDNIČKA KONTROLA (PLAY/PAUSE/...)          ========== */
+
+.vreme-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 50%;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.vreme-control-button:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #e9d5ff;
+  transform: translateY(-1px);
+}
+
+.vreme-control-button.is-primary {
+  width: 64px;
+  height: 64px;
+  border: 0;
+  color: #f8fafc;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  box-shadow: 0 10px 26px rgba(124, 58, 237, 0.4);
+}
+
+.vreme-control-button.is-primary:hover {
+  filter: brightness(1.08);
+}
+
+.vreme-control-button.is-mini {
+  width: 38px;
+  height: 38px;
+}
+
+.vreme-control-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.vreme-control-button:disabled:hover {
+  border-color: rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+}
+
+
+/* ==========          LEBDEĆI WIDGETI          ========== */
+
+.vreme-widget {
+  position: fixed;
+  z-index: 150;
+  width: 208px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  background: rgba(9, 14, 28, 0.98);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.vreme-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 8px 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: grab;
+  touch-action: none;
+}
+
+.vreme-widget-header:active {
+  cursor: grabbing;
+}
+
+.vreme-widget-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vreme-widget-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 7px;
+  color: #94a3b8;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.vreme-widget-close:hover {
+  color: #fca5a5;
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.vreme-widget-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 12px;
+}
+
+.widget-time {
+  display: flex;
+  align-items: baseline;
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 1.9rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.widget-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.widget-alarm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.widget-alarm-time {
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 1.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.widget-alarm-countdown {
+  color: #a855f7;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.widget-alarm-empty {
+  margin: 0;
+  padding: 8px 0;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+
+/* ==========          STOPERICA          ========== */
+
+.stopwatch-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  min-height: 240px;
+}
+
+.stopwatch-display {
+  display: flex;
+  align-items: baseline;
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.28);
+}
+
+.stopwatch-millis {
+  min-width: 1.6ch;
+  color: #c084fc;
+  font-size: 0.42em;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+.widget-millis {
+  color: #c084fc;
+  font-size: 0.5em;
+}
+
+.stopwatch-controls,
+.timer-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+/* ==========          TAJMER          ========== */
+
+.timer-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  min-height: 240px;
+  padding-top: 6px;
+}
+
+.timer-wheels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.timer-wheel-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-wheel-label {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  color: #64748b;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.timer-wheel-colon {
+  margin: 0;
+  color: #a855f7;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 1.6rem;
+}
+
+.timer-start {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 10px;
+  color: #f8fafc;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.36);
+  transition: filter 150ms ease;
+}
+
+.timer-start:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.timer-start:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.timer-presets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.timer-preset {
+  padding: 10px 4px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 10px;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.015);
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease,
+    background 150ms ease;
+}
+
+.timer-preset:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #e9d5ff;
+  background: rgba(168, 85, 247, 0.1);
+}
+
+.timer-tab.is-running {
+  justify-content: center;
+}
+
+.timer-countdown {
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 3rem;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.3);
+}
+
+.timer-progress {
+  width: 80%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+  overflow: hidden;
+}
+
+.timer-progress span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  transition: width 900ms linear;
+}
+
+
+/* ==========          RING OVERLAY          ========== */
+
+.alarm-ring-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 7, 16, 0.82);
+  backdrop-filter: blur(8px);
+  animation: ring-overlay-in 220ms ease;
+}
+
+@keyframes ring-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.alarm-ring-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(420px, 90vw);
+  padding: 40px 32px;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(124, 58, 237, 0.22),
+      rgba(9, 14, 28, 0.98)
+    );
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.alarm-ring-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  color: #e9d5ff;
+  background: rgba(168, 85, 247, 0.16);
+  animation: ring-pulse 1s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 0 18px rgba(168, 85, 247, 0);
+  }
+}
+
+.alarm-ring-time {
+  color: #f8fafc;
+  font-family: "Russo One", system-ui, sans-serif;
+  font-size: 2.6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.alarm-ring-message {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 1rem;
+}
+
+.alarm-ring-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.alarm-ring-snooze {
+  padding: 11px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  color: #cbd5e1;
+  background: transparent;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.alarm-ring-snooze:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #e9d5ff;
+}
+
+.alarm-ring-dismiss {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 10px;
+  color: #f8fafc;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.4);
+}
+
+.alarm-ring-dismiss:hover {
+  filter: brightness(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alarm-ring-icon {
+    animation: none;
+  }
+}

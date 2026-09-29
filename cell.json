@@ -1,0 +1,117 @@
+{
+  "domain_id": "filmium",
+  "name": "FILMIUM",
+  "domain_version": "0.1.0",
+  "kernel_version": "0.1.0",
+  "port": 4801,
+  "core_url": "http://localhost:8000",
+  "created_at": "2026-09-13T20:58:30",
+  "detached_from": "01221aa",
+  "ai": {
+    "endpoint": "http://localhost:11434",
+    "curator_model": "qwen2.5:7b"
+  },
+  "rag": {
+    "enabled": true,
+    "namespace": "cell:filmium"
+  },
+  "tools": [
+    {
+      "name": "Skener",
+      "icon": "scan",
+      "description": "Skeniranje fajlova/diskova",
+      "slug": "skener"
+    },
+    {
+      "name": "TMDB",
+      "icon": "database",
+      "description": "Primarni izvor: metapodaci, slike",
+      "slug": "tmdb"
+    },
+    {
+      "name": "IMDB",
+      "icon": "film",
+      "description": "Ocene i glasovi (Cinemagoer)",
+      "slug": "imdb"
+    },
+    {
+      "name": "Jikan",
+      "icon": "sparkles",
+      "description": "Anime/MAL podaci",
+      "slug": "jikan"
+    },
+    {
+      "name": "Rotten Tomatoes",
+      "icon": "star",
+      "description": "Tomatometer / publika",
+      "slug": "rotten-tomatoes"
+    },
+    {
+      "name": "TVmaze",
+      "icon": "tv",
+      "description": "Serije: epizode, mreža, ocena",
+      "slug": "tvmaze"
+    },
+    {
+      "name": "Torenti",
+      "icon": "download",
+      "description": "qBittorrent preuzimanje",
+      "slug": "torenti"
+    },
+    {
+      "name": "mpv",
+      "icon": "play",
+      "description": "Ugrađeni plejer (overlay)",
+      "slug": "mpv"
+    },
+    {
+      "name": "VLC",
+      "icon": "play",
+      "description": "Spoljni plejer (kodeci)",
+      "slug": "vlc"
+    },
+    {
+      "name": "Prevodilac",
+      "icon": "languages",
+      "description": "Prevod titlova/opisa",
+      "slug": "prevodilac"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Upload filmova/serija",
+      "icon": "upload",
+      "slug": "upload-filmova-serija"
+    },
+    {
+      "name": "Batch uvoz u biblioteku",
+      "icon": "layers",
+      "slug": "batch-uvoz-u-biblioteku"
+    },
+    {
+      "name": "Prikupljanje info (TMDB/IMDB/…)",
+      "icon": "database",
+      "slug": "prikupljanje-info-tmdb-imdb"
+    },
+    {
+      "name": "Kontrola cron poslova",
+      "icon": "clock",
+      "slug": "kontrola-cron-poslova"
+    },
+    {
+      "name": "Pretraga fajlova u direktorijumu",
+      "icon": "folder-search",
+      "slug": "pretraga-fajlova-u-direktorijumu"
+    },
+    {
+      "name": "Nadzor direktorijuma",
+      "icon": "eye",
+      "slug": "nadzor-direktorijuma"
+    },
+    {
+      "name": "FILMIUM Search (filmovi/serije/glumci)",
+      "icon": "search",
+      "slug": "filmium-search-filmovi-serije-glumci"
+    }
+  ]
+}

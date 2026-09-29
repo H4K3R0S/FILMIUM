@@ -1,0 +1,1055 @@
+.filmium-subtitle-panel {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255, 190, 70, 0.16);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 92% 0%,
+      rgba(255, 174, 51, 0.11),
+      transparent 32%
+    ),
+    rgba(7, 17, 34, 0.72);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
+}
+
+.filmium-subtitle-heading,
+.filmium-subtitle-preview-heading,
+.filmium-subtitle-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.filmium-subtitle-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 4px 0 7px;
+}
+
+.filmium-subtitle-heading > div:first-child > p:last-child {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text-muted, #98a6bc);
+  line-height: 1.55;
+}
+
+.filmium-subtitle-heading code {
+  margin-inline: 4px;
+  color: #ffc76a;
+}
+
+.filmium-subtitle-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffc76a;
+  white-space: nowrap;
+}
+
+.filmium-subtitle-list {
+  display: grid;
+  gap: 12px;
+}
+
+.filmium-subtitle-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 15px;
+  border: 1px solid rgba(142, 164, 196, 0.14);
+  border-radius: 15px;
+  background: rgba(10, 23, 43, 0.76);
+}
+
+.filmium-subtitle-file-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 190, 70, 0.2);
+  border-radius: 12px;
+  color: #ffc76a;
+  background: rgba(255, 174, 51, 0.08);
+}
+
+.filmium-subtitle-card-content {
+  min-width: 0;
+}
+
+.filmium-subtitle-card-heading h3,
+.filmium-subtitle-preview-heading h3 {
+  margin: 0 0 5px;
+}
+
+.filmium-subtitle-card-heading code {
+  display: block;
+  overflow: hidden;
+  max-width: min(72vw, 920px);
+  color: var(--text-muted, #8190a8);
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-subtitle-card-heading > span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #ffc76a;
+  background: rgba(255, 174, 51, 0.1);
+  font-size: 0.72rem;
+}
+
+.filmium-subtitle-card-heading > span.status-reviewed {
+  color: #7dd8ff;
+  background: rgba(64, 188, 255, 0.1);
+}
+
+.filmium-subtitle-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.filmium-subtitle-facts span {
+  padding: 5px 9px;
+  border: 1px solid rgba(142, 164, 196, 0.14);
+  border-radius: 999px;
+  color: #aebbd0;
+  background: rgba(5, 13, 27, 0.55);
+  font-size: 0.75rem;
+}
+
+.filmium-subtitle-card-actions,
+.filmium-subtitle-confirmation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.filmium-subtitle-text-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding: 8px 4px;
+  border: 0;
+  color: #8e9bb0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.filmium-subtitle-text-button:hover {
+  color: #ff8d9b;
+}
+
+.filmium-subtitle-loading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-muted, #98a6bc);
+}
+
+.filmium-subtitle-preview {
+  display: grid;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid rgba(111, 83, 255, 0.25);
+  border-radius: 16px;
+  background: rgba(5, 13, 28, 0.9);
+}
+
+.filmium-subtitle-preview-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.filmium-subtitle-preview-columns > div {
+  min-width: 0;
+}
+
+.filmium-subtitle-preview-columns span {
+  display: block;
+  margin-bottom: 7px;
+  color: #ff9caa;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filmium-subtitle-preview-columns .repaired span {
+  color: #70e5ac;
+}
+
+.filmium-subtitle-preview pre {
+  overflow: auto;
+  min-height: 150px;
+  max-height: 300px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(142, 164, 196, 0.12);
+  border-radius: 12px;
+  color: #d8e2f1;
+  background: #050d1a;
+  font-family: inherit;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.filmium-subtitle-change-summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #70e5ac;
+}
+
+.filmium-subtitle-confirm-area {
+  padding-top: 4px;
+  border-top: 1px solid rgba(142, 164, 196, 0.1);
+}
+
+.filmium-subtitle-confirmation p {
+  flex: 1 1 100%;
+  margin: 0;
+  color: #bdc8d8;
+}
+
+@media (max-width: 820px) {
+  .filmium-subtitle-heading,
+  .filmium-subtitle-card-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .filmium-subtitle-heading-actions {
+    justify-content: space-between;
+  }
+
+  .filmium-subtitle-preview-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-subtitle-text-button {
+    margin-left: 0;
+  }
+}
+
+
+/* ==========          TERMINATOR PREVODA          ========== */
+
+@keyframes filmium-terminator-in {
+  from { transform: translateX(100%); opacity: 0.3; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes filmium-terminator-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0.2; }
+}
+
+.filmium-terminator {
+  position: fixed;
+  inset: 12px;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 18px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(var(--domain-accent-strong-rgb), 0.18), transparent 42%),
+    linear-gradient(160deg, #0a1018, #05070d 70%);
+  animation: filmium-terminator-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filmium-terminator.closing {
+  animation: filmium-terminator-out 0.28s ease forwards;
+}
+
+/* Tanka traka napretka batch prekodiranja (odmah ispod naslova). */
+.filmium-terminator-progress {
+  flex: 0 0 auto;
+  height: 3px;
+  margin: -6px 0 0;
+  border-radius: 3px;
+  background: rgba(112, 139, 177, 0.18);
+  overflow: hidden;
+}
+
+.filmium-terminator-progress > span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--domain-accent-strong-rgb), 0.9),
+    rgba(var(--domain-accent-strong-rgb), 0.55)
+  );
+  transition: width 0.25s ease;
+}
+
+/* Legenda: [✕ Razveži] [kvadratići vrsta problema] [Prekodiraj]. */
+.filmium-terminator-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 2px 10px;
+}
+
+.filmium-terminator-legend-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.filmium-terminator-legend-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  color: #cbd5f5;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  background: rgba(112, 139, 177, 0.12);
+  cursor: pointer;
+  transition: color 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+
+.filmium-terminator-legend-clear:not(:disabled):hover {
+  color: #ff8f8f;
+  border-color: rgba(239, 68, 68, 0.6);
+}
+
+.filmium-terminator-legend-clear:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.filmium-terminator-legend-recode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #05121a;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #33bfff, #1f8fc4);
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.12s ease;
+}
+
+.filmium-terminator-legend-recode:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.filmium-terminator-legend-recode:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.filmium-terminator-list-connected {
+  color: #86efac;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.filmium-terminator-legend-dot {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.filmium-terminator-legend-dot:not(.off):hover {
+  transform: translateY(-1px) scale(1.08);
+}
+
+.filmium-terminator-legend-dot.active {
+  box-shadow: 0 0 0 2px #05070d, 0 0 0 4px rgba(255, 255, 255, 0.72);
+}
+
+.filmium-terminator-legend-dot.off {
+  opacity: 0.24;
+  filter: grayscale(0.5);
+  cursor: default;
+}
+
+.filmium-terminator-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.filmium-terminator-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(112, 139, 177, 0.28);
+  border-radius: 10px;
+  background: rgba(12, 23, 41, 0.7);
+  color: #d6e0f0;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.filmium-terminator-back:hover {
+  border-color: rgba(var(--domain-accent-rgb), 0.55);
+  color: #f4eaff;
+}
+
+.filmium-terminator-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f2f6ff;
+}
+
+.filmium-terminator-title svg { color: #eab308; }
+
+.filmium-terminator-title strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+}
+
+.filmium-terminator-title span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #9fb2cc;
+  font-size: 0.72rem;
+}
+
+/* ----- Modovi (Terminator / Editor) ----- */
+
+.filmium-terminator-modes {
+  margin-left: auto;
+  display: inline-flex;
+  border: 1px solid rgba(112, 139, 177, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.filmium-terminator-modes button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: none;
+  background: rgba(12, 23, 41, 0.7);
+  color: #b9c6de;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filmium-terminator-modes button.active {
+  background: #4f83ff;
+  color: #fff;
+}
+
+/* ----- Editor mod (ručno menjanje) ----- */
+
+.filmium-terminator-editor {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(6, 10, 18, 0.6);
+}
+
+.filmium-terminator-editor header {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(112, 139, 177, 0.16);
+  color: #9fb2cc;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+}
+
+.filmium-terminator-editarea {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  padding: 12px 14px;
+  background: transparent;
+  color: #e7eefb;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+/* Linija iz trenutnog vremena plejera — istaknuta selekcija. */
+.filmium-terminator-editarea::selection {
+  background: rgba(79, 131, 255, 0.45);
+  color: #fff;
+}
+
+.filmium-terminator-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* ----- Leva lista fajlova ----- */
+
+.filmium-terminator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+/* Lista popunjava raspoloživu visinu okvira i skroluje kad ih ima previše. */
+.filmium-terminator-files {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.filmium-terminator-list-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 2px;
+  color: #8ea0ba;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filmium-terminator-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 12px;
+  background: rgba(8, 18, 35, 0.72);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filmium-terminator-file:hover {
+  border-color: rgba(112, 139, 177, 0.4);
+}
+
+.filmium-terminator-file.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+  background: linear-gradient(135deg, rgba(var(--domain-accent-strong-rgb), 0.32), rgba(30, 41, 82, 0.5));
+}
+
+.filmium-terminator-file-icon { color: #9fc6ff; }
+
+.filmium-terminator-file-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.filmium-terminator-file-copy strong {
+  overflow: hidden;
+  color: #eef3fb;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-terminator-file-copy small {
+  color: #8fa0b8;
+  font-size: 0.68rem;
+}
+
+.filmium-terminator-empty {
+  padding: 16px;
+  color: #7f90a9;
+  font-size: 0.82rem;
+}
+
+/* ----- Desno: radno okruženje ----- */
+
+.filmium-terminator-workspace {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 16px;
+  background: rgba(7, 17, 33, 0.66);
+}
+
+
+/* Dugme: napravi drugo pismo (latinica↔ćirilica) + status. */
+.filmium-terminator-head-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filmium-terminator-translit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #cbd5f5;
+  border: 1px solid rgba(112, 139, 177, 0.35);
+  border-radius: 8px;
+  background: rgba(112, 139, 177, 0.1);
+  cursor: pointer;
+  transition: color 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+}
+
+.filmium-terminator-translit:not(:disabled):hover {
+  color: #7dd8ff;
+  border-color: rgba(64, 188, 255, 0.6);
+}
+
+.filmium-terminator-translit:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.filmium-terminator-translit-msg {
+  margin: 2px 0 0;
+  color: #86efac;
+  font-size: 0.78rem;
+}
+
+.filmium-terminator-file-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filmium-terminator-file-head h3 {
+  margin: 2px 0 0;
+  color: #f6f9ff;
+  font-size: 1.02rem;
+}
+
+.filmium-terminator-change-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #86efac;
+  font-size: 0.76rem;
+}
+
+.filmium-terminator-diff {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.filmium-terminator-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 12px;
+  background: rgba(4, 10, 20, 0.6);
+}
+
+.filmium-terminator-pane header {
+  padding: 9px 13px;
+  border-bottom: 1px solid rgba(112, 139, 177, 0.18);
+  color: #9db0cc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filmium-terminator-pane.repaired header {
+  color: #86efac;
+}
+
+.filmium-terminator-pane pre {
+  flex: 1;
+  overflow: auto;
+  margin: 0;
+  padding: 12px 14px;
+  color: #d6e0f0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.filmium-terminator-pane.repaired pre {
+  color: #e8f6ee;
+  background: rgba(34, 197, 94, 0.05);
+}
+
+/* Skrolabilni prozor sa linijama (fiksna visina, unutrašnji skrol). */
+/* Sentinel za lazy-load preview-a (nevidljiv marker na dnu). */
+.filmium-terminator-sentinel { height: 1px; }
+
+.filmium-terminator-lines {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 10px 0;
+  font-family: "Cascadia Code", "Consolas", ui-monospace, monospace;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.filmium-terminator-line {
+  padding: 1px 14px;
+  color: #d6e0f0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.filmium-terminator-pane.repaired .filmium-terminator-line {
+  color: #e3efe8;
+}
+
+/* Izmenjeni redovi — istovremeno istaknuti u obe verzije. */
+.filmium-terminator-pane .filmium-terminator-line.changed {
+  background: rgba(239, 68, 68, 0.16);
+  box-shadow: inset 3px 0 0 rgba(239, 68, 68, 0.7);
+}
+
+.filmium-terminator-pane.repaired .filmium-terminator-line.changed {
+  background: rgba(34, 197, 94, 0.18);
+  box-shadow: inset 3px 0 0 rgba(34, 197, 94, 0.8);
+}
+
+.filmium-terminator-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filmium-terminator-actions-left {
+  display: flex;
+  gap: 8px;
+}
+
+.filmium-terminator-confirm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filmium-terminator-confirm span {
+  color: #c4d2e6;
+  font-size: 0.8rem;
+}
+
+.filmium-terminator-placeholder {
+  flex: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  color: #6f8098;
+}
+
+.filmium-terminator-placeholder p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+/* ==========          TERMINATOR — DOPUNE          ========== */
+
+/* Sakriveni skrolbarovi (prozori kližu, bez trake). */
+.filmium-terminator-lines,
+.filmium-terminator-files {
+  scrollbar-width: none;
+}
+
+.filmium-terminator-lines::-webkit-scrollbar,
+.filmium-terminator-files::-webkit-scrollbar {
+  display: none;
+}
+
+/* „Sačuvaj" — centrirano iznad prozora. */
+.filmium-terminator-save {
+  display: flex;
+  justify-content: center;
+}
+
+/* Isticanje u redovima. */
+.filmium-terminator-line mark {
+  padding: 0 2px;
+  border-radius: 4px;
+}
+
+/* Loše protumačeni šđžčć — tamna crvena pozadina, svetlije slovo. */
+.filmium-terminator-line mark.mojibake {
+  background: rgba(150, 24, 24, 0.6);
+  color: #ffd4d4;
+}
+
+/* Potpisi prevodioca / URL — žuto, precrtano (biće obrisano). */
+.filmium-terminator-line mark.cred {
+  background: rgba(161, 118, 20, 0.55);
+  color: #ffe9a8;
+  text-decoration: line-through;
+}
+
+/* Akcije ispod prozora. */
+.filmium-terminator-actions {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+/* Prozorčić: vrsta problema (ispod liste fajlova). */
+.filmium-terminator-problem {
+  flex-shrink: 0;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid rgba(234, 179, 8, 0.28);
+  border-radius: 12px;
+  background: rgba(30, 24, 8, 0.5);
+}
+
+.filmium-terminator-problem-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #eab308;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filmium-terminator-problem-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #d6e0f0;
+}
+
+.filmium-terminator-problem-row strong {
+  color: #f6f9ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.filmium-terminator-problem-note {
+  margin: 0;
+  color: #b9c6da;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.filmium-terminator-problem-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.filmium-terminator-problem-tags span {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #cdd8ea;
+  font-size: 0.66rem;
+}
+
+
+/* ==========          TERMINATOR — TAČKE + KABL + PREKODIRANJE          ========== */
+
+.filmium-terminator-files {
+  position: relative;
+  padding-right: 20px;
+}
+
+.filmium-terminator-file {
+  position: relative;
+}
+
+/* Obojena tačka koja predstavlja tip problema. */
+.filmium-terminator-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  transition:
+    top 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    right 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+/* Poveži sve → tačka klizne na desnu ivicu (na „kabl"). */
+.filmium-terminator-file.connected .filmium-terminator-dot {
+  top: 50%;
+  right: -14px;
+  transform: translateY(-50%);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.06),
+    0 0 12px rgba(255, 255, 255, 0.22);
+}
+
+.filmium-terminator-file.connected {
+  border-color: rgba(234, 179, 8, 0.4);
+}
+
+/* SVG „kabl" koji povezuje sve kartice sa istim problemom. */
+.filmium-terminator-cable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* ----- Box vrste problema ----- */
+
+.filmium-terminator-problem-row.main span {
+  font-weight: 700;
+}
+
+.filmium-terminator-problem-row.main strong {
+  color: #eab308;
+}
+
+.filmium-terminator-problem-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.filmium-terminator-problem-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.filmium-terminator-connect,
+.filmium-terminator-recode {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.filmium-terminator-connect {
+  border: 1px solid rgba(112, 139, 177, 0.3);
+  background: rgba(12, 23, 41, 0.7);
+  color: #d6e0f0;
+}
+
+.filmium-terminator-connect.active {
+  border-color: rgba(234, 179, 8, 0.6);
+  background: rgba(161, 118, 20, 0.2);
+  color: #ffe9a8;
+}
+
+.filmium-terminator-connect:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.filmium-terminator-recode {
+  border: 1px solid rgba(34, 197, 94, 0.42);
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+}
+
+.filmium-terminator-recode:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+
+/* ==========          TERMINATOR — DIFF REDOVI          ========== */
+
+/* Prazan (poravnavajući) red kad je linija samo na jednoj strani. */
+.filmium-terminator-line.placeholder {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Uklonjeni redovi (levo). Potpisi = žuto precrtano, ostalo = crveno. */
+.filmium-terminator-line.removed {
+  background: rgba(150, 24, 24, 0.12);
+}
+
+.filmium-terminator-line.removed.credit {
+  background: rgba(161, 118, 20, 0.14);
+}
+
+.filmium-terminator-line mark.deleted {
+  padding: 0 2px;
+  border-radius: 4px;
+  background: rgba(150, 24, 24, 0.5);
+  color: #ffd4d4;
+  text-decoration: line-through;
+}
+
+/* Dodati redovi (desno) — retki, npr. spojene izmene. */
+.filmium-terminator-line.added {
+  background: rgba(34, 197, 94, 0.12);
+  color: #d6f5e2;
+}

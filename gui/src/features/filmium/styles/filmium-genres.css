@@ -1,0 +1,97 @@
+.filmium-genre-selector {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filmium-genre-selector legend {
+  margin-bottom: 7px;
+  color: var(--text-primary, #f7f7fb);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.filmium-genre-help,
+.filmium-genre-status {
+  margin: 0 0 10px;
+  color: var(--text-muted, #98a2b8);
+  font-size: 0.76rem;
+}
+
+.filmium-genre-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-genre-chip {
+  min-height: 34px;
+  padding: 7px 13px;
+  border: 1px solid rgba(145, 158, 190, 0.24);
+  border-radius: 999px;
+  background: rgba(14, 23, 42, 0.58);
+  color: #b9c2d5;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.filmium-genre-chip:hover:not(:disabled) {
+  border-color: rgba(157, 94, 255, 0.66);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.filmium-genre-chip.active {
+  border-color: rgba(161, 91, 255, 0.9);
+  background: linear-gradient(
+    135deg,
+    rgba(113, 45, 211, 0.9),
+    rgba(78, 38, 151, 0.86)
+  );
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(135, 61, 235, 0.24);
+}
+
+.filmium-genre-chip.legacy {
+  border-color: rgba(245, 158, 11, 0.58);
+  background: rgba(120, 69, 10, 0.28);
+  color: #ffd68a;
+  box-shadow: none;
+}
+
+.filmium-genre-selector:disabled .filmium-genre-chip {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.filmium-genre-legacy {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filmium-genre-legacy small {
+  color: #eabf72;
+}
+
+.filmium-genre-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #ff9caa;
+}
+
+@media (max-width: 720px) {
+  .filmium-genre-chip {
+    flex: 1 1 auto;
+  }
+}

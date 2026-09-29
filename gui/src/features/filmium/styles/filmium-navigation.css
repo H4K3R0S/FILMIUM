@@ -1,0 +1,103 @@
+﻿/* ==========          FILMIUM HOME PREÄŚICA          ========== */
+
+.filmium-home-button {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  color: #dbe4f0;
+  background: rgba(15, 23, 42, 0.52);
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filmium-home-button:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.44);
+  color: #f8fafc;
+  background: rgba(var(--domain-accent-strong-rgb), 0.34);
+  transform: translateY(-1px);
+}
+
+.filmium-home-button:focus-visible {
+  outline: 2px solid rgba(var(--domain-accent-soft-rgb), 0.72);
+  outline-offset: 2px;
+}
+
+
+/* ==========          LEVA GRUPA (HOME + TOGGLE)          ========== */
+
+.filmium-top-left {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+}
+
+
+/* ==========          FILM / SERIJE TOGGLE          ========== */
+
+.filmium-type-toggles {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+}
+
+.filmium-type-toggle {
+  padding: 0 14px;
+  height: 42px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  color: #dbe4f0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: rgba(15, 23, 42, 0.52);
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filmium-type-toggle:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.44);
+  color: #f8fafc;
+  background: rgba(var(--domain-accent-strong-rgb), 0.34);
+  transform: translateY(-1px);
+}
+
+.filmium-type-toggle.active {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.72);
+  color: #f8fafc;
+  background: rgba(var(--domain-accent-rgb), 0.55);
+}
+
+.filmium-type-toggle:focus-visible {
+  outline: 2px solid rgba(var(--domain-accent-soft-rgb), 0.72);
+  outline-offset: 2px;
+}
+
+
+/* ==========          COUNTER (BROJ U PRIKAZU)          ========== */
+
+.filmium-type-counter {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 42px;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}

@@ -1,0 +1,300 @@
+/* ==========          OKVIR CHATA (položaj i sklapanje)          ========== */
+/*
+ * Dva položaja: dole (u toku stranice) i panel uz desnu ivicu.
+ *
+ * „Dole" je prvobitni chat dashboard-a — popunjava radni prostor, unos stoji uz
+ * dno. Zaseban „traka na dnu" je uklonjen: bio je isti prikaz pod drugim imenom,
+ * pa je prebacivanje izgledalo kao skok na drugi ekran.
+ *
+ * Dole je providno, bez podloge — chat stoji na pozadinskoj slici dashboard-a.
+ *
+ * Desno je pravi panel: zalepljen uz desnu ivicu PROZORA, pune visine, sa svojom
+ * podlogom i ivicom — isto kao AI asistent u CODIUM radnom prostoru. Meren po
+ * radnom prostoru bio je odsecen jer dashboard secе prekoracenje (overflow),
+ * pa je red za unos ispadao van vidljivog dela.
+ */
+
+.cdock {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+}
+
+/* --- DOLE: popunjava radni prostor, unos uz dno --- */
+
+.cdock.pos-bottom {
+  flex: 1;
+}
+
+
+/* ==========          GLOBALNI CORE DOCK (dole-centar)          ========== */
+/*
+ * `CoreAssistantChat` montiran jednom u App shell-u (App.tsx), izvan toka
+ * stranice — preko svih CORE-nativnih ruta. Tamo dobija fiksan položaj i
+ * sopstvenu širinu umesto da rasteže radni prostor (`flex: 1` iznad ostaje
+ * za chat U TOKU stranice, npr. zaseban prozor — CoreChatHost).
+ */
+.core-global-dock .cdock.pos-bottom {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: min(860px, calc(100% - 24px));
+  z-index: 80;
+  /* Ograniči visinu — bez ovoga prazan chat zauzme pola ekrana. */
+  max-height: min(58vh, 460px);
+}
+
+/* Poruke skroluju unutar docka umesto da rastu naviše. */
+.core-global-dock .cdock.pos-bottom .chat-scroll {
+  max-height: 32vh;
+}
+
+.core-global-dock .cdock.pos-bottom.is-leaving {
+  animation-name: cdock-out-bottom-center;
+}
+
+.core-global-dock .cdock.pos-bottom.is-entering {
+  animation-name: cdock-in-bottom-center;
+}
+
+@keyframes cdock-out-bottom-center {
+  to {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cdock-in-bottom-center {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+}
+
+/* Radni prostor dobija razmak = veličina fiksiranog docka, pa se sadržaj sklanja
+   ispred (dole) ili pored (desni panel) chata, ne iza njega. `--core-dock-h`
+   upisuje CORE globalni dock; `--cell-dock-h/w` ćelijski `CellAssistantChat` —
+   u datom okruženju samo jedan je postavljen, drugi je 0. Specifičnost
+   `.core-layout` je nužna da nadjača osnovni `.workspace-content` padding.
+
+   Chromeless (ćelija embedovana u CORE, tihi mod): sadržaj NEMA `.core-layout`
+   omotač (shell je CORE-ov, van iframe-a), pa je `.workspace-content` sam vrh.
+   Zato drugi selektor hvata taj slučaj — inače dock stoji preko sadržaja i
+   reflow-a nema (radi samo u samostalnoj ćeliji, ne kroz CORE). */
+.core-layout .workspace-content,
+.workspace-content.cell-chromeless {
+  padding-bottom: calc(var(--core-dock-h, 0px) + var(--cell-dock-h, 0px));
+  padding-right: var(--cell-dock-w, 0px);
+}
+
+
+/* --- PANEL UZ DESNU IVICU PROZORA (pune visine) --- */
+
+.cdock.pos-right {
+  position: fixed;
+  top: var(--titlebar-h, 34px);
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  width: min(430px, 92vw);
+  padding: 10px 12px 12px;
+  /* Providno kao i dole: vidi se pozadinska slika, a blur drzi tekst citljivim.
+     Neprozirna podloga je od panela pravila zaseban ekran umesto istog chata. */
+  background: none;
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: -12px 0 34px rgba(0, 0, 0, 0.28);
+}
+
+
+/* --- sklopljen okvir: dugme za povratak --- */
+
+.cdock-handle {
+  position: absolute;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--domain-accent, #7dd3fc);
+  background: rgba(12, 18, 36, 0.55);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.cdock-handle:hover {
+  border-color: rgba(125, 211, 252, 0.45);
+}
+
+.cdock-handle-label {
+  color: #8195bd;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* U toku stranice i dole vraća se sa dna-centra; desno uz desnu ivicu. */
+.cdock-handle.handle-bottom {
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+}
+
+/* Sklopljen desni panel: pilula uz desnu ivicu prozora, ne radnog prostora. */
+.cdock-handle.handle-right {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right: none;
+  border-radius: 999px 0 0 999px;
+}
+
+
+/* --- alatke okvira: iznad unosa (premesti, otkaci) i ispod (sakrij) --- */
+/*
+ * Gole ikonice, bez okvira i podloge. Sa okvirom su u uglu izgledale kao
+ * zasebne kontrole nekog drugog prikaza, a ne kao alatke ovog chata.
+ */
+
+.chat-dock-tools {
+  position: absolute;
+  top: -26px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chat-dock-collapse {
+  display: flex;
+  justify-content: flex-end;
+  padding: 2px 6px 0;
+}
+
+.chat-dock-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border: none;
+  background: none;
+  color: #8195bd;
+  cursor: pointer;
+}
+
+.chat-dock-icon:hover {
+  color: #e2e8f0;
+}
+
+
+/* --- chat u zasebnom prozoru --- */
+
+.cdock-host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 8px 12px 12px;
+}
+
+
+/* ==========          PRELAZ IZMEDJU POLOZAJA          ========== */
+/*
+ * Premestanje chata (dole ↔ panel desno) ide u dva koraka, da okvir ne skoci s
+ * jednog kraja ekrana na drugi: prvo odlazi sa starog mesta (traka dole klizne
+ * nanize, panel klizne udesno), pa se na novom mestu pojavi istim putem unazad.
+ * Trajanja prate `IZLAZ_MS` / `ULAZ_MS` u ChatDock.tsx.
+ */
+
+.cdock.pos-bottom.is-leaving {
+  animation: cdock-out-bottom 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.cdock.pos-right.is-leaving {
+  animation: cdock-out-right 220ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.cdock.pos-bottom.is-entering {
+  animation: cdock-in-bottom 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.cdock.pos-right.is-entering {
+  animation: cdock-in-right 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes cdock-out-bottom {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cdock-out-right {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cdock-in-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes cdock-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdock.is-leaving,
+  .cdock.is-entering {
+    animation: none;
+  }
+}
+
+
+/* ==========          PRAZAN PROSTOR DOLE PROPUSTA KLIK          ========== */
+/*
+ * Chat u polozaju „dole" popunjava celu radnu povrsinu (`flex: 1`), pa je
+ * lezao PREKO sadrzaja strane i gutao klikove na dugmad i na skupljene
+ * `SmartFrame` okvire ispod sebe — i kad u njemu nema nijedne poruke.
+ * Pogadjalo je svaku CODIUM stranu sa chatom, a na Deployments je cinilo
+ * dugme „Dodaj cilj" neupotrebljivim.
+ *
+ * Zato prazna povrsina propusta pokazivac, a sve sto je u njoj stvarno
+ * iscrtano (unos, alatke, poruke, prazno stanje sa predlozima) ga vraca sebi.
+ * Panel desno se namerno ne dira: on nije preko strane — strana mu se skloni
+ * (`.smart-page.chat-right` dobija padding), pa mora da hvata i prazan klik.
+ */
+
+.cdock.pos-bottom,
+.cdock.pos-bottom .core-chat,
+.cdock.pos-bottom .chat-scroll,
+.cdock.pos-bottom .chat-empty,
+/* Mreza predloga je siroka i ima razmake — kao celina bi i dalje prekrivala
+   stubac okvira; klik hvataju same kartice, ne mreza oko njih. */
+.cdock.pos-bottom .chat-suggestions {
+  pointer-events: none;
+}
+
+/* Klik vracaju samo stvari koje se stvarno vide i koriste: unos i alatke,
+   nit poruka, i pojedinacne predlog-kartice. Naslov i tekst praznog stanja
+   nemaju sta da prime, pa ostaju providni. */
+.cdock.pos-bottom .core-chat > *:not(.chat-scroll),
+.cdock.pos-bottom .chat-thread,
+.cdock.pos-bottom .chat-suggestion {
+  pointer-events: auto;
+}
+

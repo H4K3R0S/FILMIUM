@@ -1,0 +1,285 @@
+﻿/* ==========          FILMIUM VIZUELNI ASSETI          ========== */
+
+.filmium-asset-fields {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 0.58),
+      rgba(15, 23, 42, 0.42)
+    );
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.filmium-asset-fields-heading span {
+  display: block;
+  margin-bottom: 5px;
+  color: #f8fafc;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.filmium-asset-fields-heading p {
+  color: #94a3b8;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.filmium-asset-fields-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 0.72fr)
+    minmax(360px, 1.28fr);
+  gap: 18px;
+}
+
+.filmium-asset-field {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  background: rgba(8, 15, 30, 0.52);
+}
+
+.filmium-asset-preview {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  min-height: 190px;
+  color: #64748b;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(var(--domain-accent-rgb), 0.15),
+      rgba(15, 23, 42, 0.78)
+    );
+}
+
+.filmium-asset-preview.poster {
+  aspect-ratio: 2 / 3;
+  max-height: 330px;
+}
+
+.filmium-asset-preview.backdrop {
+  aspect-ratio: 16 / 9;
+}
+
+.filmium-asset-preview::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  content: "";
+}
+
+.filmium-asset-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-asset-preview span {
+  padding: 20px;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.filmium-asset-field-content {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.filmium-asset-field-content strong,
+.filmium-asset-field-content span {
+  display: block;
+}
+
+.filmium-asset-field-content strong {
+  margin-bottom: 5px;
+  color: #f8fafc;
+  font-size: 0.94rem;
+}
+
+.filmium-asset-field-content span {
+  color: #94a3b8;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.filmium-asset-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filmium-asset-actions .secondary-button,
+.filmium-asset-actions .danger-button {
+  min-height: 38px;
+}
+
+.filmium-asset-actions label.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.filmium-asset-actions label.secondary-button:has(
+  input:disabled
+) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.filmium-asset-actions input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ==========          ASSET RESPONSIVE          ========== */
+
+@media (max-width: 960px) {
+  .filmium-asset-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-asset-preview.poster {
+    width: min(100%, 280px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .filmium-asset-fields {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .filmium-asset-field {
+    border-radius: 15px;
+  }
+
+  .filmium-asset-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-asset-actions .secondary-button,
+  .filmium-asset-actions .danger-button {
+    width: 100%;
+  }
+}
+
+
+
+
+
+/* ==========          FILMIUM CARD POSTERI          ========== */
+
+.filmium-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.filmium-card-poster {
+  position: relative;
+  overflow: hidden;
+  width: calc(100% + 44px);
+  margin: -22px -22px 20px;
+  aspect-ratio: 2 / 3;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--domain-accent-rgb), 0.28),
+      rgba(7, 13, 27, 0.96)
+    );
+}
+
+.filmium-card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 320ms ease,
+    filter 320ms ease;
+}
+
+.filmium-card:hover .filmium-card-poster img {
+  transform: scale(1.035);
+  filter: brightness(1.06);
+}
+
+.filmium-card-poster-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 54%,
+      rgba(7, 13, 27, 0.2) 70%,
+      rgba(7, 13, 27, 0.96) 100%
+    );
+}
+
+.filmium-card-poster-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 24px 22px;
+  background:
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(var(--domain-accent-rgb), 0.3),
+      transparent 44%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(30, 41, 59, 0.74),
+      rgba(7, 13, 27, 0.98)
+    );
+}
+
+.filmium-card-poster-fallback span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.filmium-card-poster-fallback strong {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+}
+
+
+/* ==========          POSTER RESPONSIVE          ========== */
+
+@media (max-width: 820px) {
+  .filmium-card-poster {
+    max-height: 440px;
+  }
+}
+
+

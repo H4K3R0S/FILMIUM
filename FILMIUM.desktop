@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=FILMIUM
+GenericName=AI Domen
+Comment=FILMIUM celija (FastAPI + GUI) — Linux/Windows, sam prepozna OS
+Exec="/home/kalima/ai/domains/filmium/start.sh"
+Icon=/home/kalima/ai/domains/filmium/filmium-icon.png
+Path=/home/kalima/ai/domains/filmium
+Terminal=false
+Categories=AudioVideo;
+StartupNotify=true

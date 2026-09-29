@@ -1,0 +1,133 @@
+﻿/* ==========          FILMIUM FORMA          ========== */
+
+.filmium-form {
+  width: 100%;
+}
+
+.filmium-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.filmium-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filmium-field > span {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.filmium-field input,
+.filmium-field select,
+.filmium-field textarea {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  outline: none;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.76);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.filmium-field input,
+.filmium-field select {
+  min-height: 46px;
+  padding: 0 13px;
+}
+
+.filmium-field textarea {
+  min-height: 110px;
+  padding: 13px;
+  resize: vertical;
+}
+
+.filmium-field input::placeholder,
+.filmium-field textarea::placeholder {
+  color: #475569;
+}
+
+.filmium-field input:focus,
+.filmium-field select:focus,
+.filmium-field textarea:focus {
+  border-color: rgba(125, 211, 252, 0.62);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
+}
+
+.filmium-field select option {
+  color: #f8fafc;
+  background: #0f172a;
+}
+
+.filmium-field-wide {
+  grid-column: 1 / -1;
+}
+
+.filmium-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.primary-button {
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid rgba(125, 211, 252, 0.38);
+  border-radius: 12px;
+  color: #082f49;
+  background: #7dd3fc;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #bae6fd;
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+
+.secondary-button {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(125, 211, 252, 0.26);
+  border-radius: 10px;
+  color: #bae6fd;
+  background: rgba(14, 116, 144, 0.12);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.secondary-button:hover:not(:disabled) {
+  border-color: rgba(125, 211, 252, 0.5);
+  background: rgba(14, 116, 144, 0.24);
+}
+
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+
+
+
+
+

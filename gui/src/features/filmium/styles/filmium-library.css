@@ -1,0 +1,249 @@
+﻿/* ==========          FILMIUM PRETRAGA I FILTERI          ========== */
+
+.filmium-toolbar {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(120px, 150px)
+    minmax(140px, 180px)
+    minmax(140px, 180px)
+    auto;
+  align-items: end;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.48);
+}
+
+.filmium-search,
+.filmium-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.filmium-search > span,
+.filmium-filter > span {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.filmium-search input,
+.filmium-filter select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 11px;
+  outline: none;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.filmium-search input:focus,
+.filmium-filter select:focus {
+  border-color: rgba(125, 211, 252, 0.58);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+.filmium-search input::placeholder {
+  color: #475569;
+}
+
+.filmium-filter select option {
+  color: #f8fafc;
+  background: #0f172a;
+}
+
+.filmium-toolbar-summary {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.filmium-toolbar-summary > span {
+  white-space: nowrap;
+  color: #94a3b8;
+  font-size: 0.78rem;
+}
+
+
+
+
+@media (max-width: 1100px) {
+  .filmium-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filmium-toolbar-summary {
+    justify-content: space-between;
+  }
+}
+
+
+
+
+/* ==========          FILMIUM KOLEKCIJE          ========== */
+
+.filmium-collections-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.filmium-collection-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.48);
+}
+
+.filmium-collection-form .primary-button {
+  align-self: flex-end;
+}
+
+.filmium-collection-list {
+  display: grid;
+  gap: 12px;
+}
+
+.filmium-collection-card {
+  display: flex;
+  min-height: 110px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.16);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(var(--domain-accent-strong-rgb), 0.13),
+      rgba(15, 23, 42, 0.58)
+    );
+}
+
+.filmium-collection-card h3 {
+  margin-bottom: 6px;
+}
+
+.filmium-collection-card p {
+  margin-bottom: 12px;
+  color: #94a3b8;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.filmium-collection-card div > span {
+  color: rgb(var(--domain-accent-soft-rgb));
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+
+
+
+@media (max-width: 1000px) {
+  .filmium-collections-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========          RESPONSIVE          ========== */
+
+@media (max-width: 900px) {
+
+  .filmium-toolbar {
+    grid-template-columns: 1fr;
+  }
+    .filmium-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-field-wide {
+    grid-column: auto;
+  }
+
+  .hero-panel {
+    padding: 30px;
+  }
+
+  .status-row,
+  .domain-grid,
+  .filmium-grid {
+    grid-template-columns: 1fr;
+  }
+
+  
+  .core-layout {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+
+  .workspace-content,
+  .top-bar {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+}
+
+
+/* ==========          FILMIUM FAVORITE OZNAKE          ========== */
+
+.filmium-card-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-favorite-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgba(250, 204, 21, 0.38);
+  border-radius: 999px;
+  color: #fde68a;
+  background: rgba(161, 98, 7, 0.22);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+
+
+/* ==========          FILMIUM FAVORITE AKCIJA          ========== */
+
+.favorite-button {
+  padding: 9px 12px;
+  border: 1px solid rgba(250, 204, 21, 0.22);
+  border-radius: 10px;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.58);
+  cursor: pointer;
+}
+
+.favorite-button:hover:not(:disabled),
+.favorite-button.active {
+  border-color: rgba(250, 204, 21, 0.5);
+  color: #fde68a;
+  background: rgba(161, 98, 7, 0.2);
+}
+
+.favorite-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+

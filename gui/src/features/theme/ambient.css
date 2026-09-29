@@ -1,0 +1,62 @@
+/* ==========          AMBIENT POZADINA (CONNECTED DOTS)          ========== */
+/*
+ * Fiksni sloj preko celog prozora, iza celokupnog UI-ja. Radni prostor
+ * (.workspace) ima z-index: 1, sidebar/titlebar još više — pa ovaj sloj
+ * (z-index: 0) stoji ispod svega. Ne hvata pokazivač.
+ */
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* Puna crna podloga — pozadinska slika (ako je ima) je sakrivena. */
+  background: #000000;
+
+  /* Pojava: kreće mala i providna, pa naraste do pune veličine za ~5s. */
+  opacity: 0;
+  transform: scale(0.75);
+  transform-origin: center;
+  transition:
+    opacity 5000ms ease-out,
+    transform 5000ms ease-out;
+}
+
+/* Kada je i pozadina aktivna: podloga providna, slika ostaje ispod tačaka. */
+.ambient-bg.ambient-bg--over-image {
+  background: transparent;
+}
+
+/* Otkriveno stanje (5s po paljenju) — efekat naraste na normalu. */
+.ambient-bg.is-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ambient-bg-spots,
+.ambient-bg-dots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Magloviti glow: blur daje meke, rasplinute ivice spotova. */
+.ambient-bg-spots {
+  filter: blur(48px);
+}
+
+/* Povezane tačke idu odozgo, oštre. */
+.ambient-bg-dots {
+  z-index: 1;
+}
+
+/* Poštuj korisnike koji izbegavaju animacije — bez rasta, odmah puna vidljivost. */
+@media (prefers-reduced-motion: reduce) {
+  .ambient-bg {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

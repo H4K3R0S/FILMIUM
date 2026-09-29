@@ -1,0 +1,131 @@
+/* ==========          THEME PANEL (Tema i pozadina) — samostalan stil          ========== */
+/* Neutralne, tamne vrednosti da radi u svakom domenu i Workplace-u bez njihovog CSS-a. */
+
+.tp-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 640px;
+  color: #e2e8f0;
+  font-family: inherit;
+}
+
+.tp-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tp-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.tp-sub {
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.tp-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.35);
+}
+.tp-group-title {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.tp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+}
+.tp-row-label {
+  font-size: 13px;
+}
+
+.tp-note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+/* Prekidač */
+.tp-switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(30, 41, 59, 0.9);
+  cursor: pointer;
+  padding: 0;
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.tp-switch.on {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.tp-switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f8fafc;
+  transition: transform 140ms ease;
+}
+.tp-switch.on .tp-switch-knob {
+  transform: translateX(20px);
+}
+
+/* Izbor slike (kad domen ima više pozadina) */
+.tp-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.tp-swatch {
+  position: relative;
+  width: 150px;
+  height: 86px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 0;
+  color: #fff;
+}
+.tp-swatch.is-active {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35);
+}
+.tp-swatch-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: left;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+}

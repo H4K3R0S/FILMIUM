@@ -1,0 +1,87 @@
+/* ==========          FILMIUM PALJENJE          ========== */
+
+/*
+ * Elementi FILMIUM ekrana ulaze postepeno pri ulasku na stranicu. Do svog
+ * trenutka su skriveni (opacity 0); klasa `is-in` pokreće ulaznu animaciju.
+ * Vremena vode useFilmiumIntro (carousel/kartice) i FilmiumTopBar (search).
+ * Animacije su blage i spore — duže traju, mekši easing.
+ */
+
+.filmium-intro-drop,
+.filmium-intro-slide,
+.filmium-intro-rise {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Search/toolbar traka — spušta se odozgo. */
+.filmium-intro-drop.is-in {
+  animation:
+    filmium-intro-drop
+    950ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+/* Featured carousel — sliduje sa desne strane. */
+.filmium-intro-slide.is-in {
+  animation:
+    filmium-intro-slide
+    1150ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+/* Kartice (FILMOVI redovi) — podižu se odozdo. */
+.filmium-intro-rise.is-in {
+  animation:
+    filmium-intro-rise
+    1150ms
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+@keyframes filmium-intro-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes filmium-intro-slide {
+  from {
+    opacity: 0;
+    transform: translateX(7%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes filmium-intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-intro-drop,
+  .filmium-intro-slide,
+  .filmium-intro-rise {
+    opacity: 1;
+    animation: none;
+  }
+}

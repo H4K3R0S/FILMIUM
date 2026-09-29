@@ -1,0 +1,404 @@
+module: filmium
+path: "core/domains/filmium"
+type: domain
+status: complete
+public_api:
+  - "ActivityEventType (activity_models.py)"
+  - "ActivityEntityType (activity_models.py)"
+  - "ActivityCreate (activity_models.py)"
+  - "ActivityItem (activity_models.py)"
+  - "ActivityRepository (activity_repository.py)"
+  - "ActivityValidationError (activity_service.py)"
+  - "ActivityService (activity_service.py)"
+  - "ArtworkType (artwork_models.py)"
+  - "ArtworkStorageKind (artwork_models.py)"
+  - "MediaArtworkCreate (artwork_models.py)"
+  - "MediaArtwork (artwork_models.py)"
+  - "ArtworkRepository (artwork_repository.py)"
+  - "ArtworkSyncError (artwork_sync_service.py)"
+  - "ArtworkSyncService (artwork_sync_service.py)"
+  - "MediaAssetType (asset_service.py)"
+  - "MediaAssetValidationError (asset_service.py)"
+  - "MediaAssetService (asset_service.py)"
+  - "CollectionRepository (collection_repository.py)"
+  - "CollectionValidationError (collection_service.py)"
+  - "CollectionNotFoundError (collection_service.py)"
+  - "CollectionService (collection_service.py)"
+  - "EpisodeRepository (episode_repository.py)"
+  - "normalize_genres (genre_rules.py)"
+  - "IgnoredDirectoryRepository (ignored_directory_repository.py)"
+  - "read_image_dimensions (image_dimensions.py)"
+  - "LanguageOption (language_catalog.py)"
+  - "MediaLibraryDateUpdate (library_date_models.py)"
+  - "MediaLibraryDateRecord (library_date_models.py)"
+  - "LibraryDateRepository (library_date_repository.py)"
+  - "MediaLibraryDateNotFoundError (library_date_service.py)"
+  - "MediaLibraryDateValidationError (library_date_service.py)"
+  - "LibraryDateService (library_date_service.py)"
+  - "MediaOrganizationExecutionResult (library_executor.py)"
+  - "FilmiumOrganizationExecutionError (library_executor.py)"
+  - "execute_media_organization (library_executor.py)"
+  - "MediaImportCommitResult (library_import_commit_service.py)"
+  - "LibraryImportCommitError (library_import_commit_service.py)"
+  - "ArtworkManifestSynchronizer (library_import_commit_service.py)"
+  - "LibraryImportCommitService (library_import_commit_service.py)"
+  - "ImportMatchStatus (library_import_models.py)"
+  - "ImportPreviewFile (library_import_models.py)"
+  - "MediaTechnicalInfo (library_import_models.py)"
+  - "ImportPreviewAction (library_import_models.py)"
+  - "MediaImportPreview (library_import_models.py)"
+  - "LibraryImportPreviewError (library_import_service.py)"
+  - "LibraryImportRootNotFoundError (library_import_service.py)"
+  - "LibraryImportService (library_import_service.py)"
+  - "FilmiumManifestError (library_manifest.py)"
+  - "normalize_manifest_path (library_manifest.py)"
+  - "parse_filmium_manifest (library_manifest.py)"
+  - "load_filmium_manifest (library_manifest.py)"
+  - "filmium_manifest_to_dict (library_manifest.py)"
+  - "write_filmium_manifest (library_manifest.py)"
+  - "MediaOwnershipStatus (library_models.py)"
+  - "LibraryRootStatus (library_models.py)"
+  - "MediaFileStatus (library_models.py)"
+  - "MediaFileRole (library_models.py)"
+  - "SubtitleManifest (library_models.py)"
+  - "ArtworkManifest (library_models.py)"
+  - "MediaFilesManifest (library_models.py)"
+  - "FilmiumInfoManifest (library_models.py)"
+  - "ScannedMediaFile (library_models.py)"
+  - "MediaFolderScanResult (library_models.py)"
+  - "OrganizationActionType (library_models.py)"
+  - "OrganizationAction (library_models.py)"
+  - "MediaOrganizationPlan (library_models.py)"
+  - "FilmiumOrganizationPlanError (library_organizer.py)"
+  - "plan_media_organization (library_organizer.py)"
+  - "LibraryRootScanStatus (library_root_models.py)"
+  - "LibraryRootCreate (library_root_models.py)"
+  - "LibraryRoot (library_root_models.py)"
+  - "LibraryRootRepository (library_root_repository.py)"
+  - "LibraryCatalogStatus (library_root_scanner.py)"
+  - "LibraryFolderScanEntry (library_root_scanner.py)"
+  - "LibraryRootScanResult (library_root_scanner.py)"
+  - "scan_library_root (library_root_scanner.py)"
+  - "LibraryRootValidationError (library_root_service.py)"
+  - "LibraryRootNotFoundError (library_root_service.py)"
+  - "LibraryRootConflictError (library_root_service.py)"
+  - "LibraryArtworkNotFoundError (library_root_service.py)"
+  - "LibraryRootService (library_root_service.py)"
+  - "FilmiumLibraryScanError (library_scanner.py)"
+  - "parse_media_folder_name (library_scanner.py)"
+  - "classify_image_artwork (library_scanner.py)"
+  - "scan_media_directory (library_scanner.py)"
+  - "MediaOriginScope (localization_models.py)"
+  - "MediaLocalizationType (localization_models.py)"
+  - "MediaLocalizationCreate (localization_models.py)"
+  - "MediaLocalization (localization_models.py)"
+  - "MediaLocalizationSettingsUpdate (localization_models.py)"
+  - "MediaLocalizationSettings (localization_models.py)"
+  - "MediaLocalizationSummary (localization_models.py)"
+  - "LocalizationRepository (localization_repository.py)"
+  - "MediaLocalizationNotFoundError (localization_service.py)"
+  - "MediaLocalizationValidationError (localization_service.py)"
+  - "MediaLocalizationSourceError (localization_service.py)"
+  - "MediaLocalizationConflictError (localization_service.py)"
+  - "LocalizationService (localization_service.py)"
+  - "parse_ffprobe_output (media_probe.py)"
+  - "probe_video_file (media_probe.py)"
+  - "MediaFileCreate (media_source_models.py)"
+  - "MediaFile (media_source_models.py)"
+  - "MediaSourceCreate (media_source_models.py)"
+  - "MediaSource (media_source_models.py)"
+  - "MediaSourceRepository (media_source_repository.py)"
+  - "MediaSourceValidationError (media_source_service.py)"
+  - "MediaSourceNotFoundError (media_source_service.py)"
+  - "MediaSourceMediaNotFoundError (media_source_service.py)"
+  - "MediaSourceLibraryNotFoundError (media_source_service.py)"
+  - "MediaSourceConflictError (media_source_service.py)"
+  - "MediaSourceService (media_source_service.py)"
+  - "generate_episode_thumbnail (media_thumbnail.py)"
+  - "MediaType (models.py)"
+  - "WatchStatus (models.py)"
+  - "MediaItemCreate (models.py)"
+  - "MediaItem (models.py)"
+  - "CollectionCreate (models.py)"
+  - "MediaCollection (models.py)"
+  - "FilmiumPaths (paths.py)"
+  - "MediaRepository (repository.py)"
+  - "reveal_in_file_manager (reveal_path.py)"
+  - "SeasonRepository (season_repository.py)"
+  - "SeriesImportError (series_import_service.py)"
+  - "SeriesImportResult (series_import_service.py)"
+  - "SeriesImportService (series_import_service.py)"
+  - "SeasonCreate (series_models.py)"
+  - "Season (series_models.py)"
+  - "EpisodeCreate (series_models.py)"
+  - "Episode (series_models.py)"
+  - "SeriesMoveAction (series_organizer.py)"
+  - "SeriesOrganizationPlan (series_organizer.py)"
+  - "SeriesOrganizationResult (series_organizer.py)"
+  - "plan_series_organization (series_organizer.py)"
+  - "execute_series_organization (series_organizer.py)"
+  - "EpisodeInfo (series_parser.py)"
+  - "parse_episode (series_parser.py)"
+  - "detect_season (series_parser.py)"
+  - "is_season_only_folder (series_parser.py)"
+  - "clean_series_title (series_parser.py)"
+  - "SubtitleRef (series_scanner.py)"
+  - "ArtworkRef (series_scanner.py)"
+  - "EpisodeScan (series_scanner.py)"
+  - "SeasonScan (series_scanner.py)"
+  - "SeriesScanResult (series_scanner.py)"
+  - "scan_series_directory (series_scanner.py)"
+  - "looks_like_series (series_scanner.py)"
+  - "scan_series_library (series_scanner.py)"
+  - "FilmiumValidationError (service.py)"
+  - "MediaItemNotFoundError (service.py)"
+  - "FilmiumService (service.py)"
+  - "ShareTransferMode (share_models.py)"
+  - "ShareQueueStatus (share_models.py)"
+  - "ShareProfileCreate (share_models.py)"
+  - "ShareProfile (share_models.py)"
+  - "ShareQueueItemCreate (share_models.py)"
+  - "ShareQueueItem (share_models.py)"
+  - "ShareRepository (share_repository.py)"
+  - "ShareValidationError (share_service.py)"
+  - "ShareProfileNotFoundError (share_service.py)"
+  - "ShareQueueItemNotFoundError (share_service.py)"
+  - "ShareMediaNotFoundError (share_service.py)"
+  - "ShareConflictError (share_service.py)"
+  - "ShareProfileDisabledError (share_service.py)"
+  - "ShareService (share_service.py)"
+  - "SubtitleIssueType (subtitle_inspector_models.py)"
+  - "SubtitleIssueSeverity (subtitle_inspector_models.py)"
+  - "SubtitleIssue (subtitle_inspector_models.py)"
+  - "SubtitleInspectionResult (subtitle_inspector_models.py)"
+  - "SubtitleRepairChange (subtitle_inspector_models.py)"
+  - "SubtitleRepairPreview (subtitle_inspector_models.py)"
+  - "SubtitleInspectionValidationError (subtitle_inspector_service.py)"
+  - "SubtitleInspectorService (subtitle_inspector_service.py)"
+  - "resolve_subtitle_language (subtitle_language.py)"
+  - "detect_subtitle_language (subtitle_language.py)"
+  - "detect_language_from_text (subtitle_language.py)"
+  - "read_subtitle_language (subtitle_language.py)"
+  - "PreparedSubtitleRepair (subtitle_repair_models.py)"
+  - "SubtitleRepairApplyRequest (subtitle_repair_models.py)"
+  - "SubtitleRepairApplyResult (subtitle_repair_models.py)"
+  - "SubtitleRepairQueueStatus (subtitle_repair_queue_models.py)"
+  - "SubtitleRepairQueueCreate (subtitle_repair_queue_models.py)"
+  - "SubtitleRepairQueueItem (subtitle_repair_queue_models.py)"
+  - "SubtitleRepairQueueRepository (subtitle_repair_queue_repository.py)"
+  - "SubtitleRepairQueueNotFoundError (subtitle_repair_queue_service.py)"
+  - "SubtitleRepairQueueValidationError (subtitle_repair_queue_service.py)"
+  - "SubtitleRepairQueueService (subtitle_repair_queue_service.py)"
+  - "SubtitleRepairValidationError (subtitle_repair_service.py)"
+  - "SubtitleRepairConfirmationError (subtitle_repair_service.py)"
+  - "SubtitleRepairConflictError (subtitle_repair_service.py)"
+  - "SubtitleRepairNotSafeError (subtitle_repair_service.py)"
+  - "SubtitleRepairService (subtitle_repair_service.py)"
+  - "SubtitleScanSummary (subtitle_scan_service.py)"
+  - "SubtitleScanService (subtitle_scan_service.py)"
+  - "TmdbSeries (tmdb_client.py)"
+  - "TmdbEpisode (tmdb_client.py)"
+  - "TmdbCredentials (tmdb_client.py)"
+  - "load_credentials (tmdb_client.py)"
+  - "is_tmdb_available (tmdb_client.py)"
+  - "parse_search_result (tmdb_client.py)"
+  - "parse_tv_details (tmdb_client.py)"
+  - "parse_season_episodes (tmdb_client.py)"
+  - "match_series (tmdb_client.py)"
+  - "get_season_episodes (tmdb_client.py)"
+  - "MediaVisualService (visual_service.py)"
+files:
+  - path: "core/domains/filmium/__init__.py"
+    lines: 1
+  - path: "core/domains/filmium/activity_models.py"
+    lines: 55
+  - path: "core/domains/filmium/activity_repository.py"
+    lines: 140
+  - path: "core/domains/filmium/activity_service.py"
+    lines: 107
+  - path: "core/domains/filmium/artwork_models.py"
+    lines: 66
+  - path: "core/domains/filmium/artwork_repository.py"
+    lines: 360
+  - path: "core/domains/filmium/artwork_sync_service.py"
+    lines: 198
+  - path: "core/domains/filmium/asset_service.py"
+    lines: 257
+  - path: "core/domains/filmium/collection_repository.py"
+    lines: 251
+  - path: "core/domains/filmium/collection_service.py"
+    lines: 234
+  - path: "core/domains/filmium/episode_repository.py"
+    lines: 141
+  - path: "core/domains/filmium/genre_rules.py"
+    lines: 82
+  - path: "core/domains/filmium/ignored_directory_repository.py"
+    lines: 70
+  - path: "core/domains/filmium/image_dimensions.py"
+    lines: 116
+  - path: "core/domains/filmium/language_catalog.py"
+    lines: 44
+  - path: "core/domains/filmium/library_date_models.py"
+    lines: 27
+  - path: "core/domains/filmium/library_date_repository.py"
+    lines: 120
+  - path: "core/domains/filmium/library_date_service.py"
+    lines: 100
+  - path: "core/domains/filmium/library_executor.py"
+    lines: 290
+  - path: "core/domains/filmium/library_import_commit_service.py"
+    lines: 502
+  - path: "core/domains/filmium/library_import_models.py"
+    lines: 104
+  - path: "core/domains/filmium/library_import_service.py"
+    lines: 431
+  - path: "core/domains/filmium/library_manifest.py"
+    lines: 477
+  - path: "core/domains/filmium/library_models.py"
+    lines: 188
+  - path: "core/domains/filmium/library_organizer.py"
+    lines: 438
+  - path: "core/domains/filmium/library_root_models.py"
+    lines: 50
+  - path: "core/domains/filmium/library_root_repository.py"
+    lines: 246
+  - path: "core/domains/filmium/library_root_scanner.py"
+    lines: 289
+  - path: "core/domains/filmium/library_root_service.py"
+    lines: 611
+  - path: "core/domains/filmium/library_scanner.py"
+    lines: 505
+  - path: "core/domains/filmium/localization_models.py"
+    lines: 137
+  - path: "core/domains/filmium/localization_repository.py"
+    lines: 218
+  - path: "core/domains/filmium/localization_service.py"
+    lines: 199
+  - path: "core/domains/filmium/manifest.py"
+    lines: 12
+  - path: "core/domains/filmium/media_probe.py"
+    lines: 204
+  - path: "core/domains/filmium/media_source_models.py"
+    lines: 73
+  - path: "core/domains/filmium/media_source_repository.py"
+    lines: 333
+  - path: "core/domains/filmium/media_source_service.py"
+    lines: 279
+  - path: "core/domains/filmium/media_thumbnail.py"
+    lines: 114
+  - path: "core/domains/filmium/migration_v1.py"
+    lines: 45
+  - path: "core/domains/filmium/migration_v10.py"
+    lines: 104
+  - path: "core/domains/filmium/migration_v11.py"
+    lines: 181
+  - path: "core/domains/filmium/migration_v12.py"
+    lines: 116
+  - path: "core/domains/filmium/migration_v13.py"
+    lines: 95
+  - path: "core/domains/filmium/migration_v14.py"
+    lines: 73
+  - path: "core/domains/filmium/migration_v15.py"
+    lines: 22
+  - path: "core/domains/filmium/migration_v16.py"
+    lines: 29
+  - path: "core/domains/filmium/migration_v17.py"
+    lines: 18
+  - path: "core/domains/filmium/migration_v18.py"
+    lines: 51
+  - path: "core/domains/filmium/migration_v2.py"
+    lines: 37
+  - path: "core/domains/filmium/migration_v3.py"
+    lines: 42
+  - path: "core/domains/filmium/migration_v4.py"
+    lines: 22
+  - path: "core/domains/filmium/migration_v5.py"
+    lines: 45
+  - path: "core/domains/filmium/migration_v6.py"
+    lines: 21
+  - path: "core/domains/filmium/migration_v7.py"
+    lines: 21
+  - path: "core/domains/filmium/migration_v8.py"
+    lines: 62
+  - path: "core/domains/filmium/migration_v9.py"
+    lines: 58
+  - path: "core/domains/filmium/migrations.py"
+    lines: 80
+  - path: "core/domains/filmium/models.py"
+    lines: 91
+  - path: "core/domains/filmium/paths.py"
+    lines: 49
+  - path: "core/domains/filmium/repository.py"
+    lines: 478
+  - path: "core/domains/filmium/reveal_path.py"
+    lines: 39
+  - path: "core/domains/filmium/season_repository.py"
+    lines: 122
+  - path: "core/domains/filmium/series_import_service.py"
+    lines: 381
+  - path: "core/domains/filmium/series_models.py"
+    lines: 55
+  - path: "core/domains/filmium/series_organizer.py"
+    lines: 262
+  - path: "core/domains/filmium/series_parser.py"
+    lines: 268
+  - path: "core/domains/filmium/series_scanner.py"
+    lines: 641
+  - path: "core/domains/filmium/service.py"
+    lines: 378
+  - path: "core/domains/filmium/share_models.py"
+    lines: 80
+  - path: "core/domains/filmium/share_repository.py"
+    lines: 331
+  - path: "core/domains/filmium/share_service.py"
+    lines: 227
+  - path: "core/domains/filmium/subtitle_inspector_models.py"
+    lines: 78
+  - path: "core/domains/filmium/subtitle_inspector_service.py"
+    lines: 456
+  - path: "core/domains/filmium/subtitle_language.py"
+    lines: 378
+  - path: "core/domains/filmium/subtitle_repair_models.py"
+    lines: 43
+  - path: "core/domains/filmium/subtitle_repair_queue_models.py"
+    lines: 56
+  - path: "core/domains/filmium/subtitle_repair_queue_repository.py"
+    lines: 294
+  - path: "core/domains/filmium/subtitle_repair_queue_service.py"
+    lines: 133
+  - path: "core/domains/filmium/subtitle_repair_service.py"
+    lines: 198
+  - path: "core/domains/filmium/subtitle_scan_service.py"
+    lines: 119
+  - path: "core/domains/filmium/tmdb_client.py"
+    lines: 256
+  - path: "core/domains/filmium/visual_service.py"
+    lines: 142
+dependencies:
+  depends_on:
+    - database
+    - foundation
+    - models
+  used_by: []
+do_not_edit:
+  - "core/domains/filmium/migration_v1.py"
+  - "core/domains/filmium/migration_v10.py"
+  - "core/domains/filmium/migration_v11.py"
+  - "core/domains/filmium/migration_v12.py"
+  - "core/domains/filmium/migration_v13.py"
+  - "core/domains/filmium/migration_v14.py"
+  - "core/domains/filmium/migration_v15.py"
+  - "core/domains/filmium/migration_v16.py"
+  - "core/domains/filmium/migration_v17.py"
+  - "core/domains/filmium/migration_v18.py"
+  - "core/domains/filmium/migration_v2.py"
+  - "core/domains/filmium/migration_v3.py"
+  - "core/domains/filmium/migration_v4.py"
+  - "core/domains/filmium/migration_v5.py"
+  - "core/domains/filmium/migration_v6.py"
+  - "core/domains/filmium/migration_v7.py"
+  - "core/domains/filmium/migration_v8.py"
+  - "core/domains/filmium/migration_v9.py"
+notes:
+  - "Domenski modul (Repository -> Service obrazac)."
+  - "FILMIUM je referentni obrazac za sve domene."

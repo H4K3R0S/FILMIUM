@@ -1,0 +1,983 @@
+/* apps/gui/src/styles/second-brain.css */
+
+/* ==========          SHELL: full-bleed mapa + sat kao overlay          ========== */
+/* Kada je aktivna Second Brain ruta, radni prostor je pun sloj za mapu, a
+   gornja traka (VREME/sat) lebdi preko nje umesto da je gura nadole. */
+.workspace.second-brain-shell {
+  height: calc(100vh - var(--titlebar-h));
+}
+
+.second-brain-shell .top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  /* Mapa se prevlaci ispod sata; sat sam ostaje interaktivan. */
+  pointer-events: none;
+}
+
+.second-brain-shell .top-bar > * {
+  pointer-events: auto;
+}
+
+.second-brain-shell .workspace-content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+/* ==========          STRANICA          ========== */
+
+.brain-page {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 800px at 50% 45%, #1a1526 0%, #0b0910 60%, #070509 100%);
+  color: #e7e3f2;
+}
+
+/* Naslov + pretraga lebde preko mape (mapa se i dalje prevlaci ispod njih). */
+.brain-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.brain-heading {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #cbb7ff;
+  pointer-events: none;
+}
+
+.brain-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 1px solid #2c2740;
+  border-radius: 999px;
+  background: rgba(18, 15, 28, 0.82);
+  backdrop-filter: blur(6px);
+  color: #8f88a8;
+  pointer-events: auto;
+}
+
+.brain-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #e7e3f2;
+  width: 220px;
+  font-size: 13px;
+}
+
+.brain-message {
+  position: absolute;
+  top: 56px;
+  left: 20px;
+  z-index: 21;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(18, 15, 28, 0.82);
+  font-size: 13px;
+  color: #9a93b4;
+  pointer-events: none;
+}
+
+.brain-message.error {
+  color: #ff8080;
+}
+
+/* Natpis "Prošireno: <label> — <N> stavki" kad je fokus aktivan. */
+.brain-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 21;
+  padding: 8px 18px;
+  border: 1px solid #2c2740;
+  border-radius: 999px;
+  background: rgba(18, 15, 28, 0.82);
+  backdrop-filter: blur(6px);
+  color: #cbb7ff;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Mapa je bazni sloj — puni ceo radni prostor. */
+.brain-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.brain-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+
+.brain-canvas:active {
+  cursor: grabbing;
+}
+
+.brain-ring {
+  fill: none;
+  stroke: #2a2440;
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+/* Obruč-labele (SKILLS/MEMORY/ROUTINES/APPLICATIONS) — uvek uspravne, van
+   rotirajucih grupa. */
+.brain-ring-label {
+  fill: #6f6a86;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Hex-grid pozadina: vrlo suptilan saćasti pattern ispod svega. */
+.brain-hex-cell {
+  fill: none;
+  stroke: #4a4270;
+  stroke-width: 1;
+  opacity: 0.1;
+}
+
+/* "Spacer" linije koje razdvajaju sektore memorije po domenu — suptilne. */
+.brain-mem-divider {
+  stroke: #4a4270;
+  stroke-width: 1;
+  stroke-dasharray: 2 8;
+  opacity: 0.28;
+}
+
+.brain-edge {
+  stroke: #4a4270;
+  stroke-width: 1;
+}
+
+/* Konekciona linija ka fokusu: "iscrtava se" od fokusiranog cvora ka susedu
+   (stroke-dashoffset od pune duzine ka 0). pathLength=1 na <line> normalizuje
+   duzinu bez obzira na stварnu geometriju. */
+.brain-edge.highlight {
+  stroke-width: 1.8;
+  opacity: 0.85;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: brain-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes brain-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Treperenje memorijskih tacaka — polje "diše" bez pomeranja centara. */
+@keyframes brain-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.brain-file-dot {
+  animation: brain-twinkle 6s ease-in-out infinite;
+}
+
+/* Puls domena (obruč koji se širi i bledi) — domeni "žive". Krug je centriran
+   u (0,0) pa fill-box + center rotira/skalira oko sopstvenog centra. */
+@keyframes brain-halo {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70%,
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.brain-domain-halo {
+  transform-origin: 0 0; /* krug je centriran u (0,0) → skalira se simetricno */
+  animation: brain-halo 5s ease-out infinite;
+}
+
+/* Blago pulsiranje sjaja jezgra. */
+@keyframes brain-core-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+.brain-core-glow {
+  transform-origin: 0 0;
+  animation: brain-core-pulse 7s ease-in-out infinite;
+}
+
+/* Orbita: cela mandala (dividers + linije + cvorovi) se sporo okreće oko
+   jezgra (0,0). Linije su u istoj grupi kao cvorovi → uvek prikacene. */
+@keyframes brain-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes brain-orbit-rev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.brain-orbit {
+  animation: brain-orbit 220s linear infinite;
+  transform-origin: 0 0;
+}
+
+/* Sadržaj cvorova sa labelom/ikonom se kontra-rotira istom brzinom → orijentacija
+   se poništava (ostaje uspravno), a pozicija i dalje orbitira. */
+.brain-upright {
+  animation: brain-orbit-rev 220s linear infinite;
+  transform-origin: 0 0;
+}
+
+/* Na fokus orbita i kontra-rotacija staju u istom trenutku (ostaju uskladjene). */
+.brain-orbit.paused,
+.brain-orbit.paused .brain-upright {
+  animation-play-state: paused;
+}
+
+.brain-node {
+  cursor: pointer;
+  transition: opacity 520ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Ulazna animacija: cvor se montira "smanjen i providan", pa se klasa skida
+   (BrainCanvas) da tranzicija gore odigra kratak scale-in "burst". */
+.brain-node-enter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.brain-node circle,
+.brain-node polygon,
+.brain-node rect {
+  stroke-width: 2;
+  transition: filter 160ms ease;
+}
+
+.brain-node.selected circle,
+.brain-node.selected polygon,
+.brain-node.selected rect,
+.brain-node:hover circle,
+.brain-node:hover polygon,
+.brain-node:hover rect {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.brain-node.dimmed {
+  opacity: 0.18;
+}
+
+.brain-node-label {
+  fill: #b9b2d0;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.brain-node.kind-core .brain-node-label {
+  fill: #ff9d57;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brain-orbit,
+  .brain-upright,
+  .brain-file-dot,
+  .brain-domain-halo,
+  .brain-core-glow,
+  .brain-edge.highlight {
+    animation: none;
+  }
+
+  .brain-edge.highlight {
+    stroke-dashoffset: 0;
+  }
+
+  .brain-node {
+    transition: none;
+  }
+}
+
+.brain-info-panel {
+  position: absolute;
+  top: 64px;
+  right: 16px;
+  z-index: 22;
+  width: 280px;
+  padding: 16px;
+  border: 1px solid #2c2740;
+  border-radius: 14px;
+  background: rgba(18, 15, 28, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.brain-info-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: #8f88a8;
+  cursor: pointer;
+}
+
+.brain-info-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.brain-info-title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.brain-info-meta {
+  margin: 0 0 12px;
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.brain-info-meta dt {
+  color: #8f88a8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+}
+
+.brain-info-meta dd {
+  margin: 2px 0 0;
+  word-break: break-all;
+}
+
+.brain-info-links {
+  margin-bottom: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.brain-info-links-label {
+  margin: 0 0 6px;
+  font-size: 11px;
+  color: #8f88a8;
+}
+
+.brain-info-links ul {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+  color: #cfc9e2;
+}
+
+.brain-info-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid #4a4270;
+  border-radius: 999px;
+  background: #1c1730;
+  color: #e7e3f2;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.brain-info-open:hover {
+  border-color: #cbb7ff;
+}
+
+/* ==========          LEVI PANEL: SADRŽAJ FAJLA          ========== */
+/* Dokovan uz levu ivicu radnog prostora (= tik uz sidebar). */
+.brain-content-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(460px, 44vw);
+  z-index: 23;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #2c2740;
+  background: rgba(13, 10, 19, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 14px 0 44px rgba(0, 0, 0, 0.5);
+  animation: brain-slide-in 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes brain-slide-in {
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.brain-content-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 12px 16px;
+  border-bottom: 1px solid #221d33;
+  flex: 0 0 auto;
+}
+
+.brain-content-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.brain-content-titles {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.brain-content-title {
+  margin: 0;
+  font-size: 14px;
+  color: #e7e3f2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brain-content-path {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #7c7695;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: rtl; /* dugacke putanje: cuvaj kraj (ime fajla) vidljivim */
+  text-align: left;
+}
+
+.brain-content-open,
+.brain-content-close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #8f88a8;
+  cursor: pointer;
+}
+
+.brain-content-open:hover,
+.brain-content-close:hover {
+  background: #221d33;
+  color: #e7e3f2;
+}
+
+.brain-content-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.brain-content-note {
+  margin: 16px;
+  font-size: 13px;
+  color: #9a93b4;
+}
+
+.brain-content-note.error {
+  color: #ff8080;
+}
+
+/* Monaco (kod) puni ceo body; body tada ne skroluje (editor ima svoj scroll). */
+.brain-content-code {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* ---- Renderovan Markdown ---- */
+.bm {
+  padding: 14px 18px 28px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d7d2e6;
+  overflow-wrap: anywhere;
+}
+
+.bm-h {
+  margin: 18px 0 8px;
+  line-height: 1.3;
+  color: #efeaff;
+}
+
+.bm-h1 {
+  font-size: 20px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #2c2740;
+}
+
+.bm-h2 {
+  font-size: 17px;
+}
+
+.bm-h3 {
+  font-size: 15px;
+}
+
+.bm-h4 {
+  font-size: 13px;
+  color: #cbb7ff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.bm-p {
+  margin: 10px 0;
+}
+
+.bm-list {
+  margin: 10px 0;
+  padding-left: 22px;
+}
+
+.bm-list li {
+  margin: 4px 0;
+}
+
+.bm-quote {
+  margin: 12px 0;
+  padding: 4px 14px;
+  border-left: 3px solid #4a4270;
+  color: #b3adca;
+  background: rgba(74, 66, 112, 0.12);
+  border-radius: 0 8px 8px 0;
+}
+
+.bm-hr {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid #2c2740;
+}
+
+.bm a {
+  color: #7fd4e0;
+  text-decoration: none;
+}
+
+.bm a:hover {
+  text-decoration: underline;
+}
+
+.bm-code-inline {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #221d33;
+  color: #e3b6ff;
+  font-family: "Cascadia Code", "Fira Code", ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.bm-code-block {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border: 1px solid #262038;
+  border-radius: 10px;
+  background: rgba(8, 6, 12, 0.7);
+  overflow-x: auto;
+}
+
+.bm-code-block code {
+  font-family: "Cascadia Code", "Fira Code", ui-monospace, monospace;
+  font-size: 12px;
+  color: #cbd2e6;
+  white-space: pre;
+}
+
+/* Ćelijski Second Brain: prost read-only prikaz koda bez Monaco-a. */
+.brain-content-pre {
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+  padding: 12px 14px;
+  font: 12px/1.5 ui-monospace, "JetBrains Mono", Consolas, monospace;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* ==========   ĆELIJA: puna visina Second Brain stranice   ========== */
+/* Ćelijski `.workspace` se ne rasteže sam kao CORE `second-brain-shell`, pa bi
+   `.brain-page` (position:absolute; inset:0) kolabirao na visinu naslova. Dok je
+   `CellSecondBrain` montiran (<html class="cell-brain-active">), workspace i
+   sadržaj dobijaju punu visinu prozora — radi i samostalno (`.workspace`
+   postoji) i chromeless (samo `.workspace-content` na vrhu). Ne dira CORE:
+   klasu postavlja isključivo ćelijski CellSecondBrain. */
+.cell-brain-active .workspace {
+  position: relative;
+  height: calc(100vh - var(--titlebar-h, 34px));
+  overflow: hidden;
+}
+.cell-brain-active .workspace-content {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Second Brain je fokusirana full-bleed mapa — lebdeći Agent dock bi prekrio
+   centar (domen) i obruče. Sakriva se dok je stranica aktivna; chat je dostupan
+   na svim ostalim stranicama domena. */
+.cell-brain-active .cdock,
+.cell-brain-active .cdock-handle {
+  display: none !important;
+}
+
+
+/* ==========  Second Brain: REGIONI  ========== */
+.brain-viewtoggle { display: inline-flex; gap: 6px; margin-left: auto; }
+.brain-viewtoggle button {
+  padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+  border: 1px solid rgba(148,163,184,0.25); background: rgba(15,23,42,0.5); color: #9fb3d1;
+}
+.brain-viewtoggle button.is-active { color: #eaf4ff; border-color: rgba(113,203,255,0.6); background: rgba(56,189,248,0.12); }
+
+.brain-regions { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.brain-regions-svg { width: 100%; height: 100%; max-height: 100%; cursor: grab; touch-action: none; }
+.brain-regions-svg:active { cursor: grabbing; }
+.brain-region-bg { fill: transparent; }
+
+/* Providni regioni — jedva vidljivi razdelnici */
+.brain-region-seg { cursor: pointer; }
+.brain-region-seg path { fill-opacity: 0.05; stroke-opacity: 0.16; stroke-width: 1; transition: fill-opacity 0.2s, stroke-opacity 0.2s; }
+.brain-region-seg:hover path { fill-opacity: 0.12; stroke-opacity: 0.4; }
+.brain-region-label { font-size: 15px; font-weight: 800; text-anchor: middle; pointer-events: none; opacity: 0.85; }
+.brain-region-count { fill: #7f93b3; font-size: 11px; text-anchor: middle; pointer-events: none; }
+
+/* Jezgro */
+.brain-region-core { fill: rgba(56,189,248,0.14); stroke: rgba(56,189,248,0.6); stroke-width: 2; cursor: pointer; }
+.brain-region-core-label { fill: #eaf4ff; font-size: 20px; font-weight: 800; text-anchor: middle; pointer-events: none; }
+.brain-region-core-sub { fill: #7f93b3; font-size: 11px; text-anchor: middle; pointer-events: none; }
+
+/* Orbite alata / skilova */
+.brain-orbit-guide { fill: none; stroke: rgba(148,163,184,0.12); stroke-width: 1; stroke-dasharray: 2 7; }
+.brain-orbit-label { fill: rgba(148,163,184,0.4); font-size: 11px; letter-spacing: 0.08em; text-anchor: middle; text-transform: uppercase; }
+.brain-tool circle { fill: rgba(226,232,240,0.5); }
+
+/* Čvorovi — treperenje (stara animacija) */
+@keyframes brain-twinkle { 0%,100% { opacity: 0.5; } 50% { opacity: 0.95; } }
+.brain-region-node {
+  cursor: pointer; opacity: 0.9;
+  transition: r 0.12s, opacity 0.15s;
+}
+.brain-region-node:hover { opacity: 1; stroke: #fff; stroke-width: 1.4; }
+.brain-region-node.is-sel { stroke: #fff; stroke-width: 2; animation: none; opacity: 1; }
+
+/* Linije veza */
+.brain-region-link { stroke-opacity: 0.5; stroke-width: 1.2; }
+
+/* Drill traka */
+.brain-region-drillbar { position: absolute; bottom: 16px; left: 16px; display: flex; align-items: center; gap: 12px; z-index: 5; }
+.brain-region-back { padding: 7px 13px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.82rem; border: 1px solid rgba(148,163,184,0.3); background: rgba(15,23,42,0.72); color: #cfe0f6; }
+.brain-region-drilltitle { font-weight: 700; font-size: 0.9rem; }
+
+/* Sidebar sadržaja atoma */
+.brain-region-sidebar {
+  position: absolute; top: 64px; left: 12px; bottom: 12px; width: min(380px, 42%);
+  display: flex; flex-direction: column; z-index: 8;
+  background: rgba(8,14,26,0.94); border: 1px solid rgba(148,163,184,0.22);
+  border-radius: 14px; box-shadow: 0 18px 50px rgba(0,0,0,0.5); overflow: hidden;
+}
+.brain-region-sidebar header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid rgba(148,163,184,0.16); }
+.brain-region-sidebar header strong { color: #eaf4ff; font-size: 0.98rem; }
+.brain-region-sidebar header button { background: none; border: none; color: #8aa0c0; font-size: 1.3rem; cursor: pointer; line-height: 1; }
+.brain-region-sidebar-meta { padding: 8px 14px; color: #8aa0c0; font-size: 0.76rem; border-bottom: 1px solid rgba(148,163,184,0.1); }
+.brain-region-sidebar-body { flex: 1; margin: 0; padding: 12px 14px; overflow: auto; color: #c7d5ea; font-size: 0.76rem; line-height: 1.55; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, monospace; }
+
+.brain-region-tip {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; gap: 2px; align-items: center;
+  padding: 8px 14px; border-radius: 10px; background: rgba(6,12,24,0.92);
+  border: 1px solid rgba(148,163,184,0.25); color: #e2ecfb; font-size: 0.82rem; pointer-events: none; z-index: 6;
+}
+.brain-region-tip strong { color: #fff; }
+.brain-region-tip span { color: #93a6c4; font-size: 0.75rem; }
+
+/* Solarni sistem: sve orbitira polako, labele ostaju uspravne (counter-spin) */
+@keyframes brain-orbit-spin { to { transform: rotate(360deg); } }
+@keyframes brain-orbit-spin-rev { to { transform: rotate(-360deg); } }
+.brain-spin { animation: brain-orbit-spin 200s linear infinite; transform-box: view-box; transform-origin: 500px 500px; }
+.brain-counterspin { animation: brain-orbit-spin-rev 200s linear infinite; transform-box: fill-box; transform-origin: center; }
+
+/* Orbita: disk (unutra = deselektuj) + vidljiv rub (van = nazad) */
+.brain-orbit-disc { fill: transparent; cursor: default; }
+.brain-orbit-edge { fill: none; stroke: rgba(148,163,184,0.42); stroke-width: 1.5; }
+
+/* Sateliti (nevidljive veze) */
+.brain-sat circle { opacity: 0.85; }
+.brain-sat-label { fill: rgba(203,213,225,0.75); font-size: 8px; text-anchor: middle; pointer-events: none; }
+.brain-tool-label { fill: rgba(203,213,225,0.6); font-size: 9px; text-anchor: middle; pointer-events: none; }
+
+/* Skilovi (zvezdice) + Alati (heksagoni) + tačke veza + zatamnjenje */
+.brain-skill path { fill: rgba(203,213,225,0.42); transition: fill 0.15s; cursor: help; }
+.brain-skill:hover path { fill: #fde68a; }
+.brain-tool path { fill: rgba(16,26,44,0.9); stroke: rgba(148,163,184,0.55); stroke-width: 1.5; }
+.brain-tool-glyph { fill: #cbd5e1; font-size: 12px; text-anchor: middle; pointer-events: none; }
+.brain-tool-label { fill: rgba(226,232,240,0.72); font-size: 9px; font-weight: 600; text-anchor: middle; pointer-events: none; }
+.brain-conn-dot circle { filter: drop-shadow(0 0 4px currentColor); }
+.brain-conn-label { fill: #eaf4ff; font-size: 8px; pointer-events: none; }
+.brain-region-node.is-dim { opacity: 0.1; animation: none; pointer-events: none; }
+.brain-region-seg.is-active path { fill-opacity: 0.16 !important; stroke-opacity: 0.55 !important; }
+
+/* --- Navigacija kroz veze: klikabilni [[wikilinkovi]] + skill/alat/tacke --- */
+.brain-region-sidebar-body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
+}
+.brain-wikilink {
+  display: inline;
+  padding: 0 2px;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: #38bdf8;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.brain-wikilink:hover { color: #7dd3fc; background: rgba(56, 189, 248, 0.12); border-radius: 3px; }
+.brain-skill.is-clickable,
+.brain-tool.is-clickable,
+.brain-conn-dot.is-clickable { cursor: pointer; }
+.brain-skill.is-clickable:hover path { filter: brightness(1.5); }
+.brain-tool.is-clickable:hover path { filter: brightness(1.4); }
+.brain-conn-dot.is-clickable:hover circle { r: 7; }
+
+/* --- Napredni pretraživač + 3D baloni (redizajn po referencama) --- */
+.brain-search-panel {
+  position: absolute;
+  top: 56px;
+  right: 16px;
+  width: min(330px, 40vw);
+  z-index: 6;
+}
+.brain-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(10, 14, 24, 0.82);
+  color: #e5e7eb;
+  font-size: 13px;
+  outline: none;
+  backdrop-filter: blur(6px);
+}
+.brain-search-input:focus { border-color: #38bdf8; box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25); }
+.brain-search-results {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 4px;
+  max-height: 60vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(10, 14, 24, 0.94);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.brain-search-results li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 12.5px;
+  color: #cbd5e1;
+}
+.brain-search-results li:hover { background: rgba(56, 189, 248, 0.14); color: #fff; }
+.brain-search-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+.brain-search-label { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brain-search-meta { flex: 0 0 auto; opacity: 0.6; font-size: 11px; }
+
+.brain-node-g.is-dim { opacity: 0.16; transition: opacity 0.2s; }
+.brain-node-sheen { pointer-events: none; opacity: 0.4; }
+.brain-node-num {
+  pointer-events: none;
+  fill: #f8fafc;
+  font-size: 9px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+  paint-order: stroke;
+  stroke: rgba(0, 0, 0, 0.55);
+  stroke-width: 1.5px;
+}
+
+/* --- Phase 2b: kontrole, hover, uspravne labele, progresivno širenje --- */
+@keyframes brain-node-bloom { from { opacity: 0; transform: scale(0.15); } to { opacity: 1; transform: scale(1); } }
+.brain-node-g {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: brain-node-bloom 460ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.brain-nodes:not(.has-sel):hover .brain-node-g { opacity: 0.18; transition: opacity 0.16s; }
+.brain-nodes:not(.has-sel) .brain-node-g:hover { opacity: 1; }
+.brain-node-hover-label {
+  fill: #ffffff; font-size: 15px; font-weight: 700; text-anchor: middle;
+  pointer-events: none; paint-order: stroke; stroke: rgba(4, 8, 18, 0.92); stroke-width: 3px;
+}
+.brain-spin.paused,
+.brain-spin.paused .brain-counterspin { animation-play-state: paused; }
+.brain-controls {
+  position: absolute; right: 16px; bottom: 16px;
+  display: flex; align-items: center; gap: 8px; z-index: 6;
+}
+.brain-ctl-btn {
+  padding: 7px 11px; border-radius: 9px; border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(10, 14, 24, 0.82); color: #cfe0f6; font-size: 12.5px; cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.brain-ctl-btn:hover { border-color: #38bdf8; color: #fff; }
+.brain-ctl-size {
+  display: flex; align-items: center; gap: 6px; font-size: 11px; color: #9fb2cf;
+  background: rgba(10, 14, 24, 0.82); padding: 6px 10px; border-radius: 9px;
+  border: 1px solid rgba(148, 163, 184, 0.25); backdrop-filter: blur(6px);
+}
+.brain-ctl-size input { width: 110px; }
+
+/* Izbor rasporeda (Prstenovi/Krug/Heks) */
+.brain-ctl-group {
+  display: flex; border-radius: 9px; overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.35); background: rgba(10, 14, 24, 0.82); backdrop-filter: blur(6px);
+}
+.brain-ctl-seg { padding: 7px 10px; border: 0; background: transparent; color: #9fb2cf; font-size: 12px; cursor: pointer; }
+.brain-ctl-seg:not(:last-child) { border-right: 1px solid rgba(148, 163, 184, 0.25); }
+.brain-ctl-seg:hover { color: #fff; }
+.brain-ctl-seg.is-active { background: rgba(56, 189, 248, 0.22); color: #eaf6ff; }
+
+/* Sloj uspravnih labela (brojevi u balonima + ime pod mišem) */
+.brain-spin-labels text { pointer-events: none; }
+.brain-spin-labels .brain-node-num { text-anchor: middle; dominant-baseline: central; }
+.brain-spin-labels .brain-node-hover-label { text-anchor: middle; dominant-baseline: auto; }
+
+/* Statična orbita: CSS spin (view-box) se ne izvršava, a counter-spin (fill-box)
+   jeste -> labele su se same okretale. Gasimo obe -> sve je USPRAVNO i čitljivo. */
+.brain-spin, .brain-counterspin { animation: none !important; }
+/* STATIC ORBIT */
+
+/* --- Phase 2d: tačke veza (hover), obruč sa alatima, pozadina --- */
+.brain-conn-dot { cursor: pointer; }
+.brain-conn-dot circle { transition: r 0.12s; }
+.brain-conn-dot:hover circle { r: 5.6; stroke-width: 1.3; }
+.brain-conn-label { fill: #eaf4ff; font-size: 8px; pointer-events: none; opacity: 0.75; transition: font-size 0.12s, opacity 0.12s; }
+.brain-conn-dot:hover .brain-conn-label { opacity: 1; font-size: 8.5px; font-weight: 700; }
+.brain-tool path { fill: rgba(12, 20, 36, 0.92); stroke: rgba(148, 163, 184, 0.42); stroke-width: 1.5; }
+.brain-tool.is-clickable:hover path { fill: rgba(30, 44, 70, 0.95); stroke: #38bdf8; }
+.brain-tool-glyph { font-size: 14px; }
+.brain-regions {
+  background:
+    radial-gradient(circle at 50% 47%, rgba(96, 110, 220, 0.26), rgba(10, 12, 22, 0) 34%),
+    radial-gradient(circle at 50% 47%, rgba(56, 189, 248, 0.10), rgba(6, 8, 16, 0) 22%),
+    radial-gradient(circle at 50% 50%, #0b0e1c 0%, #05060c 80%);
+}
+
+/* Heksagonalna tekstura + sjaj ka centru */
+.brain-hex-tex path { fill: none; stroke: rgba(132, 152, 214, 0.06); stroke-width: 1; }
+.brain-center-glow { pointer-events: none; }
+
+/* FULL WIDTH SECOND BRAIN: neka ćelijska pravila ograničavaju .workspace-content na
+   fiksnu širinu (npr. 1440px) u širokim prozorima -> prazan pojas desno. Dok je
+   Second Brain aktivan, sadržaj MORA da popuni ceo workspace. */
+.cell-brain-active .workspace-content {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Link iz atoma ka FILMIUM stranici (film/glumac) — otvara rutu u aplikaciji */
+.brain-extlink { color: #34d399; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.brain-extlink:hover { color: #6ee7b7; background: rgba(52, 211, 153, 0.12); border-radius: 3px; }
+
+/* Dugme „Otvori u FILMIUM-u" u zaglavlju sidebar-a (atom prepoznaje svoju stranicu) */
+.brain-region-sidebar header { gap: 8px; }
+.brain-region-sidebar header strong { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.brain-live-btn {
+  flex: 0 0 auto; padding: 5px 10px; border-radius: 999px; font-size: 0.74rem; font-weight: 700;
+  border: 1px solid rgba(52, 211, 153, 0.55); background: rgba(52, 211, 153, 0.14); color: #a7f3d0;
+  cursor: pointer; white-space: nowrap;
+}
+.brain-live-btn:hover { background: rgba(52, 211, 153, 0.28); color: #ecfdf5; border-color: #34d399; }
+
+/* Tačke veza: glatko razmicanje (fisheye) + istaknuta tačka pod mišem */
+.brain-conn-dot circle { transition: cx 0.45s cubic-bezier(0.22, 1, 0.36, 1), cy 0.45s cubic-bezier(0.22, 1, 0.36, 1), r 0.25s; }
+.brain-conn-dot { transition: opacity 0.4s; }
+.brain-conn-dot.is-hover circle { r: 5.6; stroke-width: 1.3; }
+.brain-conn-dot.is-hover .brain-conn-label { opacity: 1; font-size: 8.5px; font-weight: 700; }
+
+/* Broj veza levo od tačke veze (broj • tačka • ime) */
+.brain-conn-num { fill: #b9c7e0; font-size: 7.5px; font-weight: 700; pointer-events: none; opacity: 0.9; }

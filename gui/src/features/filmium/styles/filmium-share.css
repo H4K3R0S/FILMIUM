@@ -1,0 +1,481 @@
+@keyframes filmium-share-in {
+  from { transform: translateX(100%); opacity: 0.3; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes filmium-share-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0.2; }
+}
+
+.filmium-share {
+  position: fixed;
+  inset: 12px;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 18px 18px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+  background:
+    radial-gradient(circle at 88% 0%, rgba(56, 189, 248, 0.16), transparent 42%),
+    linear-gradient(160deg, #0a1018, #05070d 70%);
+  animation: filmium-share-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filmium-share.closing {
+  animation: filmium-share-out 0.28s ease forwards;
+}
+
+.filmium-share-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.filmium-share-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(112, 139, 177, 0.28);
+  border-radius: 10px;
+  background: rgba(12, 23, 41, 0.7);
+  color: #d6e0f0;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.filmium-share-back:hover {
+  border-color: rgba(56, 189, 248, 0.55);
+  color: #e7f6ff;
+}
+
+.filmium-share-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f2f6ff;
+}
+
+.filmium-share-title svg { color: #38bdf8; }
+
+.filmium-share-title strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+}
+
+.filmium-share-title span {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #9fb2cc;
+  font-size: 0.72rem;
+}
+
+.filmium-share-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filmium-share-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid rgba(112, 139, 177, 0.26);
+  border-radius: 11px;
+  background: rgba(12, 23, 41, 0.7);
+  color: #d6e0f0;
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.filmium-share-tool:hover:not(:disabled) {
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #e7f6ff;
+}
+
+.filmium-share-tool:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filmium-share-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.filmium-share-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 10px;
+  padding: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 16px;
+  background: rgba(7, 17, 33, 0.66);
+}
+
+.filmium-share-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #9db0cc;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.filmium-share-panel-head em {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #cdd8ea;
+  font-size: 0.68rem;
+  font-style: normal;
+}
+
+.filmium-share-list {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.filmium-share-list::-webkit-scrollbar { display: none; }
+.filmium-share-list { scrollbar-width: none; }
+
+.filmium-share-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 10px;
+  background: rgba(8, 18, 35, 0.72);
+  color: #e5edf9;
+  font: inherit;
+  font-size: 0.82rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.filmium-share-file:hover:not(.queued) {
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.filmium-share-file.queued {
+  cursor: default;
+}
+
+.filmium-share-file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-share-empty {
+  margin: 12px 4px;
+  color: #7f90a9;
+  font-size: 0.82rem;
+}
+
+.filmium-share-destination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-share-select {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(112, 139, 177, 0.28);
+  border-radius: 10px;
+  background: rgba(8, 18, 35, 0.8);
+  color: #e5edf9;
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.filmium-share-icon-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(112, 139, 177, 0.28);
+  border-radius: 10px;
+  background: rgba(12, 23, 41, 0.7);
+  color: #cdd8ea;
+  cursor: pointer;
+}
+
+.filmium-share-icon-button:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #e7f6ff;
+}
+
+.filmium-share-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(112, 139, 177, 0.14);
+}
+
+.filmium-share-destination-note {
+  overflow: hidden;
+  color: #8ea0ba;
+  font-size: 0.74rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-share-destination-note strong {
+  color: #d6e0f0;
+}
+
+.filmium-share-footer .primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.filmium-share-footer .primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========          PROGRES PRENOSA          ========== */
+
+.filmium-share-progress {
+  display: grid;
+  gap: 6px;
+  padding: 6px 0;
+}
+
+.filmium-share-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filmium-share-progress-head span {
+  color: #8ea0ba;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.filmium-share-progress-head strong {
+  color: #e5edf9;
+  font-size: 0.78rem;
+}
+
+.filmium-share-progress-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(3, 9, 20, 0.82);
+}
+
+.filmium-share-progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8, rgb(var(--domain-accent-rgb)));
+  transition: width 240ms ease;
+}
+
+.filmium-share-transfer-note {
+  margin: 0;
+  font-size: 0.74rem;
+}
+
+.filmium-share-transfer-note.ok {
+  color: #4ade80;
+}
+
+.filmium-share-transfer-note.error {
+  color: #f87171;
+}
+
+/* ==========          KARTICA (FILM / SERIJA / FAJL)          ========== */
+
+.filmium-share-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 10px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 12px;
+  background: rgba(8, 18, 35, 0.72);
+  color: #e5edf9;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filmium-share-card:hover:not(.queued) {
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateX(2px);
+}
+
+.filmium-share-card.queued {
+  cursor: default;
+}
+
+.filmium-share-card-poster {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: rgba(15, 30, 54, 0.8);
+  color: #6f8bb3;
+}
+
+.filmium-share-card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-share-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.filmium-share-card-text strong {
+  overflow: hidden;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-share-card-text span {
+  overflow: hidden;
+  color: #8394ae;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ==========          BOČNI IZBORNI PANEL (KLIZA ZDESNA)          ========== */
+
+@keyframes filmium-subpanel-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes filmium-subpanel-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+.filmium-share-subpanel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  background:
+    linear-gradient(160deg, rgba(9, 20, 38, 0.98), rgba(5, 12, 24, 0.99));
+  box-shadow: -18px 0 40px rgba(0, 0, 0, 0.4);
+  animation: filmium-subpanel-in 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.filmium-share-subpanel.closing {
+  animation: filmium-subpanel-out 0.28s ease forwards;
+}
+
+.filmium-share-subpanel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #cdd8ea;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filmium-share-source-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 12px;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 12px;
+  background: rgba(8, 18, 35, 0.72);
+  color: #e5edf9;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filmium-share-source-card svg:first-child {
+  flex-shrink: 0;
+  color: #38bdf8;
+}
+
+.filmium-share-source-card:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-share,
+  .filmium-share.closing,
+  .filmium-share-subpanel,
+  .filmium-share-subpanel.closing {
+    animation: none;
+  }
+
+  .filmium-share-card,
+  .filmium-share-source-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .filmium-share-body {
+    grid-template-columns: 1fr;
+  }
+}

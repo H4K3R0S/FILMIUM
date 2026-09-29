@@ -1,0 +1,8 @@
+/* ==========          DOMAIN THEME BARREL          ========== */
+/*
+ * Skupno učitavanje tema. CORE je default (:root); svaki domen ima svoj
+ * fajl u styles/themes/ i menja samo boje preko [data-domain="..."].
+ * Za izmenu jednog domena — diraj samo njegov fajl.
+ */
+
+@import "./themes/core.css";

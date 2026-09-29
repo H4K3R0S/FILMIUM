@@ -1,0 +1,163 @@
+﻿/* ==========          FILMIUM HISTORY          ========== */
+
+.filmium-history-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.filmium-history-heading .section-heading {
+  margin-bottom: 0;
+}
+
+.filmium-history-heading > .secondary-button {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filmium-activity-list {
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+.filmium-activity-list::before {
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 21px;
+  width: 1px;
+  content: "";
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--domain-accent-rgb), 0.52),
+      rgba(59, 130, 246, 0.12)
+    );
+}
+
+.filmium-activity-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 68px;
+  padding: 12px 16px 12px 0;
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(15, 23, 42, 0.62),
+      rgba(8, 15, 30, 0.38)
+    );
+  backdrop-filter: blur(16px);
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filmium-activity-item:hover {
+  border-color: rgba(var(--domain-accent-soft-rgb), 0.28);
+  transform: translateX(3px);
+}
+
+.filmium-activity-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  margin-left: 6px;
+  place-items: center;
+  border: 1px solid rgba(var(--domain-accent-soft-rgb), 0.28);
+  border-radius: 11px;
+  color: rgb(var(--domain-accent-soft-rgb));
+  background: rgba(var(--domain-accent-strong-rgb), 0.42);
+  box-shadow: 0 0 20px rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-activity-icon.collection {
+  border-color: rgba(56, 189, 248, 0.24);
+  color: #bae6fd;
+  background: rgba(3, 105, 161, 0.36);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+}
+
+.filmium-activity-content {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.filmium-activity-content strong {
+  overflow: hidden;
+  color: #f1f5f9;
+  font-size: 0.88rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-activity-content span {
+  color: #8d99ab;
+  font-size: 0.74rem;
+}
+
+.filmium-activity-item time {
+  color: #768397;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+
+/* ==========          ROTIRAJUÄ†A IKONA          ========== */
+
+.rotating {
+  animation: filmium-rotate 850ms linear infinite;
+}
+
+@keyframes filmium-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ==========          HISTORY RESPONSIVE          ========== */
+
+@media (max-width: 680px) {
+  .filmium-history-heading {
+    display: grid;
+  }
+
+  .filmium-history-heading > .secondary-button {
+    justify-self: start;
+  }
+
+  .filmium-activity-item {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .filmium-activity-item time {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-activity-item {
+    transition: none;
+  }
+
+  .rotating {
+    animation: none;
+  }
+}
+
+

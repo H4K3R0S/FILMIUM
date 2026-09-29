@@ -1,0 +1,845 @@
+/* ==========          PANEL SERIJE          ========== */
+
+.filmium-series-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.filmium-series-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 4px;
+  color: #a9b7cd;
+  font-size: 0.82rem;
+}
+
+.filmium-series-list-head strong {
+  color: #f1f5ff;
+}
+
+.filmium-series-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #8ce2ba;
+  font-size: 0.88rem;
+}
+
+.filmium-series-detail {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 18px;
+  background: rgba(7, 17, 33, 0.72);
+}
+
+
+/* ==========          HEADER          ========== */
+
+.filmium-series-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.filmium-series-hero > *:not(.filmium-series-hero-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.filmium-series-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(
+    100deg,
+    transparent,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 0.9)
+  );
+  mask-image: linear-gradient(
+    100deg,
+    transparent,
+    rgba(0, 0, 0, 0.9) 40%,
+    rgba(0, 0, 0, 0.9)
+  );
+}
+
+.filmium-series-hero-poster {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 138px;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  border-radius: 12px;
+  color: #7c8db0;
+  background: linear-gradient(150deg, #172c46, #0a1325 66%);
+}
+
+.filmium-series-hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-series-hero-body h2 {
+  margin: 4px 0 8px;
+  color: #f7faff;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.02em;
+}
+
+.filmium-series-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.filmium-series-hero-tags span {
+  padding: 4px 10px;
+  border: 1px solid rgba(112, 139, 177, 0.24);
+  border-radius: 999px;
+  color: #c6d3e6;
+  font-size: 0.74rem;
+}
+
+.filmium-series-hero-tags .filmium-series-status {
+  border-color: rgba(34, 197, 94, 0.42);
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+  font-weight: 700;
+}
+
+
+/* ==========          STATISTIKA          ========== */
+
+.filmium-series-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.filmium-series-stat {
+  display: grid;
+  gap: 1px;
+  padding: 11px 13px;
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.28);
+  border-radius: 12px;
+  background: rgba(22, 28, 52, 0.72);
+}
+
+.filmium-series-stat strong {
+  color: #f1f5ff;
+  font-size: 1.05rem;
+}
+
+.filmium-series-stat span {
+  color: #8fa0b8;
+  font-size: 0.68rem;
+}
+
+.filmium-series-stat.tone-green { border-color: rgba(34, 197, 94, 0.32); }
+.filmium-series-stat.tone-yellow { border-color: rgba(234, 179, 8, 0.3); }
+.filmium-series-stat.tone-red { border-color: rgba(239, 68, 68, 0.3); }
+.filmium-series-stat.tone-orange { border-color: rgba(249, 115, 22, 0.3); }
+
+
+/* ==========          EPIZODE + ORGANIZACIJA          ========== */
+
+.filmium-series-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+  gap: 16px;
+  align-items: start;
+}
+
+.filmium-series-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.filmium-series-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 13px;
+  border: 1px solid rgba(112, 139, 177, 0.2);
+  border-radius: 10px;
+  color: #9eabc0;
+  background: rgba(8, 18, 35, 0.7);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.filmium-series-tabs button span {
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #9fb2cc;
+  font-size: 0.64rem;
+}
+
+.filmium-series-tabs button.active {
+  border-color: rgba(var(--domain-accent-rgb), 0.55);
+  color: #f4eaff;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--domain-accent-strong-rgb), 0.72),
+    rgba(76, 29, 149, 0.58)
+  );
+}
+
+.filmium-series-episode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.filmium-series-episode-card {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 12px;
+  background: rgba(8, 18, 35, 0.72);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.filmium-series-episode-card:hover {
+  transform: translateY(-2px);
+}
+
+.filmium-series-episode-card.selected {
+  border-color: rgba(var(--domain-accent-rgb), 0.6);
+  box-shadow: 0 10px 26px rgba(var(--domain-accent-strong-rgb), 0.2);
+}
+
+.filmium-series-episode-thumb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  color: rgba(207, 224, 246, 0.7);
+  background:
+    radial-gradient(circle at 72% 25%, rgba(94, 234, 212, 0.22), transparent 40%),
+    radial-gradient(circle at 25% 90%, rgba(var(--domain-accent-rgb), 0.36), transparent 46%),
+    linear-gradient(145deg, #172c46, #0a1325 66%);
+}
+
+.filmium-series-episode-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmium-series-episode-check {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  color: rgb(var(--domain-accent-soft-rgb));
+}
+
+.filmium-series-episode-dot {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 9px rgba(34, 197, 94, 0.7);
+}
+
+.filmium-series-episode-copy {
+  display: grid;
+  gap: 2px;
+  padding: 9px 11px;
+}
+
+.filmium-series-episode-copy strong {
+  color: #f2f6ff;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.filmium-series-episode-copy small {
+  overflow: hidden;
+  color: #93a2ba;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ==========          ORGANIZACIJA          ========== */
+
+.filmium-series-org {
+  padding: 13px;
+  border: 1px solid rgba(112, 139, 177, 0.16);
+  border-radius: 13px;
+  background: rgba(12, 23, 41, 0.66);
+}
+
+.filmium-series-org-title {
+  margin: 0 0 10px;
+  color: #8ea0ba;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.filmium-series-tree {
+  display: grid;
+  gap: 3px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.filmium-series-tree-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  border-radius: 7px;
+  font-size: 0.75rem;
+}
+
+button.filmium-series-tree-row {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.filmium-series-tree-row:hover {
+  background: rgba(148, 176, 219, 0.08);
+}
+
+.filmium-series-tree-count {
+  margin-left: auto;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(148, 176, 219, 0.14);
+  color: #9fb2cc;
+  font-size: 0.62rem;
+  font-style: normal;
+}
+
+.filmium-series-tree-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-series-tree-row.folder { color: #9fc6ff; }
+.filmium-series-tree-row.folder.root { color: #cfe0f6; font-weight: 700; }
+.filmium-series-tree-row.file { color: #93a4bd; }
+.filmium-series-tree-row.file svg { color: #6f8098; }
+
+
+/* ==========          IZABRANA EPIZODA          ========== */
+
+.filmium-series-selected {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 14px;
+  background: rgba(8, 18, 35, 0.6);
+}
+
+.filmium-series-selected-thumb {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  color: rgba(207, 224, 246, 0.6);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(var(--domain-accent-rgb), 0.24), transparent 46%),
+    linear-gradient(150deg, #16273f, #0a1223);
+}
+
+.filmium-series-selected-body {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  align-content: center;
+}
+
+.filmium-series-selected-body h4 {
+  margin: 0;
+  color: #f6f9ff;
+  font-size: 1.05rem;
+}
+
+.filmium-series-selected-body code {
+  overflow: hidden;
+  color: #8494ad;
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-series-selected-subs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  color: #8ea0ba;
+}
+
+.filmium-series-selected-subs span {
+  padding: 1px 7px;
+  border: 1px solid rgba(112, 139, 177, 0.24);
+  border-radius: 999px;
+  color: #cdd8ea;
+  font-size: 0.64rem;
+}
+
+.filmium-series-selected-subs em {
+  color: #6f7f97;
+  font-style: normal;
+  font-size: 0.72rem;
+}
+
+.filmium-series-selected-note {
+  color: #6f7f97;
+  font-size: 0.68rem;
+}
+
+
+/* ==========          FOOTER          ========== */
+
+.filmium-series-detail-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.filmium-series-footer-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-series-detail-footer .primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filmium-series-hero-meta {
+  margin: 0 0 8px;
+  color: #9db0cc;
+  font-size: 0.82rem;
+}
+
+.filmium-series-hero-overview {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 10px;
+  max-width: 720px;
+  color: #c4d2e6;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.filmium-series-episode-overview {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #aebccd;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+
+/* ==========          IZABRANA EPIZODA (3 KOLONE)          ========== */
+
+.filmium-series-episode-detail {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) minmax(220px, 280px);
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 14px;
+  background: rgba(8, 18, 35, 0.6);
+}
+
+.filmium-series-episode-hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  color: #dbe6f7;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(94, 234, 212, 0.22), transparent 45%),
+    radial-gradient(circle at 75% 80%, rgba(var(--domain-accent-rgb), 0.3), transparent 50%),
+    linear-gradient(150deg, #16273f, #0a1223);
+}
+
+.filmium-series-play-overlay {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+}
+
+.filmium-series-episode-info {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.filmium-series-episode-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filmium-series-episode-head strong {
+  color: #f6f9ff;
+  font-size: 1rem;
+}
+
+.filmium-series-episode-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.filmium-series-episode-meta div {
+  display: grid;
+  gap: 2px;
+}
+
+.filmium-series-episode-meta dt {
+  color: #7f90a9;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filmium-series-episode-meta dd {
+  margin: 0;
+  color: #dbe6f7;
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.filmium-series-tech {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  padding: 12px;
+  border: 1px solid rgba(112, 139, 177, 0.16);
+  border-radius: 12px;
+  background: rgba(12, 23, 41, 0.66);
+}
+
+.filmium-series-tech-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 8px;
+  font-size: 0.76rem;
+}
+
+.filmium-series-tech-row > span:first-child {
+  color: #7f90a9;
+}
+
+.filmium-series-tech-row > span:last-child {
+  color: #d6e0f0;
+}
+
+.filmium-series-tech-row.path > span:last-child {
+  overflow: hidden;
+  color: #8fa0b8;
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ==========          TABBAR + SUB-TABOVI          ========== */
+
+.filmium-series-tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.filmium-series-tabs-label {
+  margin-right: 4px;
+  color: #8ea0ba;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filmium-series-subtabs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.filmium-series-subtabs button {
+  padding: 4px 2px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #9aabc2;
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.filmium-series-subtabs button.active {
+  border-bottom-color: rgb(var(--domain-accent-rgb));
+  color: #f4eaff;
+}
+
+.filmium-series-episode-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #86efac;
+  font-size: 0.74rem;
+}
+
+
+/* ==========          EPIZODA: BROJ NA SLIČICI          ========== */
+
+.filmium-series-episode-num {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(8, 12, 24, 0.78);
+  color: #f2f6ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+
+/* ==========          GALERIJA (POSTERI/BACKDROP/FANART)          ========== */
+
+.filmium-series-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.filmium-series-gallery-item {
+  display: grid;
+  gap: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(112, 139, 177, 0.18);
+  border-radius: 12px;
+  background: rgba(8, 18, 35, 0.72);
+}
+
+.filmium-series-gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.filmium-series-gallery-item span {
+  padding: 0 10px 9px;
+  color: #93a2ba;
+  font-size: 0.72rem;
+}
+
+.filmium-series-gallery-empty {
+  padding: 24px;
+  border: 1px dashed rgba(112, 139, 177, 0.24);
+  border-radius: 12px;
+  color: #7f90a9;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+
+/* ==========          EXTRAS          ========== */
+
+.filmium-series-extras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filmium-series-extra-chip {
+  padding: 6px 12px;
+  border: 1px solid rgba(112, 139, 177, 0.24);
+  border-radius: 999px;
+  background: rgba(12, 23, 41, 0.66);
+  color: #cdd8ea;
+  font-size: 0.78rem;
+}
+
+
+/* ==========          UMETNIČKA DELA (4 U REDU, MANJE)          ========== */
+
+.filmium-series-artwork .filmium-import-artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.filmium-series-artwork .filmium-import-artwork-thumb {
+  aspect-ratio: 16 / 10;
+}
+
+.filmium-series-artwork .filmium-import-artwork-meta strong {
+  font-size: 0.8rem;
+}
+
+.filmium-series-artwork .filmium-import-artwork-meta small {
+  font-size: 0.68rem;
+}
+
+
+/* ==========          FOOTER: SVE U JEDNOM REDU          ========== */
+
+.filmium-series-detail-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* Select se rasteže i gura „Uvezi seriju" na desni kraj reda. */
+.filmium-series-target-select {
+  flex: 1;
+  min-width: 160px;
+}
+
+.filmium-series-detail-footer .primary-button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.filmium-series-detail-footer .filmium-import-ghost-button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .filmium-series-body {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-series-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filmium-series-episode-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-series-footer-right {
+    flex-wrap: wrap;
+  }
+}
+
+/* ==========          UVEZENA SERIJA (ZELENA POTVRDA)          ========== */
+.filmium-library-discovery.imported {
+  border-color: rgba(46, 204, 113, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(46, 204, 113, 0.35);
+  background: rgba(46, 204, 113, 0.06);
+}
+
+.filmium-series-import-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 10px;
+}
+
+.filmium-series-progress-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ==========          FILM / ANIME PREKIDAC          ========== */
+.filmium-content-mode-toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  margin: 8px 0;
+  border: 1px solid rgba(112, 139, 177, 0.25);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.filmium-content-mode-option {
+  min-height: 32px;
+  padding: 0 18px;
+  border: 0;
+  background: transparent;
+  color: #9eabc0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.filmium-content-mode-option.active {
+  color: #06210f;
+  background: #22c55e;
+}
+
+.filmium-content-mode-toggle { justify-self: start; }

@@ -1,0 +1,20 @@
+# Korisnički prostor i okruženje — ne ide u repo
+.venv/
+gui/node_modules/
+data/
+*.log
+
+# Python keš
+__pycache__/
+*.pyc
+*.pyo
+
+# Ostaci ažuriranja ćelije
+/.FILMIUM.staging/
+/.FILMIUM.old/
+
+# Runtime RAG-log interakcija Agenta (ingestuje se u RAG; nije izvor)
+.ai/atomi/logs/
+
+# tajna — samo lokalno (secret_guard)
+config/tmdb.json

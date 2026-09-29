@@ -1,0 +1,15 @@
+# Ruff konfiguracija domena — kodifikuje ruff-gate (verify.py/qa.py: `ruff check .` == 0 ✓).
+# Podrazumevani ruff select ostaje aktivan. Namerne otporne putanje (blind-except,
+# try-except-pass/continue) se NE gase globalno — anotiraju se inline `# noqa: RULE`
+# (postojeća konvencija domena), pa gate i dalje hvata NOVE neanotorane slučajeve.
+
+[lint.flake8-bugbear]
+# FastAPI dependency-injection pozivi u podrazumevanim argumentima su namerni (nisu mutabilni default) → B008.
+extend-immutable-calls = [
+    "fastapi.Depends", "fastapi.Query", "fastapi.Path", "fastapi.Body",
+    "fastapi.Header", "fastapi.Cookie", "fastapi.File", "fastapi.Form",
+    "fastapi.Security",
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["S101"]  # assert je dozvoljen (i očekivan) u testovima

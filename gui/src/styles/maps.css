@@ -1,0 +1,125 @@
+/* ==========          SECOND BRAIN MAPS (Canvas mapa + sfere)          ========== */
+/* Tamna paleta kao na referentnoj slici: skoro crna pozadina, narandžasti akcent (root),
+   sitna monospace tipografija, providne kontrole. Sve absolute unutar .brain-stage. */
+
+.maps-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: #d5dbe6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background:
+    radial-gradient(900px 640px at 50% 52%, rgba(255, 157, 87, 0.07) 0%, rgba(0, 0, 0, 0) 60%),
+    radial-gradient(1400px 900px at 50% 50%, #0d1017 0%, #07090d 70%, #050608 100%);
+}
+.maps-root.is-full { position: fixed; z-index: 90; }
+
+.maps-stage { position: absolute; left: 0; right: 0; bottom: 0; top: 156px; }
+.maps-canvas { display: block; cursor: grab; touch-action: none; }
+.maps-canvas:active { cursor: grabbing; }
+
+/* --- gornja traka: naslov · VIEW · statistika --- */
+.maps-toolbar {
+  position: absolute; top: 54px; left: 16px; right: 16px; z-index: 6;
+  display: flex; align-items: center; gap: 14px; pointer-events: none;
+}
+.maps-toolbar > * { pointer-events: auto; }
+.maps-title { display: flex; align-items: baseline; gap: 8px; }
+.maps-title-hex { color: #ff9d57; font-size: 16px; }
+.maps-title { white-space: nowrap; }
+.maps-title strong { color: #f1f5f9; letter-spacing: 0.22em; font-size: 15px; }
+@media (max-width: 1100px) { .maps-title-sub { display: none; } }
+.maps-title-sub { color: #ff9d57; font-size: 12px; letter-spacing: 0.04em; }
+.maps-views {
+  display: inline-flex; align-items: center; margin-left: auto; margin-right: auto;
+  border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 4px; overflow: hidden;
+  background: rgba(8, 11, 18, 0.7);
+}
+.maps-views-label { color: #6b7280; font-size: 10px; padding: 0 10px; letter-spacing: 0.12em; }
+.maps-views button {
+  border: 0; border-left: 1px solid rgba(148, 163, 184, 0.18); background: transparent;
+  color: #9fb0c8; font: inherit; font-size: 10.5px; letter-spacing: 0.08em; padding: 6px 11px; cursor: pointer;
+}
+.maps-views button:hover { color: #fff; }
+.maps-views button.is-active { background: #ff9d57; color: #1a0e05; font-weight: 700; }
+.maps-stats { color: #8b96a8; font-size: 10.5px; letter-spacing: 0.06em; white-space: nowrap; display: flex; gap: 12px; align-items: center; }
+.maps-ext { color: #ff9d57; text-decoration: none; border: 1px solid rgba(255, 157, 87, 0.4); border-radius: 4px; padding: 3px 8px; }
+.maps-ext:hover { background: rgba(255, 157, 87, 0.15); }
+
+/* --- alatke: motion · search · fit · full · names --- */
+.maps-tools { position: absolute; top: 92px; left: 16px; z-index: 6; display: flex; gap: 8px; align-items: center; }
+.maps-btn {
+  border: 1px solid rgba(148, 163, 184, 0.28); border-radius: 4px; background: rgba(8, 11, 18, 0.7);
+  color: #b7c2d4; font: inherit; font-size: 11px; padding: 5px 10px; cursor: pointer; letter-spacing: 0.04em;
+}
+.maps-btn:hover { color: #fff; border-color: rgba(255, 157, 87, 0.6); }
+.maps-btn.is-on { color: #ff9d57; border-color: #ff9d57; }
+.maps-search {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px;
+  border: 1px solid rgba(148, 163, 184, 0.28); border-radius: 4px; background: rgba(8, 11, 18, 0.7); color: #8b96a8;
+}
+.maps-search input { background: transparent; border: 0; outline: 0; color: #e2e8f0; font: inherit; font-size: 11px; width: 120px; }
+
+/* --- čipovi oblasti i vrsta --- */
+.maps-chips { position: absolute; top: 124px; left: 16px; right: 16px; z-index: 6; display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 3px; }
+.maps-chips--kinds { position: static; margin-left: 10px; padding: 0 0 0 10px; border-left: 1px solid rgba(148, 163, 184, 0.25); overflow: visible; }
+.maps-chip {
+  white-space: nowrap; flex: 0 0 auto;
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, 0.28); border-radius: 4px; background: rgba(8, 11, 18, 0.72);
+  color: #aab6c8; font: inherit; font-size: 10.5px; letter-spacing: 0.03em;
+}
+.maps-chip i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.maps-chip b { color: #e2e8f0; font-weight: 600; }
+.maps-chip:hover { color: #fff; }
+.maps-chip.is-active { background: rgba(255, 255, 255, 0.08); color: #f8fafc; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+.maps-chip--kind span { color: #ff9d57; }
+.maps-chip--kind:not(.is-active) { opacity: 0.45; }
+
+/* --- hover tooltip --- */
+.maps-tip {
+  position: absolute; left: 16px; bottom: 14px; z-index: 7; pointer-events: none;
+  display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; border-radius: 6px;
+  background: rgba(8, 11, 18, 0.9); border: 1px solid rgba(148, 163, 184, 0.25);
+}
+.maps-tip strong { color: #f8fafc; font-size: 12px; }
+.maps-tip span { color: #8b96a8; font-size: 10.5px; }
+
+/* --- sidebar (nasleđuje .brain-region-sidebar) --- */
+.maps-root .maps-sidebar { top: 164px; z-index: 12; }
+.maps-btn, .maps-views button { white-space: nowrap; }
+.maps-path { margin-top: 4px; color: #64748b; font-size: 10px; word-break: break-all; }
+
+/* --- sfere na obodu --- */
+.maps-spheres {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.maps-spheres--left { left: 14px; }
+.maps-spheres--right { right: 14px; }
+.maps-root.has-sidebar .maps-spheres--left { opacity: 0; pointer-events: none; }
+.sphere {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; width: 112px; padding: 8px 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 12px; background: rgba(8, 11, 18, 0.62);
+  color: #cbd5e1; font: inherit; cursor: pointer; transition: border-color 0.2s, transform 0.2s;
+}
+.sphere:hover { border-color: rgba(255, 157, 87, 0.6); transform: translateY(-2px); }
+.sphere.is-offline { cursor: default; opacity: 0.6; }
+.sphere.is-offline:hover { transform: none; border-color: rgba(148, 163, 184, 0.3); }
+.sphere-canvas { display: block; }
+.sphere-name { display: flex; align-items: center; gap: 5px; font-size: 11px; letter-spacing: 0.14em; color: #f1f5f9; }
+.sphere-name i { width: 6px; height: 6px; border-radius: 50%; background: #64748b; }
+.sphere.is-online .sphere-name i { background: #34d399; box-shadow: 0 0 6px #34d399; }
+.sphere-meta { font-size: 10px; color: #8b96a8; }
+
+/* --- poruke unutar stage-a (sfera offline / učitavanje) --- */
+.maps-notice {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 8;
+  padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(8, 11, 18, 0.9); color: #cbd5e1; font-family: ui-monospace, monospace; font-size: 12px;
+  display: flex; gap: 12px; align-items: center;
+}
+.maps-notice button { border: 1px solid #ff9d57; background: transparent; color: #ff9d57; border-radius: 4px; padding: 4px 10px; cursor: pointer; font: inherit; }
+
+/* Postojeći .brain-topbar (naslov/pretraga/toggle) ostaje iznad; naša traka je ispod njega. */
+.maps-root .brain-region-sidebar header button.brain-sidebar-close { font-size: 1.3rem; }

@@ -1,0 +1,802 @@
+.filmium-uploads-page-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.filmium-uploads-page-heading h1 {
+  margin: 4px 0 7px;
+  color: #f7f9ff;
+  font-size: clamp(1.55rem, 2.4vw, 2.15rem);
+}
+
+.filmium-uploads-page-heading p:last-child {
+  max-width: 850px;
+  margin: 0;
+  color: #91a0b8;
+}
+
+.filmium-uploads-flow-label {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: -12px;
+  color: #71cbff;
+}
+
+.filmium-uploads-flow-label > div {
+  display: grid;
+  gap: 2px;
+}
+
+.filmium-uploads-flow-label strong {
+  color: #e9f2ff;
+}
+
+.filmium-uploads-flow-label span {
+  color: #8291a8;
+  font-size: 0.78rem;
+}
+
+.filmium-library-dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  align-items: start;
+  gap: 18px;
+}
+
+.filmium-library-dashboard-main {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.filmium-library-sidebar {
+  position: sticky;
+  top: 98px;
+  display: grid;
+  gap: 14px;
+}
+
+.filmium-library-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.filmium-library-action {
+  min-width: 0;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 16px;
+  border: 1px solid rgba(113, 139, 177, 0.25);
+  border-radius: 13px;
+  color: #dce8f9;
+  background: rgba(7, 17, 33, 0.74);
+  cursor: pointer;
+}
+
+.filmium-library-action:hover {
+  border-color: rgba(113, 203, 255, 0.48);
+  background: rgba(14, 30, 53, 0.82);
+}
+
+.filmium-library-action.primary {
+  border-color: rgba(181, 91, 255, 0.65);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--domain-accent-strong-rgb), 0.88),
+    rgba(var(--domain-accent-strong-rgb), 0.72)
+  );
+}
+
+.filmium-library-action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid rgba(148, 176, 219, 0.32);
+  border-radius: 999px;
+  color: #cfe0f6;
+  background: rgba(13, 27, 48, 0.72);
+}
+
+.filmium-library-action:hover .filmium-library-action-icon {
+  border-color: rgba(113, 203, 255, 0.6);
+  color: #eaf4ff;
+}
+
+.filmium-library-action.primary .filmium-library-action-icon {
+  border-color: rgba(226, 205, 255, 0.55);
+  color: #f6efff;
+  background: rgba(var(--domain-accent-strong-rgb), 0.55);
+}
+
+.filmium-library-action-copy {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+  text-align: left;
+}
+
+.filmium-library-action strong {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.filmium-library-action small {
+  overflow: hidden;
+  color: #8fa0b8;
+  font-size: 0.69rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-library-action.primary small {
+  color: #d7c1f5;
+}
+
+.filmium-library-notifications {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid rgba(113, 139, 177, 0.2);
+  border-radius: 18px;
+  background: rgba(7, 17, 33, 0.78);
+  box-shadow: 0 20px 50px rgba(2, 8, 23, 0.22);
+}
+
+/* Kompaktne notifikacije: ikonice gore-desno + klizni panel.
+   Wrapper ne zauzima mesto u rasporedu (fiksirana deca su van toka). */
+.filmium-library-notifications-compact {
+  display: contents;
+}
+
+.filmium-library-notifications-cluster {
+  position: fixed;
+  top: 90px;
+  right: 18px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid rgba(113, 139, 177, 0.22);
+  border-radius: 999px;
+  background: rgba(7, 17, 33, 0.9);
+  box-shadow: 0 12px 30px rgba(2, 8, 23, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+.filmium-library-notifications-bell {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 999px;
+  color: #cfe0f6;
+  background: rgba(var(--domain-accent-rgb), 0.2);
+  cursor: pointer;
+}
+
+.filmium-library-notifications-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  color: #fff;
+  background: #ef4444;
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.filmium-library-notifications-chip {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(113, 139, 177, 0.2);
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.16);
+  cursor: pointer;
+  transition: transform 0.14s ease;
+}
+
+.filmium-library-notifications-chip:hover {
+  transform: translateY(-2px);
+}
+
+.filmium-library-notifications-chip.tone-green {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.16);
+}
+
+.filmium-library-notifications-chip.tone-yellow {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.16);
+}
+
+.filmium-library-notifications-chip.tone-orange {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.16);
+}
+
+.filmium-library-notifications-chip.tone-blue {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.filmium-library-notifications-chip.tone-purple {
+  color: rgb(var(--domain-accent-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.16);
+}
+
+.filmium-library-notifications-panel {
+  position: fixed;
+  top: 90px;
+  right: 0;
+  z-index: 61;
+  width: min(340px, 86vw);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  border-radius: 18px 0 0 18px;
+  transform: translateX(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.filmium-library-notifications-panel.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-library-notifications-panel {
+    transition: none;
+  }
+}
+
+.filmium-import-queue-panel {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 18px;
+  background: rgba(7, 17, 33, 0.78);
+  box-shadow: 0 20px 50px rgba(2, 8, 23, 0.22);
+}
+
+.filmium-import-queue-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 28px;
+  height: 26px;
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 999px;
+  color: #7dd3fc;
+  background: rgba(14, 116, 144, 0.14);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.filmium-import-queue-progress {
+  display: grid;
+  gap: 8px;
+  padding: 11px;
+  border: 1px solid rgba(113, 139, 177, 0.15);
+  border-radius: 12px;
+  background: rgba(15, 29, 50, 0.58);
+}
+
+.filmium-import-queue-progress > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.filmium-import-queue-progress span {
+  color: #8090a8;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.filmium-import-queue-progress strong {
+  overflow: hidden;
+  color: #e5edf9;
+  font-size: 0.76rem;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-import-queue-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(3, 9, 20, 0.82);
+}
+
+.filmium-import-queue-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8, rgb(var(--domain-accent-rgb)));
+  transition: width 260ms ease;
+}
+
+.filmium-import-queue-list {
+  display: grid;
+  gap: 8px;
+  max-height: 340px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.filmium-import-queue-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 10px;
+  border: 1px solid rgba(113, 139, 177, 0.15);
+  border-radius: 12px;
+  background: rgba(15, 29, 50, 0.62);
+}
+
+/* Zavrsena stavka: zeleno kratko stoji pa klizne udesno i nestane
+   (usklaadeno sa 3s uklanjanjem iz liste u FilmiumLibraryManager). */
+.filmium-import-queue-item.status-done {
+  animation: filmium-queue-slide-out 0.4s ease-in 2.55s forwards;
+}
+
+@keyframes filmium-queue-slide-out {
+  to {
+    transform: translateX(115%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmium-import-queue-item.status-done {
+    animation: none;
+  }
+}
+
+.filmium-import-queue-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.14);
+}
+
+.filmium-import-queue-item.status-downloading .filmium-import-queue-icon {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+}
+
+.filmium-import-queue-item.status-done .filmium-import-queue-icon {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.14);
+}
+
+.filmium-import-queue-item.status-error .filmium-import-queue-icon {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.14);
+}
+
+.filmium-import-queue-item strong {
+  display: block;
+  overflow: hidden;
+  color: #e5edf9;
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-import-queue-item small {
+  color: #8797ae;
+  font-size: 0.68rem;
+}
+
+.filmium-import-queue-item em {
+  display: block;
+  margin-top: 3px;
+  color: #fdba74;
+  font-size: 0.66rem;
+  font-style: normal;
+}
+
+.filmium-import-queue-item button {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(113, 139, 177, 0.16);
+  border-radius: 8px;
+  color: #8999af;
+  background: rgba(3, 9, 20, 0.28);
+  cursor: pointer;
+}
+
+.filmium-import-queue-item button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.filmium-import-queue-start {
+  justify-content: center;
+  width: 100%;
+}
+
+.filmium-library-aside-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filmium-library-aside-heading h3 {
+  margin: 0;
+  color: #edf4ff;
+  font-size: 0.95rem;
+}
+
+.filmium-library-notification {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  border: 1px solid rgba(113, 139, 177, 0.16);
+  border-radius: 12px;
+  background: rgba(15, 29, 50, 0.72);
+}
+
+.filmium-library-notification-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  color: rgb(var(--domain-accent-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.16);
+}
+
+.filmium-library-notification-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(var(--domain-accent-rgb));
+  box-shadow: 0 0 10px rgba(var(--domain-accent-rgb), 0.7);
+}
+
+.filmium-library-notification.tone-green .filmium-library-notification-icon {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.16);
+}
+
+.filmium-library-notification.tone-green .filmium-library-notification-dot {
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+}
+
+.filmium-library-notification.tone-yellow .filmium-library-notification-icon {
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.16);
+}
+
+.filmium-library-notification.tone-yellow .filmium-library-notification-dot {
+  background: #eab308;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.7);
+}
+
+.filmium-library-notification.tone-orange .filmium-library-notification-icon {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.16);
+}
+
+.filmium-library-notification.tone-orange .filmium-library-notification-dot {
+  background: #f97316;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.7);
+}
+
+.filmium-library-notification.tone-blue .filmium-library-notification-icon {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.filmium-library-notification.tone-blue .filmium-library-notification-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+}
+
+.filmium-library-notification.tone-purple .filmium-library-notification-icon {
+  color: rgb(var(--domain-accent-rgb));
+  background: rgba(var(--domain-accent-rgb), 0.16);
+}
+
+.filmium-library-notification.tone-purple .filmium-library-notification-dot {
+  background: rgb(var(--domain-accent-rgb));
+  box-shadow: 0 0 10px rgba(var(--domain-accent-rgb), 0.7);
+}
+
+.filmium-library-notifications-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 4px;
+  padding: 9px;
+  border-radius: 10px;
+  color: #9db4d6;
+  font-size: 0.76rem;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.filmium-library-notifications-all:hover {
+  color: #eaf2ff;
+  background: rgba(113, 139, 177, 0.12);
+}
+
+.filmium-library-notification strong {
+  color: #e5edf9;
+  font-size: 0.77rem;
+}
+
+.filmium-library-notification p,
+.filmium-library-aside-empty {
+  margin: 4px 0 0;
+  color: #8d9cb2;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.filmium-library-statistics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.filmium-library-stat {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1px 8px;
+  padding: 12px;
+  border: 1px solid rgba(var(--domain-accent-rgb), 0.28);
+  border-radius: 12px;
+  color: #b56cff;
+  background: rgba(22, 28, 52, 0.72);
+}
+
+.filmium-library-stat svg {
+  grid-row: 1 / 3;
+  width: 20px;
+}
+
+.filmium-library-stat strong {
+  color: #f1f5ff;
+  font-size: 1.1rem;
+}
+
+.filmium-library-stat span {
+  overflow: hidden;
+  color: #8fa0b8;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-library-stat.tone-green { color: #22c55e; border-color: rgba(34, 197, 94, 0.28); }
+.filmium-library-stat.tone-yellow { color: #eab308; border-color: rgba(234, 179, 8, 0.28); }
+.filmium-library-stat.tone-red { color: #ef4444; border-color: rgba(239, 68, 68, 0.28); }
+.filmium-library-stat.tone-orange { color: #f97316; border-color: rgba(249, 115, 22, 0.28); }
+
+.filmium-library-scan-group {
+  overflow: hidden;
+  border: 1px solid rgba(113, 139, 177, 0.18);
+  border-radius: 17px;
+  background: rgba(7, 17, 33, 0.68);
+}
+
+.filmium-library-scan-group .filmium-library-scan-result {
+  padding: 15px;
+  border-top: 0;
+}
+
+.filmium-library-clear-scan {
+  justify-self: end;
+  border: 0;
+  color: #8fa0b8;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .filmium-uploads-page-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1180px) {
+  .filmium-library-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .filmium-library-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 900px) {
+  .filmium-library-quick-actions,
+  .filmium-library-statistics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .filmium-library-quick-actions,
+  .filmium-library-statistics {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========          AUTO-IMPORT PANEL          ========== */
+
+.filmium-auto-import-panel {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 18px;
+  background: rgba(7, 17, 33, 0.78);
+  box-shadow: 0 20px 50px rgba(2, 8, 23, 0.22);
+}
+
+.filmium-auto-import-panel .filmium-library-aside-heading button {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 8px;
+  background: rgba(14, 116, 144, 0.14);
+  color: #7dd3fc;
+  cursor: pointer;
+}
+
+.filmium-auto-import-folders {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filmium-auto-import-folders li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 11px;
+  border: 1px solid rgba(113, 139, 177, 0.15);
+  border-radius: 10px;
+  background: rgba(15, 29, 50, 0.58);
+  font-size: 0.82rem;
+}
+
+.filmium-auto-import-folders li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filmium-auto-import-folders li button,
+.filmium-auto-import-actions button {
+  display: inline-grid;
+  place-items: center;
+  padding: 4px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.filmium-auto-import-folders li button:hover {
+  color: #f87171;
+}
+
+.filmium-auto-import-detected h4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 8px;
+  font-size: 0.9rem;
+}
+
+.filmium-auto-import-detected h4 span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 999px;
+  color: #7dd3fc;
+  background: rgba(14, 116, 144, 0.14);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.filmium-auto-import-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 11px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(113, 139, 177, 0.15);
+  border-radius: 10px;
+  background: rgba(15, 29, 50, 0.58);
+}
+
+.filmium-auto-import-item.status-rejected {
+  opacity: 0.55;
+}
+
+.filmium-auto-import-item strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 190px;
+  font-size: 0.82rem;
+}
+
+.filmium-auto-import-item small {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+.filmium-auto-import-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.filmium-auto-import-actions button:first-child:hover {
+  color: #34d399;
+}
+
+.filmium-auto-import-actions button:last-child:hover {
+  color: #f87171;
+}

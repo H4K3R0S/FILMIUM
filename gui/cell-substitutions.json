@@ -1,0 +1,20 @@
+{
+  "_comment": "Jedini izvor istine za GUI celije: cita ga i Vite (vite.cell.config.ts) i Python sklapac (core/cell/gui.py). substitutions: CORE-only modul -> celijska zamena. forbidden_prefixes: moduli koje celija ne sme da nosi (CORE asistent, window sistem, CODIUM, CORE podesavanja modela/kljuceva, spec 15.2). src/features/voice/ namerno NIJE zabranjen: voiceApi.ts uvozi deljeni CoreChat, a van Tauri-ja je inertan (sve iza isTauriRuntime(), koji ne uvozi window manager) - window sistem ostaje zabranjen.",
+  "substitutions": {
+    "src/features/chat/CoreAssistantChat.tsx": "src/cell/CellAssistantChat.tsx",
+    "src/pages/FilmiumSettingsPage.tsx": "src/cell/CellSettingsPage.tsx"
+  },
+  "forbidden_prefixes": [
+    "src/features/codium/",
+    "src/features/window/",
+    "src/features/chat/CoreAssistantChat",
+    "src/features/settings/ApiKeysPanel",
+    "src/features/settings/ApiKeyDialog",
+    "src/features/settings/ChatPanel",
+    "src/features/settings/ModelsPanel",
+    "src/features/settings/openrouterCatalog",
+    "src/services/coreApi",
+    "src/services/codiumApi",
+    "src/pages/FilmiumSettingsPage"
+  ]
+}

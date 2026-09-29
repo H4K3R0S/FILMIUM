@@ -1,0 +1,1846 @@
+
+@import "./styles/themes.css";
+@import "./styles/core-shell.css";
+@import "./features/vreme/styles/vreme.css";
+
+/* ==========          GLOBALNI LAYOUT          ========== */
+
+:root {
+  color: #f5f7fb;
+  background: #0b1020;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(75, 111, 255, 0.24), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(0, 219, 180, 0.12), transparent 28rem),
+    #0b1020;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========          APP SHELL          ========== */
+
+.domain-status.disabled {
+  color: #cbd5e1;
+  background: rgba(100, 116, 139, 0.24);
+}
+
+.hero-panel,
+.domains-section,
+.filmium-section {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 18, 36, 0.78);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+}
+
+.hero-panel {
+  padding: 42px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #7dd3fc;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+.hero-text {
+  max-width: 720px;
+  color: #c7d2fe;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+
+/* ==========          STATUS KARTICE          ========== */
+
+.status-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 240px));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.status-card {
+  padding: 18px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.status-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #94a3b8;
+  font-size: 0.86rem;
+}
+
+.status-card strong {
+  color: #34d399;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========          SISTEMSKE PORUKE          ========== */
+
+.system-message {
+  margin-top: 22px;
+  margin-bottom: 0;
+  color: #bae6fd;
+}
+
+.system-message.error {
+  color: #fca5a5;
+}
+
+
+/* ==========          DOMAIN KARTICE          ========== */
+
+.domains-section,
+.filmium-section {
+  margin-top: 24px;
+  padding: 32px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.domain-card {
+  min-height: 190px;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 22px;
+  background: rgba(15, 23, 42, 0.66);
+}
+
+.domain-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.domain-card h3 {
+  margin-bottom: 0;
+  letter-spacing: 0.08em;
+}
+
+.domain-card p {
+  margin-top: 22px;
+  color: #cbd5e1;
+  line-height: 1.65;
+}
+
+.domain-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.domain-status.active {
+  color: #022c22;
+  background: #34d399;
+}
+
+.domain-status.ready {
+  color: #dbeafe;
+  background: rgba(59, 130, 246, 0.22);
+}
+
+
+/* ==========          CORE DASHBOARD (CHAT LAYOUT)          ========== */
+
+.core-dashboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* Fiksna visina veže dock za dno prozora; poruke klize unutar chat-scroll-a. */
+  height: calc(100vh - 194px);
+  overflow: hidden;
+  /* Uvlači chat dock skoro do same donje ivice prozora (jede padding radnog prostora). */
+  margin-bottom: -16px;
+  /* Providno — pozadinska slika je na celom prozoru (body.core-dashboard-active). */
+  background: transparent;
+}
+
+
+/* ==========          GADGETI (GORE DESNO NA DASHBOARD-U)          ========== */
+
+.core-gadgets {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+/* Sitna dugmad za promenu stanja gadgeta. */
+.gadget-cycle,
+.gadget-restore {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 6;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid rgba(140, 175, 235, 0.35);
+  background: rgba(6, 12, 26, 0.7);
+  color: #a9c1e8;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+/* Ikonica za promenu stanja skrivena; vidljiva samo na hover widgeta. */
+.gadget-cycle {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.sys-widget:hover .gadget-cycle,
+.disk-panel:hover .gadget-cycle {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gadget-restore {
+  position: static;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
+
+/* Perf widget u zaglavlju, u visini sata, gore desno. */
+.top-bar-perf {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 190px;
+}
+
+/* ---------- SISTEM WIDGET (CPU/GPU/RAM) ---------- */
+/* Bez vidljivog okvira (transparentno). */
+.sys-widget {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #dce6f7;
+  font-size: 12px;
+}
+
+.sys-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.sys-row__label {
+  width: 30px;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #b7c8e6;
+}
+
+.sys-row__bar {
+  position: relative;
+  flex: 1;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.sys-row__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transform-origin: left center;
+  animation: gadget-grow 0.8s ease both;
+  background: linear-gradient(90deg, #3a86ff, #7a5adc);
+}
+
+.sys-row.is-warn .sys-row__fill {
+  background: linear-gradient(90deg, #f4b942, #f47e42);
+}
+
+.sys-row.is-critical .sys-row__fill {
+  background: linear-gradient(90deg, #ff6b6b, #ff3b3b);
+}
+
+.sys-row__val {
+  width: 34px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #eef4ff;
+}
+
+/* Minimal sistem: kockice samo za kritične metrike. */
+.sys-min {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.sys-min__cell {
+  padding: 3px 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: #ff3b3b;
+}
+
+.sys-min__idle {
+  width: 8px;
+  height: 8px;
+  background: rgba(120, 170, 255, 0.35);
+}
+
+/* Minimal disk: kockice ne-sistemskih diskova. */
+.disk-min {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.disk-min__cell {
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #dce6f7;
+  background: rgba(6, 12, 26, 0.6);
+  border: 1px solid rgba(140, 175, 235, 0.4);
+}
+
+.disk-min__idle {
+  width: 8px;
+  height: 8px;
+  background: rgba(120, 170, 255, 0.35);
+}
+
+@keyframes gadget-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ==========          DISK PANEL          ========== */
+
+/* Bez pozadine i naslova, oštre (kvadrataste) ivice. Detalj se vidi na hover. */
+.disk-panel {
+  position: relative;
+  width: 100%;
+  color: #dce6f7;
+  font-size: 13px;
+}
+
+.disk-panel__empty {
+  margin: 0;
+  color: #8aa0c4;
+  font-size: 12px;
+  text-align: right;
+}
+
+.disk-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Kvadratasto polje jednog diska sa oštrim ivicama. */
+.disk-row {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: 0;                 /* oštre ivice */
+  border: 1px solid rgba(140, 175, 235, 0.35);
+  background: rgba(6, 12, 26, 0.42);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.disk-row.is-selected {
+  border-color: #6fa8ff;
+  box-shadow: 0 0 0 1px #6fa8ff inset;
+}
+
+/* Vizuelna popunjenost: širina = zauzeta memorija. Puni se animacijom (stagger). */
+.disk-row__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(58, 134, 255, 0.45), rgba(120, 90, 220, 0.5));
+  z-index: 0;
+  transform-origin: left center;
+  animation: gadget-grow 0.85s ease both;
+}
+
+.disk-row__mount {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.disk-row__label {
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  color: #c3d4ef;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 96px;
+}
+
+.disk-row__free {
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  font-size: 11px;
+  color: #eef4ff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Detalj (peek + skeniraj) — skriven; prikaže se na hover celog okvira. */
+.disk-panel__detail {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.18s ease, opacity 0.18s ease;
+  margin-top: 0;
+}
+
+.disk-panel:hover .disk-panel__detail {
+  max-height: 260px;
+  opacity: 1;
+  margin-top: 6px;
+  padding: 9px;
+  background: rgba(5, 11, 24, 0.72);
+  border: 1px solid rgba(140, 175, 235, 0.3);
+}
+
+.disk-panel__peek {
+  margin: 0 0 8px;
+  line-height: 1.35;
+  font-size: 12px;
+}
+
+.disk-panel__scan {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 0;                 /* oštre ivice */
+  border: 1px solid #3a86ff;
+  background: linear-gradient(135deg, #2f6bff, #3a86ff);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.disk-panel__scan:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.disk-panel__report {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #bcd0f0;
+}
+
+.disk-panel__films {
+  color: #9be8b0;
+}
+
+.disk-panel__note {
+  color: #a9c6ff;
+}
+
+.disk-panel__warn {
+  color: #ffcf7a;
+}
+
+.disk-panel__error {
+  margin: 6px 0 0;
+  color: #ff9a9a;
+  font-size: 12px;
+}
+
+
+/* ==========          POZADINA CELOG PROZORA (DASHBOARD)          ========== */
+
+/* Slika pokriva ceo prozor do ivica (i iza sidebara), fiksna uz prozor. */
+body.core-dashboard-active {
+  background:
+    linear-gradient(rgba(8, 13, 27, 0.5), rgba(8, 13, 27, 0.5)),
+    url("/os_7.jpg") center / cover no-repeat fixed;
+}
+
+/* CORE layout providan da se vidi slika kroz njega. */
+body.core-dashboard-active .core-layout {
+  background: transparent;
+}
+
+/* Sidebar poluproziran (~60% pun) — slika se nazire i kroz njega. */
+body.core-dashboard-active .sidebar {
+  background: rgba(5, 11, 24, 0.45);
+}
+
+
+/* ==========          DOCK DOMENA (SCAN → INDIKATOR, DONJI LEVI ĆOŠAK)          ========== */
+
+/* Fiksiran uz dno prozora; prati sidebar (left se menja s njegovom vidljivošću).
+   Kartice rastu naviše iznad indikatora — indikator je poslednji, uz dno. */
+.domain-dock {
+  position: fixed;
+  bottom: 14px;
+  left: 12px;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 220px;
+  transition: left 540ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Prati sidebar: uz njegovu desnu ivicu kada je otvoren, uz ekran kada nije. */
+.core-layout.sidebar-visible .domain-dock {
+  left: 240px;
+}
+
+.core-layout.sidebar-collapsed .domain-dock {
+  left: 12px;
+}
+
+.domain-dock-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.domain-dock-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 5px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(8, 13, 27, 0.72);
+  backdrop-filter: blur(10px);
+  transform-origin: left center;
+}
+
+/* Ulaz kartice: blaga animacija (fade + klizanje naviše). */
+.domain-dock-card.scan.entering {
+  animation: domainCardIn 320ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Izlaz aktivne kartice: nestaje istom animacijom. */
+.domain-dock-card.scan.leaving {
+  animation: domainCardOut 320ms ease both;
+}
+
+.domain-dock-card-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #475569;
+  flex-shrink: 0;
+}
+
+/* Blinkovanje provere aktivnosti (1.5s). */
+.domain-dock-card-dot[data-checking="true"] {
+  background: #7dd3fc;
+  animation: domainCheckBlink 500ms ease-in-out infinite;
+}
+
+.domain-dock-card.inactive .domain-dock-card-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+.domain-dock-card-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #e2e8f0;
+}
+
+.domain-dock-card.inactive .domain-dock-card-name {
+  color: #cbd5e1;
+}
+
+.domain-dock-card-state {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.domain-dock-card.scan.checking .domain-dock-card-state {
+  color: #7dd3fc;
+}
+
+.domain-dock-card.inactive .domain-dock-card-state {
+  color: #f59e0b;
+}
+
+/* Indikator: kvadratić + labela; boja prati ukupno stanje domena. */
+.domain-dock-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(8, 13, 27, 0.72);
+  backdrop-filter: blur(10px);
+  cursor: default;
+}
+
+.domain-dock.compact .domain-dock-indicator {
+  padding: 5px;
+}
+
+.domain-dock-indicator-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.domain-dock-indicator[data-status="ok"] .domain-dock-indicator-box {
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+}
+
+.domain-dock-indicator[data-status="warn"] .domain-dock-indicator-box {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.7);
+}
+
+.domain-dock-indicator[data-status="critical"] .domain-dock-indicator-box {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.75);
+  animation: domainCheckBlink 900ms ease-in-out infinite;
+}
+
+.domain-dock-indicator-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #7dd3fc;
+  text-transform: uppercase;
+}
+
+@keyframes domainCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes domainCardOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.96);
+  }
+}
+
+@keyframes domainCheckBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+
+/* ==========          CORE CHAT POVRŠINA          ========== */
+
+.core-chat {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.core-chat.dragging {
+  outline: 2px dashed rgba(125, 211, 252, 0.5);
+  outline-offset: 8px;
+  border-radius: 20px;
+}
+
+.chat-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 12px 0 6px;
+  /* Poruke koje dođu do vrha (blizu VREME sata) nestaju u fade. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 64px
+  );
+  mask-image: linear-gradient(to bottom, transparent 0, #000 64px);
+}
+
+.chat-scroll::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.chat-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.chat-empty h2 {
+  margin: 8px 0 6px;
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+}
+
+.chat-empty-text {
+  margin: 0;
+  color: #64748b;
+}
+
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(620px, 100%);
+  /* Poruke se lepe uz dno (odmah iznad unosa); istorija raste naviše. */
+  margin: auto auto 0;
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 2px 0;
+  line-height: 1.55;
+  /* Providni balončići bez ivica — vidi se samo tekst. */
+  border: none;
+  background: transparent;
+}
+
+.chat-bubble.me {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.chat-bubble.core {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.chat-bubble p {
+  margin: 0;
+  color: #f1f5f9;
+  white-space: pre-wrap;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+.chat-bubble.core p {
+  color: #cfe8ff;
+}
+
+.chat-bottom-anchor {
+  height: 1px;
+}
+
+.chat-bubble-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+
+/* „Kuca" indikator (async odgovor iz backend-a). */
+.chat-bubble.chat-thinking {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  width: fit-content;
+}
+
+.chat-thinking span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+  animation: chat-blink 1.2s infinite ease-in-out;
+}
+
+.chat-thinking span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chat-thinking span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes chat-blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+
+/* ==========          CHAT UNOS (DOCK)          ========== */
+
+.chat-dock {
+  width: min(620px, 100%);
+  margin: 0 auto;
+  padding-bottom: 2px;
+}
+
+.chat-input {
+  /* Alatke okvira lebde uz gornju desnu ivicu ovog polja. */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 26px;
+  /* Bez podloge — vidi se samo ivica okvira, pozadinska slika prolazi kroz. */
+  background: none;
+  box-shadow: none;
+}
+
+.chat-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chat-file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.chat-file-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+}
+
+.chat-file-remove:hover {
+  color: #f87171;
+}
+
+.chat-textarea {
+  width: 100%;
+  min-height: 28px;
+  max-height: 200px;
+  padding: 6px 8px;
+  border: none;
+  background: transparent;
+  color: #f5f7fb;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+}
+
+.chat-textarea::placeholder {
+  color: #64748b;
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Red se prelama i skuplja: u uskom desnom panelu je inace izlazio van
+     okvira, pa su izbornici i dugmad bili odseceni. */
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chat-input-tools,
+.chat-input-send {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.chat-input-send {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.chat-tool-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.6);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.chat-tool-button:hover:not(:disabled) {
+  border-color: rgba(125, 211, 252, 0.5);
+  color: #7dd3fc;
+}
+
+.chat-tool-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Glasovni unos (mikrofon): dok snima pulsira crveno, dok Whisper radi vrti se. */
+.chat-mic.recording {
+  border-color: rgba(248, 113, 113, 0.7);
+  color: #fca5a5;
+  background: rgba(127, 29, 29, 0.35);
+  animation: chat-mic-pulse 1.4s ease-in-out infinite;
+}
+
+.chat-mic.busy {
+  color: #7dd3fc;
+}
+
+.chat-mic-spin {
+  animation: chat-mic-rotate 0.9s linear infinite;
+}
+
+@keyframes chat-mic-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(248, 113, 113, 0);
+  }
+}
+
+@keyframes chat-mic-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.chat-send-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  background: #f5f7fb;
+  color: #0b1020;
+  cursor: pointer;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.chat-send-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.chat-send-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ==========          DRAG & DROP OVERLAY          ========== */
+
+.chat-drop-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: rgba(8, 13, 27, 0.72);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.chat-drop-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border: 1px dashed rgba(125, 211, 252, 0.6);
+  border-radius: 16px;
+  color: #bae6fd;
+  font-weight: 600;
+}
+
+
+/* ==========          BOOT (EFEKAT PALJENJA)          ========== */
+
+/* Dok boot nije spreman, sidebar ostaje van kadra bez obzira na pin stanje;
+   kada boot-ready stigne (2s), vraća se na svoju poziciju uz postojeći slide. */
+.core-layout.boot-pending .sidebar {
+  transform: translateX(-100%);
+}
+
+
+/* ==========          HEADER SAT: SLIDE ODOZGO          ========== */
+
+.header-clock {
+  transition:
+    transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 700ms ease;
+}
+
+.header-clock.pre-reveal {
+  transform: translate(-50%, -190%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header-clock.revealed {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+
+/* ==========          MODEL PICKER (CHAT, GORNJI DESNI UGAO)          ========== */
+
+.chat-model-picker {
+  position: relative;
+}
+
+.chat-model-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(12, 18, 36, 0.6);
+  color: #e2e8f0;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition: border-color 160ms ease;
+}
+
+.chat-model-trigger:hover {
+  border-color: rgba(125, 211, 252, 0.45);
+}
+
+.chat-model-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.chat-model-kind.local {
+  color: #fbbf24;
+}
+
+.chat-model-kind.online {
+  color: #7dd3fc;
+}
+
+.chat-model-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  min-width: 236px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(9, 14, 28, 0.97);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.chat-model-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #e2e8f0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chat-model-option .chat-model-name {
+  flex: 1;
+}
+
+.chat-model-option:hover {
+  background: rgba(125, 211, 252, 0.1);
+}
+
+.chat-model-option.selected {
+  background: rgba(125, 211, 252, 0.08);
+}
+
+.chat-model-badge {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.chat-model-badge.local {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.14);
+}
+
+.chat-model-badge.online {
+  color: #7dd3fc;
+  background: rgba(125, 211, 252, 0.14);
+}
+
+
+/* ==========          LEVI DOCK (ACTIVE DOMAINS + ALATI)          ========== */
+
+.left-dock {
+  position: fixed;
+  top: calc(var(--titlebar-h) + 96px);
+  /* Prati ivicu sidebara; z-index ispod sidebara (40) da stoji iza njega. */
+  left: 12px;
+  z-index: 34;
+  /* Ikonice alata (kolona) levo, stack widgeta desno od njih. */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  width: auto;
+  /* Podrazumevano nevidljiv i uvučen iza sidebara. */
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    left 540ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 460ms ease;
+}
+
+/* Desni stub: Active Domains → Nabavka → Finansije. */
+.dock-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 210px;
+}
+
+/* Svaki widget klizi s leva na desno pri ulasku; obrnuto pri izlasku. */
+.dock-slide {
+  transform: translateX(-48px);
+  opacity: 0;
+  transition:
+    transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 460ms ease;
+}
+
+.left-dock.revealed .dock-slide {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Stagger — widgeti ulaze jedan za drugim. */
+.left-dock.revealed .dock-slide:nth-child(1) { transition-delay: 0ms; }
+.left-dock.revealed .dock-slide:nth-child(2) { transition-delay: 130ms; }
+.left-dock.revealed .dock-slide:nth-child(3) { transition-delay: 260ms; }
+
+/* Dok je sidebar prikazan, dock stoji odmah uz njegovu desnu ivicu. */
+.core-layout.sidebar-visible .left-dock {
+  left: 240px;
+}
+
+/* Kada se sidebar povuče, dock prati ivicu do leve strane ekrana. */
+.core-layout.sidebar-collapsed .left-dock {
+  left: 12px;
+}
+
+/* Nakon 3s: dock postaje vidljiv; widgeti unutra kližu udesno (stagger). */
+.left-dock.revealed {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Vertikalni docker sa placeholder ikonama alata (tik uz ivicu). */
+.tool-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 0;
+  background: rgba(8, 13, 27, 0.5);
+  color: #94a3b8;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.tool-slot:hover {
+  border-color: rgba(125, 211, 252, 0.5);
+  color: #7dd3fc;
+  background: rgba(8, 13, 27, 0.72);
+}
+
+
+
+
+
+/* ==========          NOVČANI WIDGET (DASHBOARD, ISPOD SATA)          ========== */
+
+/* Centriran slot ispod centralnog sata; ne hvata klik van samog widgeta. */
+.core-money-slot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: 250px;
+  pointer-events: none;
+}
+
+.core-money-slot > * {
+  pointer-events: auto;
+}
+
+.money-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px 14px;
+  border: 1px solid rgba(140, 175, 235, 0.2);
+  border-radius: 14px;
+  background: rgba(8, 13, 27, 0.62);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 26px rgba(56, 189, 248, 0.06) inset;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.money-widget.pre-reveal {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.money-widget.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.money-widget-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #93a7cf;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.money-widget-head:hover {
+  color: #cfe0ff;
+}
+
+.money-widget-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.money-widget-amount,
+.money-widget-input {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f5c451;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.money-widget-input {
+  cursor: text;
+  width: 100%;
+  border-bottom: 2px solid #f5c451;
+  outline: none;
+}
+
+.money-widget-balance-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8195bd;
+}
+
+.money-widget-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.money-widget-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  flex: 1;
+}
+
+.money-widget-stat-value {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #e8ecf6;
+}
+
+.money-widget-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8195bd;
+}
+
+.money-widget-phase {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.money-widget-phase-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #93a7cf;
+}
+
+.money-widget-bar {
+  height: 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.money-widget-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #38bdf8, #34d399);
+  transition: width 0.4s ease;
+}
+
+
+/* ==========          FINANSIJSKI WIDGET (DASHBOARD STACK)          ========== */
+
+.finance-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  padding: 12px 16px 14px;
+  border: 1px solid rgba(140, 175, 235, 0.2);
+  border-left: 4px solid rgba(52, 211, 153, 0.7);
+  border-radius: 14px;
+  background: rgba(8, 13, 27, 0.62);
+  backdrop-filter: blur(6px);
+  color: #e8ecf6;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.finance-widget:hover {
+  transform: translateY(-2px);
+}
+
+/* Boja okvira po hitnosti računa (zeleno/žuto/crveno). */
+.finance-widget.okvir-zeleno {
+  border-left-color: #34d399;
+  box-shadow: 0 0 22px rgba(52, 211, 153, 0.12);
+}
+
+.finance-widget.okvir-zuto {
+  border-left-color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 0 22px rgba(251, 191, 36, 0.16);
+}
+
+.finance-widget.okvir-crveno {
+  border-left-color: #f87171;
+  border-color: rgba(248, 113, 113, 0.5);
+  box-shadow: 0 0 26px rgba(248, 113, 113, 0.22);
+}
+
+.finance-widget-head {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #93a7cf;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.finance-widget-balance {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+.finance-widget.okvir-zuto .finance-widget-balance { color: #fbbf24; }
+.finance-widget.okvir-crveno .finance-widget-balance { color: #f87171; }
+
+.finance-widget-balance-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8195bd;
+}
+
+.finance-widget-due {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(140, 175, 235, 0.14);
+}
+
+.finance-widget-due-amount {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e8ecf6;
+}
+
+.finance-widget-due-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8195bd;
+}
+
+/* ==========          BRZE AKCIJE (prazan chat)          ========== */
+/*
+ * Kartice predloga: dve po redu, uske i sa ivicom. Stil je ranije stajao u
+ * CODIUM datoteci iako vazi za svaki chat — kad je ta datoteka prepisana,
+ * kartice su ostale bez ijednog pravila i skupile se u obican red dugmadi.
+ */
+
+.chat-suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 16px;
+}
+
+.chat-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 0;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.02);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.chat-suggestion:hover:not(:disabled) {
+  border-color: rgba(var(--domain-accent-rgb), 0.4);
+  color: #f8fafc;
+  background: rgba(var(--domain-accent-rgb), 0.08);
+}
+
+.chat-suggestion:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.chat-suggestion-icon {
+  display: flex;
+  color: var(--domain-accent);
+}
+
+
+/* ==========          CORE CHAT: PERSONA I MODEL          ========== */
+/* Oba izbornika stoje uz polje za unos, persona desno od modela. Izbornik
+   modela vise nije tvrdo upisan spisak nego katalog iz CORE-a, pa koristi
+   obican <select> — isti kao u domenskim chatovima. */
+
+/* Izbornici bez okvira i strelice: samo tekst. Spisak se otvara na klik, pa
+   okvir dugmeta nista ne govori — a u uskom redu uzima dragocen prostor. */
+.chat-select {
+  position: relative;
+}
+
+.chat-select-trigger {
+  padding: 4px 2px;
+  background: none;
+  border: none;
+  color: #e2e8f0;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.chat-select-trigger:hover {
+  color: #ffffff;
+}
+
+/* Spisak se crta u stranici, ne u prozoru operativnog sistema: samo tako moze
+   da bude providan kao i okvir chata. */
+.chat-select-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  z-index: 90;
+  min-width: 168px;
+  max-height: 320px;
+  margin: 0;
+  padding: 6px;
+  overflow-y: auto;
+  list-style: none;
+  background: rgba(10, 15, 30, 0.55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+.chat-select-group + .chat-select-group {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.chat-select-group-title {
+  display: block;
+  padding: 2px 8px 4px;
+  color: #8195bd;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.chat-select-options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-select-option {
+  display: block;
+  width: 100%;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: #cbd5e1;
+  font: inherit;
+  font-size: 0.78rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chat-select-option:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.07);
+  color: #f8fafc;
+}
+
+.chat-select-option.is-selected {
+  color: var(--domain-accent, #7dd3fc);
+}
+
+.chat-select-option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/*
+ * Model koji ne kosta nista. Zelena je ovde znacenje, ne ukras — ista koju
+ * podesavanja vec koriste za znacku „besplatno" (`.cset-badge.free`), da ista
+ * stvar na dva ekrana ne bude dve boje. Traka uz levu ivicu, ne pun okvir:
+ * besplatnih modela ume da bude dvadesetak zaredom.
+ */
+.chat-select-option.is-free {
+  border-left: 2px solid rgba(120, 200, 140, 0.55);
+  border-radius: 0 8px 8px 0;
+  padding-left: 8px;
+}
+
+.chat-select-option.is-free:hover:not(:disabled) {
+  border-left-color: #8fdba0;
+}
+
+/* Uspravna crta razdvaja dva izbornika umesto dva okvira. */
+.chat-picker-sep {
+  color: rgba(255, 255, 255, 0.22);
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+/* Uzi izbornik: puna imena modela su duga, ali traka uz unos nije mesto za
+   njih — pun naziv se vidi kad se izbornik otvori. U uskom panelu se dodatno
+   skuplja umesto da izgura ostatak reda van okvira. */
+.chat-model-select .chat-select-trigger {
+  max-width: 168px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-persona .chat-select-trigger {
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-select-trigger:focus-visible {
+  outline: none;
+  color: #7dd3fc;
+}
+
+
+/* ==========          CORE DASHBOARD: PAMETAN RASPORED          ========== */
+/*
+ * Isto ponasanje kao na CODIUM dashboard-u (styles/smart-layout.css nosi izgled
+ * samih okvira): dok razgovor traje widgeti se sklapaju u kartice sa naslovom
+ * uz levu ivicu, a kad je chat panel desno gadgeti se sklone levo od njega da
+ * nista ne ostane iza chata.
+ */
+
+.core-dashboard {
+  --core-rail-left: 12px;
+  --smart-chat-w: min(430px, 92vw);
+  --smart-preview-w: min(360px, 34vw);
+}
+
+.core-layout.sidebar-visible .core-dashboard {
+  --core-rail-left: 240px;
+}
+
+/* Skupljeni widgeti u levom stupcu su uski — kartica, ne pun widget. */
+.core-dashboard.is-tucked .dock-stack {
+  width: 190px;
+  gap: 8px;
+}
+
+/*
+ * Gadgeti (Diskovi) putuju sa gornje desne ivice u levu traku: drugi stubac,
+ * odmah desno od widgeta (ikonice alata 44 + razmak 12 + widgeti 190 + 12).
+ */
+.core-dashboard.is-tucked .core-gadgets {
+  position: fixed;
+  /* Nize od widget stupca: ovaj stubac stoji tacno pod satom, pa mu ostavlja
+     vazduha umesto da mu se popne uz donju ivicu. */
+  top: calc(var(--titlebar-h) + 140px);
+  left: calc(var(--core-rail-left) + 258px);
+  right: auto;
+  width: 190px;
+  align-items: stretch;
+}
+
+/* Chat je panel uz desnu ivicu — gadgeti staju levo od njega. */
+.core-gadgets {
+  transition: right 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.core-dashboard.chat-right:not(.is-tucked) .core-gadgets {
+  right: calc(var(--smart-chat-w) + 16px);
+}
+
+/*
+ * Otvoren preview skracuje chat umesto da stane preko njega: chat na CORE
+ * dashboard-u je u toku stranice, pa mu prostor uzima sam raspored.
+ */
+.core-dashboard.has-preview:not(.chat-right) {
+  padding-right: calc(var(--smart-preview-w) + 16px);
+}
+
+/* Uz panel desno raspored mu rezervise prostor (gadgeti imaju svoje pravilo). */
+.core-dashboard.chat-right {
+  padding-right: calc(var(--smart-chat-w) + 16px);
+}
+
+.core-dashboard.chat-right.has-preview {
+  padding-right: calc(var(--smart-chat-w) + var(--smart-preview-w) + 24px);
+}
+
+/*
+ * Sistemski widget (CPU/GPU/RAM) zivi u gornjoj traci ljuske, van dashboard-a:
+ * kad chat postane panel uz desnu ivicu, sklanja se levo od njega istim tempom
+ * kao i ostali okviri (inace ostane iza chata).
+ *
+ * Putanja ide ISPOD sata: prvo se spusti pod gornju traku, pa tek onda klizne
+ * ulevo — inace bi presao preko sata i prekrio ga. Nazad istim redom obrnuto
+ * (prvo udesno, pa gore), zato oba pravila nose svoja kasnjenja.
+ */
+.top-bar-perf {
+  transition:
+    right 520ms cubic-bezier(0.22, 0.61, 0.36, 1) 0ms,
+    top 260ms ease 200ms;
+}
+
+body.core-chat-right .top-bar-perf {
+  /* Ispod trake sa satom (translateY(-50%) i dalje vazi). */
+  top: calc(100% - 8px);
+  right: calc(min(430px, 92vw) + 30px);
+  transition:
+    top 260ms ease 0ms,
+    right 520ms cubic-bezier(0.22, 0.61, 0.36, 1) 200ms;
+}
